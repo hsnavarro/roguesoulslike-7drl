@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    private void Start()
-    {
-    }
-
+   
     public Vector3 GetMoveInput()
     {
         Vector3 move = new Vector3(Input.GetAxisRaw(GameConstants.k_HorizontalAxis), 0f, Input.GetAxisRaw(GameConstants.k_VerticalAxis));

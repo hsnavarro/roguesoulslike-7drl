@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-
+    [SerializeField]
     private PlayerInputHandler inputHandler;
+    [SerializeField]
     private CharacterController characterController;
+    [SerializeField]
     private PlayerStats playerStats;
 
     private float staminaDelayTimer = 0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        inputHandler = GetComponent<PlayerInputHandler>();
-        characterController = GetComponent<CharacterController>();
-        playerStats = GetComponent<PlayerStats>();
-    }
 
     // Update is called once per frame
     void Update()
