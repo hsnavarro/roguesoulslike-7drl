@@ -8,5 +8,5 @@ Roguelike game for 7DRL Challenge
 - [ ] Movement
   - [x] Run Movement
   - [ ] Dash Skill
-  - [ ] UI
+  - [x] UI
 - [ ] Attack (player, enemy, triggers, HP and stamina update)
