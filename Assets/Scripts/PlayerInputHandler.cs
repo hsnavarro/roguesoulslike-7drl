@@ -6,8 +6,6 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     public Vector3 GetMoveInput()
@@ -16,5 +14,10 @@ public class PlayerInputHandler : MonoBehaviour
         move = move.normalized;
 
         return move;
+    }
+
+    public bool GetRunButton()
+    {
+        return Input.GetButton(GameConstants.k_RunButton);
     }
 }

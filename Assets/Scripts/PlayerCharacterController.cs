@@ -5,17 +5,18 @@ using UnityEngine;
 public class PlayerCharacterController : MonoBehaviour
 {
 
-    [SerializeField]
-    private float playerNormalSpeed;
-
     private PlayerInputHandler inputHandler;
     private CharacterController characterController;
+    private PlayerStats playerStats;
+
+    private float staminaDelayTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
         inputHandler = GetComponent<PlayerInputHandler>();
         characterController = GetComponent<CharacterController>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -23,9 +24,34 @@ public class PlayerCharacterController : MonoBehaviour
     {
         Vector3 instantNormalizedVelocity = inputHandler.GetMoveInput();
 
-        Vector3 instantVelocity = instantNormalizedVelocity * playerNormalSpeed;  
+        bool isRunButtonActive = inputHandler.GetRunButton();
 
-        print("Player velocity vector " + instantVelocity);
+        bool isRunning = isRunButtonActive && playerStats.Stamina > float.Epsilon;
+
+        Vector3 instantVelocity;
+
+        if(isRunning)
+        {
+            playerStats.speed = playerStats.runSpeed;
+            playerStats.Stamina = Mathf.Max(0f,
+                playerStats.Stamina - Time.deltaTime * playerStats.staminaRunDecreaseRate);
+
+            if (playerStats.Stamina <= float.Epsilon) staminaDelayTimer = 0f;
+        } else
+        {
+            playerStats.speed = playerStats.normalSpeed;
+            if(staminaDelayTimer >= playerStats.staminaRechargeDelay) playerStats.Stamina =
+                Mathf.Min(playerStats.maxStamina,
+                playerStats.Stamina + Time.deltaTime * playerStats.staminaRechargeRate);
+        }
+
+        staminaDelayTimer += Time.deltaTime;
+
+        instantVelocity = instantNormalizedVelocity * playerStats.speed;
+
+        Debug.print("Player velocity vector " + instantVelocity);
+        Debug.print("Player HP " + playerStats.HP);
+        Debug.print("Player Stamina " + playerStats.Stamina);
 
         characterController.Move(instantVelocity * Time.deltaTime);
     }
