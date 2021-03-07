@@ -6,12 +6,17 @@ public class CameraFollow : MonoBehaviour
 {
 
     public Transform target;
-    public Vector3 offset = new Vector3(0f, 5f, -5f);
+    private Vector3 offset;
 
     private Vector3 velocity = Vector3.zero;
     public float smoothTime = 0.5f;
 
     public bool isRotationOn;
+
+    private void Start()
+    {
+        offset = transform.position - target.position;
+    }
 
     // LateUpdate is called once per frame, after Update
     void LateUpdate()
