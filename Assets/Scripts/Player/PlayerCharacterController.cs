@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerInputHandler inputHandler;
     [SerializeField]
     private CharacterController characterController;
     [SerializeField]
@@ -13,40 +12,77 @@ public class PlayerCharacterController : MonoBehaviour
 
     private float staminaDelayTimer = 0f;
 
-    // Update is called once per frame
-    void Update()
+    private Vector3 instantNormalizedPlayerVelocity = Vector3.zero;
+    private Vector3 instantPlayerVelocity = Vector3.zero;
+    private bool isRunButtonActive = false;
+
+    public void OnRun(InputAction.CallbackContext context)
     {
-        Vector3 instantNormalizedVelocity = inputHandler.GetMoveInput();
 
-        bool isRunButtonActive = inputHandler.GetRunButton();
+        if (context.canceled) isRunButtonActive = false;
+        else if (context.performed) isRunButtonActive = true;
+    }
 
-        bool isRunning = isRunButtonActive && playerStats.Stamina > float.Epsilon;
+    private void HandleRun()
+    {
+        bool isRunningModeActive = isRunButtonActive && playerStats.Stamina > 0f;
+        bool isMoving = instantNormalizedPlayerVelocity != Vector3.zero;
 
-        Vector3 instantVelocity;
-
-        if(isRunning)
+        if (isRunningModeActive)
         {
             playerStats.speed = playerStats.runSpeed;
-            playerStats.Stamina = Mathf.Max(0f,
-                playerStats.Stamina - Time.deltaTime * playerStats.staminaRunDecreaseRate);
 
-            if (playerStats.Stamina <= float.Epsilon) staminaDelayTimer = 0f;
-        } else
+            if (isMoving)
+            {
+                playerStats.Stamina = Mathf.Max(0f,
+                    playerStats.Stamina - Time.deltaTime * playerStats.staminaRunDecreaseRate);
+
+                staminaDelayTimer = 0f;
+            }
+        }
+        else
         {
             playerStats.speed = playerStats.normalSpeed;
-            if(staminaDelayTimer >= playerStats.staminaRechargeDelay) playerStats.Stamina =
-                Mathf.Min(playerStats.maxStamina,
-                playerStats.Stamina + Time.deltaTime * playerStats.staminaRechargeRate);
         }
 
         staminaDelayTimer += Time.deltaTime;
 
-        instantVelocity = instantNormalizedVelocity * playerStats.speed;
+        if ((!isRunningModeActive || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay) {
+            playerStats.Stamina = Mathf.Min(playerStats.maxStamina,
+                 playerStats.Stamina + Time.deltaTime * playerStats.staminaRechargeRate);
+        }
+    }
 
-        Debug.print("Player velocity vector " + instantVelocity);
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Vector2 input = context.ReadValue<Vector2>().normalized;
+            instantNormalizedPlayerVelocity = new Vector3(input.x, 0, input.y);
+        }
+
+        if (context.canceled) instantNormalizedPlayerVelocity = Vector3.zero;
+    }
+
+    private void HandleMove()
+    {
+        instantPlayerVelocity = instantNormalizedPlayerVelocity * playerStats.speed;
+        characterController.Move(instantPlayerVelocity * Time.deltaTime);
+    }
+
+    private void DebugInfo()
+    {
+        Debug.print("Player velocity vector " + instantPlayerVelocity);
         Debug.print("Player HP " + playerStats.HP);
         Debug.print("Player Stamina " + playerStats.Stamina);
+    }
 
-        characterController.Move(instantVelocity * Time.deltaTime);
+    // Update is called once per frame
+    void Update()
+    {
+        HandleRun();
+        HandleMove();
+
+        //DebugInfo();
     }
 }
