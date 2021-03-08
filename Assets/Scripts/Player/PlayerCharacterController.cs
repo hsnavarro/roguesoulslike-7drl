@@ -12,9 +12,16 @@ public class PlayerCharacterController : MonoBehaviour
 
     private float staminaDelayTimer = 0f;
 
-    private Vector3 instantNormalizedPlayerVelocity = Vector3.zero;
-    private Vector3 instantPlayerVelocity = Vector3.zero;
+    private Vector3 normalizedPlayerVelocity = Vector3.zero;
+    private Vector3 playerVelocity = Vector3.zero;
     private bool isRunButtonActive = false;
+
+    private Animator anim;
+
+    private void Awake() {
+        anim = GetComponent<Animator>();
+    }
+
     public void OnHeavyAttack(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -33,19 +40,19 @@ public class PlayerCharacterController : MonoBehaviour
             playerStats.Stamina = Mathf.Max(0f, playerStats.Stamina - playerStats.lightAttackStaminaDecrease);
         }
     }
+
     public void OnRun(InputAction.CallbackContext context)
     {
-
         if (context.canceled) isRunButtonActive = false;
         else if (context.performed) isRunButtonActive = true;
     }
 
     private void HandleRun()
     {
-        bool isRunningModeActive = isRunButtonActive && playerStats.Stamina > 0f;
-        bool isMoving = instantNormalizedPlayerVelocity != Vector3.zero;
+        bool isRunning = isRunButtonActive && playerStats.Stamina > 0f;
+        bool isMoving = normalizedPlayerVelocity != Vector3.zero;
 
-        if (isRunningModeActive)
+        if (isRunning)
         {
             playerStats.speed = playerStats.runSpeed;
 
@@ -64,11 +71,19 @@ public class PlayerCharacterController : MonoBehaviour
 
         staminaDelayTimer += Time.deltaTime;
 
-        if ((!isRunningModeActive || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay)
+        if ((!isRunning || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay) 
         {
             playerStats.Stamina = Mathf.Min(playerStats.maxStamina,
                  playerStats.Stamina + Time.deltaTime * playerStats.staminaRechargeRate);
         }
+
+        // Rotation update
+        Vector3 targetPosition = new Vector3(normalizedPlayerVelocity.x, 0f, normalizedPlayerVelocity.z);
+        targetPosition += transform.position;
+        transform.LookAt(targetPosition);
+
+        // Animation update
+        anim.SetInteger("MoveState", isMoving ? (isRunning ? 2 : 1) : 0);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -76,16 +91,16 @@ public class PlayerCharacterController : MonoBehaviour
         if (context.performed)
         {
             Vector2 input = context.ReadValue<Vector2>().normalized;
-            instantNormalizedPlayerVelocity = new Vector3(input.x, 0, input.y);
+            normalizedPlayerVelocity = new Vector3(input.x, 0, input.y);
         }
 
-        if (context.canceled) instantNormalizedPlayerVelocity = Vector3.zero;
+        if (context.canceled) normalizedPlayerVelocity = Vector3.zero;
     }
 
-    private void HandleMove()
+    private void ApplyMovement()
     {
-        instantPlayerVelocity = instantNormalizedPlayerVelocity * playerStats.speed;
-        playerController.Move(instantPlayerVelocity * Time.deltaTime);
+        playerVelocity = normalizedPlayerVelocity * playerStats.speed;
+        playerController.Move(playerVelocity * Time.deltaTime);
     }
 
     private void DebugInfo()
@@ -97,7 +112,7 @@ public class PlayerCharacterController : MonoBehaviour
     void Update()
     {
         HandleRun();
-        HandleMove();
+        ApplyMovement();
 
         //DebugInfo();
     }
