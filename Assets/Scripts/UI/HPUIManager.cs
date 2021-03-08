@@ -12,13 +12,13 @@ public class HPUIManager : MonoBehaviour
 
     private float GetBarFillRatio()
     {
-        return playerStats.HP / playerStats.maxHP;
+        return playerStats.HP.currentHP / playerStats.HP.maxHP;
     }
 
     // Update is called once per frame
     void Update()
     {
         HPBar.value = GetBarFillRatio();
-        if(HUDManager.showText) HPText.text = Mathf.FloorToInt(playerStats.HP).ToString();
+        if(HUDManager.showText) HPText.text = Mathf.FloorToInt(playerStats.HP.currentHP).ToString();
     }
 }

@@ -4,23 +4,40 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float maxHP = 100f;
+    public HP HP;
+
     public float maxStamina = 100f;
     public float normalSpeed = 5f;
     public float runSpeed = 10f;
+
+    public float lightAttackDamage = 10f;
+    public float heavyAttackDamage = 30f;
+
+    public float lightAttackStaminaDecrease = 10f;
+    public float heavyAttackStaminaDecrease = 30f;
 
     public float staminaRunDecreaseRate = 15f;
     public float staminaRechargeRate = 20f;
     public float staminaRechargeDelay = 5f;
 
-    public float HP;
     public float Stamina;
     public float speed;
+    public float damage;
+
+    public void DebugInfo()
+    {
+        Debug.print("Player HP " + HP.currentHP);
+        Debug.print("Player Stamina " + Stamina);
+    }
 
     private void Start()
     {
-        HP = maxHP;
         Stamina = maxStamina;
         speed = normalSpeed;
+    }
+
+    private void Update()
+    {
+        //DebugInfo();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerCharacterController : MonoBehaviour
 {
     [SerializeField]
-    private CharacterController characterController;
+    private CharacterController playerController;
     [SerializeField]
     private PlayerStats playerStats;
 
@@ -15,7 +15,24 @@ public class PlayerCharacterController : MonoBehaviour
     private Vector3 instantNormalizedPlayerVelocity = Vector3.zero;
     private Vector3 instantPlayerVelocity = Vector3.zero;
     private bool isRunButtonActive = false;
+    public void OnHeavyAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            playerStats.damage = playerStats.heavyAttackDamage;
+            playerStats.Stamina = Mathf.Max(0f, playerStats.Stamina - playerStats.heavyAttackStaminaDecrease);
+        }
 
+    }
+
+    public void OnLightAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            playerStats.damage = playerStats.lightAttackDamage;
+            playerStats.Stamina = Mathf.Max(0f, playerStats.Stamina - playerStats.lightAttackStaminaDecrease);
+        }
+    }
     public void OnRun(InputAction.CallbackContext context)
     {
 
@@ -47,7 +64,8 @@ public class PlayerCharacterController : MonoBehaviour
 
         staminaDelayTimer += Time.deltaTime;
 
-        if ((!isRunningModeActive || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay) {
+        if ((!isRunningModeActive || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay)
+        {
             playerStats.Stamina = Mathf.Min(playerStats.maxStamina,
                  playerStats.Stamina + Time.deltaTime * playerStats.staminaRechargeRate);
         }
@@ -55,7 +73,7 @@ public class PlayerCharacterController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             Vector2 input = context.ReadValue<Vector2>().normalized;
             instantNormalizedPlayerVelocity = new Vector3(input.x, 0, input.y);
@@ -67,14 +85,12 @@ public class PlayerCharacterController : MonoBehaviour
     private void HandleMove()
     {
         instantPlayerVelocity = instantNormalizedPlayerVelocity * playerStats.speed;
-        characterController.Move(instantPlayerVelocity * Time.deltaTime);
+        playerController.Move(instantPlayerVelocity * Time.deltaTime);
     }
 
     private void DebugInfo()
     {
         Debug.print("Player velocity vector " + instantPlayerVelocity);
-        Debug.print("Player HP " + playerStats.HP);
-        Debug.print("Player Stamina " + playerStats.Stamina);
     }
 
     // Update is called once per frame
