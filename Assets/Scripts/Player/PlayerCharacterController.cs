@@ -105,7 +105,7 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void DebugInfo()
     {
-        Debug.print("Player velocity vector " + instantPlayerVelocity);
+        Debug.print("Player velocity vector " + playerVelocity);
     }
 
     // Update is called once per frame
