@@ -3,7 +3,7 @@ Roguelike game for 7DRL Challenge
 
 
 # Todo (hsnavarro)
-- [ ] Stats (HP and Stamina)
+- [x] Stats (HP and Stamina)
 - [ ] Enemy
 - [ ] Movement
   - [x] Run Movement
