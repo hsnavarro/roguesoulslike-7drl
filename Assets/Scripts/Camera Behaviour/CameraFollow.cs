@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour {
 
   private void Start() {
     offset = transform.position - target.position;
+    transform.LookAt(target.position);
   }
 
   // LateUpdate is called once per frame, after Update

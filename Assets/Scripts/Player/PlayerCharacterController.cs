@@ -52,8 +52,10 @@ public class PlayerCharacterController : MonoBehaviour {
   }
 
   public void OnMove(InputAction.CallbackContext context) {
-    Vector2 input = context.ReadValue<Vector2>();
+    Vector2 input = context.ReadValue<Vector2>().normalized;
+
     playerDirection = new Vector3(input.x, 0, input.y);
+    playerDirection = Quaternion.Euler(0, -45, 0) * playerDirection;    
   }
 
   private void ApplyMovement() {
