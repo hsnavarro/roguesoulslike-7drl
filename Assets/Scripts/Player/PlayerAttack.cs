@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
-{
-    public PlayerStats playerStats;
+public class PlayerAttack : MonoBehaviour {
+  public PlayerStats playerStats;
+  public CharacterController playerController;
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        //Debug.print("Player collided with " + hit.gameObject.name);
-        if (hit.gameObject.name == "Enemy")
-        {
-            HP enemyHP = hit.gameObject.GetComponent<HP>();
-            enemyHP.TakeDamage(playerStats.damage);
-        }
+  private void OnControllerColliderHit(ControllerColliderHit hit) {
+    //Debug.print("Player collided with " + hit.gameObject.name);
+    if (hit.gameObject.tag == "Enemy") {
+      HP enemyHP = hit.gameObject.GetComponent<HP>();
+      enemyHP.TakeDamage(playerStats.damage);
     }
+  }
 }

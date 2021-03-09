@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HPUIManager : MonoBehaviour
-{
-    public HUDManager HUDManager;
-    public PlayerStats playerStats;
-    public Slider HPBar;
-    public Text HPText;
+public class HPUIManager : MonoBehaviour {
+  public HUDManager HUDManager;
+  public PlayerStats playerStats;
+  public Slider HPBar;
+  public Text HPText;
 
-    private float GetBarFillRatio()
-    {
-        return playerStats.HP.currentHP / playerStats.HP.maxHP;
-    }
+  private float GetBarFillRatio() {
+    return playerStats.HP.currentHP / playerStats.HP.maxHP;
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-        HPBar.value = GetBarFillRatio();
-        if(HUDManager.showText) HPText.text = Mathf.FloorToInt(playerStats.HP.currentHP).ToString();
-    }
+  // Update is called once per frame
+  void Update() {
+    HPBar.value = GetBarFillRatio();
+    if (HUDManager.showText) HPText.text = Mathf.FloorToInt(playerStats.HP.currentHP).ToString();
+  }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HUDManager : MonoBehaviour
-{   
-    public bool showText = true;
+public class HUDManager : MonoBehaviour {
+  public bool showText = true;
 }

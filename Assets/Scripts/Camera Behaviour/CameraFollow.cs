@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
-{
+public class CameraFollow : MonoBehaviour {
 
-    public Transform target;
-    private Vector3 offset;
+  public Transform target;
+  private Vector3 offset;
 
-    private Vector3 velocity = Vector3.zero;
-    public float smoothTime = 0.5f;
+  private Vector3 velocity = Vector3.zero;
+  public float smoothTime = 0.5f;
 
-    public bool isRotationOn;
+  public bool isRotationOn;
 
-    private void Start()
-    {
-        offset = transform.position - target.position;
-    }
+  private void Start() {
+    offset = transform.position - target.position;
+  }
 
-    // LateUpdate is called once per frame, after Update
-    void LateUpdate()
-    {
-        Vector3 destination = target.position + offset;
-        Vector3 cameraPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, smoothTime);
+  // LateUpdate is called once per frame, after Update
+  void LateUpdate() {
+    Vector3 destination = target.position + offset;
+    Vector3 cameraPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, smoothTime);
 
-        transform.position = cameraPosition;
-        if (isRotationOn) transform.LookAt(target.position);
-    }
+    transform.position = cameraPosition;
+    if (isRotationOn) transform.LookAt(target.position);
+  }
 }
