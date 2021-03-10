@@ -19,6 +19,8 @@ public class CameraFollow : MonoBehaviour {
 
   // LateUpdate is called once per frame, after Update
   void LateUpdate() {
+    if(target == null) return;
+
     Vector3 destination = target.position + offset;
     Vector3 cameraPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, smoothTime);
 

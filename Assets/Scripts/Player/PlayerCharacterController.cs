@@ -6,131 +6,66 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerCharacterController : MonoBehaviour {
 
-  private enum Layers { PLAYER = 8, PLAYER_DASHING = 10 };
+  [SerializeField]
+  private PlayerItemInteraction itemInteraction;
 
   [SerializeField]
-  private CharacterController playerController;
+  private PlayerMovement movement;
   [SerializeField]
-  private PlayerStats playerStats;
+  private PlayerStats stats;
 
-  private float staminaDelayTimer = 0f;
+  public void OnInteractSlot1(InputAction.CallbackContext context) {
+    if (context.started) itemInteraction.HandleInteractSlot(0);
+  }
 
-  private Vector3 playerDirection = Vector3.zero;
-  private Vector3 playerVelocity = Vector3.zero;
-  private bool isRunButtonActive = false;
+  public void OnInteractSlot2(InputAction.CallbackContext context) {
+    if (context.started) itemInteraction.HandleInteractSlot(1);
+  }
 
-  private Animator anim;
+  public void OnInteractSlot3(InputAction.CallbackContext context) {
+    if (context.started) itemInteraction.HandleInteractSlot(2);
+  }
 
-  private bool isDashing = false;
-  private Vector3 dashDirection = Vector3.zero;
-  private float dashTimer = 0f;
-
-  private void updateLayer() {
-    if (isDashing) gameObject.layer = (int)Layers.PLAYER_DASHING;
-    else gameObject.layer = (int)Layers.PLAYER;
-
+  public void OnInteractSlot4(InputAction.CallbackContext context) {
+    if (context.started) itemInteraction.HandleInteractSlot(3);
   }
   public void OnDash(InputAction.CallbackContext context) {
     if (context.started) {
-      dashDirection = playerDirection;
-      if (isDashing || playerDirection == Vector3.zero) return;
-      dashTimer = 0f;
-      isDashing = true;
+      movement.dashDirection = movement.playerDirection;
+      if (movement.isDashing || movement.playerDirection == Vector3.zero) return;
+      movement.dashTimer = 0f;
+      movement.isDashing = true;
     }
-  }
-
-  public void handleDash() {
-    if (isDashing) {
-      dashTimer += Time.deltaTime;
-      if (dashTimer > playerStats.dashDuration) isDashing = false;
-    }
-  }
-
-
-  private void Awake() {
-    anim = GetComponent<Animator>();
   }
 
   public void OnMove(InputAction.CallbackContext context) {
     Vector2 input = context.ReadValue<Vector2>().normalized;
 
-    playerDirection = new Vector3(input.x, 0, input.y);
-    playerDirection = Quaternion.Euler(0, -45, 0) * playerDirection;    
+    movement.playerDirection = new Vector3(input.x, 0, input.y);
+    movement.playerDirection = Quaternion.Euler(0, -45, 0) * movement.playerDirection;    
   }
-
-  private void ApplyMovement() {
-    handleDash();
-    updateLayer();
-
-    playerStats.isDashing = isDashing;
-
-    if (isDashing) playerVelocity = dashDirection * playerStats.dashSpeed;
-    else playerVelocity = playerDirection * playerStats.speed;
-
-    playerController.Move(playerVelocity * Time.deltaTime);
-  }
-
   public void OnHeavyAttack(InputAction.CallbackContext context) {
+    if(stats.isHeavyAttacking || stats.isLightAttacking) return;
+
     if (context.started) {
-      playerStats.damage = playerStats.heavyAttackDamage;
-      playerStats.Stamina = Mathf.Max(0f, playerStats.Stamina - playerStats.heavyAttackStaminaDecrease);
+      stats.isHeavyAttacking = true;
+      stats.heavyAttackTimer = 0f;
+      stats.currentStamina = Mathf.Max(0f, stats.currentStamina - stats.heavyAttackStaminaDecrease);
     }
   }
 
   public void OnLightAttack(InputAction.CallbackContext context) {
+    if(stats.isHeavyAttacking || stats.isLightAttacking) return;
+
     if (context.started) {
-      playerStats.damage = playerStats.lightAttackDamage;
-      playerStats.Stamina = Mathf.Max(0f, playerStats.Stamina - playerStats.lightAttackStaminaDecrease);
+      stats.isLightAttacking = true;
+      stats.lightAttackTimer = 0f;
+      stats.currentStamina = Mathf.Max(0f, stats.currentStamina - stats.lightAttackStaminaDecrease);
     }
   }
 
   public void OnRun(InputAction.CallbackContext context) {
-    if (context.canceled) isRunButtonActive = false;
-    else if (context.performed) isRunButtonActive = true;
-  }
-
-  private void HandleRun() {
-    bool isRunning = isRunButtonActive && playerStats.Stamina > 0f;
-    bool isMoving = playerDirection != Vector3.zero;
-
-    if (isRunning) {
-      playerStats.speed = playerStats.runSpeed;
-
-      if (isMoving) {
-        playerStats.Stamina = Mathf.Max(0f,
-            playerStats.Stamina - Time.deltaTime * playerStats.staminaRunDecreaseRate);
-
-        staminaDelayTimer = 0f;
-      }
-    } else {
-      playerStats.speed = playerStats.normalSpeed;
-    }
-
-    if (playerStats.Stamina != playerStats.maxStamina) staminaDelayTimer += Time.deltaTime;
-
-    if ((!isRunning || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay) {
-      playerStats.Stamina = Mathf.Min(playerStats.maxStamina,
-           playerStats.Stamina + Time.deltaTime * playerStats.staminaRechargeRate);
-    }
-
-    // Rotation update
-    Vector3 targetPosition = new Vector3(playerDirection.x, 0f, playerDirection.z);
-    targetPosition += transform.position;
-    transform.LookAt(targetPosition);
-
-    // Animation update
-    anim.SetInteger("MoveState", isMoving ? (isRunning ? 2 : 1) : 0);
-  }
-
-  private void DebugInfo() {
-    Debug.print("Player velocity vector " + playerVelocity);
-  }
-
-  // Update is called once per frame
-  void Update() {
-    HandleRun();
-    ApplyMovement();
-
-    //DebugInfo();
+    if (context.canceled) movement.isRunButtonActive = false;
+    else if (context.performed) movement.isRunButtonActive = true;
   }
 }

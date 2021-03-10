@@ -3,14 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
-  public HP HP;
 
+  [HideInInspector]
+  public const int maxNumberOfItems = 4;
+  //[HideInInspector]
+  public NormalItem[] itemsEquipped;
+  //[HideInInspector]
+  public bool[] isSlotEquipped;
+
+  public Defense defense;
   public float maxStamina = 100f;
   public float normalSpeed = 5f;
   public float runSpeed = 10f;
 
   public float lightAttackDamage = 10f;
+  public float lightAttackDuration = 0.2f;
+  public float lightAttackImpactDelay = 0f;
+  private bool lightAttackImpactOccurred = false;
+  [HideInInspector]
+  public bool isLightAttacking = false;
+  [HideInInspector]
+  public float lightAttackTimer = 0f;
+
   public float heavyAttackDamage = 30f;
+  public float heavyAttackDuration = 0.3f;
+  public float heavyAttackImpactDelay = 0.2f;
+
+  private bool heavyAttackImpactOccurred = false;
+  [HideInInspector]
+  public bool isHeavyAttacking = false;
+  [HideInInspector]
+  public float heavyAttackTimer = 0f;
 
   public float lightAttackStaminaDecrease = 10f;
   public float heavyAttackStaminaDecrease = 30f;
@@ -22,25 +45,64 @@ public class PlayerStats : MonoBehaviour {
   public float dashDuration = 0.5f;
   public float dashSpeed = 20f;
 
-  public float Stamina;
-  public float speed;
-  public float damage;
+  public float currentStamina;
+  public float currentSpeed;
+  public float currentDamage;
 
   [HideInInspector]
   public bool isDashing;
 
   public void DebugInfo() {
-    Debug.print("Player HP " + HP.currentHP);
-    Debug.print("Player Stamina " + Stamina);
-    Debug.print("Player isDashing " + isDashing);
+    //Debug.print("Player Health " + defense.currentHealth);
+    //Debug.print("Player Shield " + defense.currentShield);
+    //Debug.print("Player Stamina " + currentStamina);
+    Debug.print("Player Damage " + currentDamage * Time.fixedDeltaTime);
+    //Debug.print("Player isDashing " + isDashing);
   }
 
   private void Start() {
-    Stamina = maxStamina;
-    speed = normalSpeed;
+    itemsEquipped = new NormalItem[maxNumberOfItems];
+    isSlotEquipped = new bool[maxNumberOfItems];
+    currentStamina = maxStamina;
+    currentSpeed = normalSpeed;
   }
 
+  private void FixedUpdate() {
+    if(isHeavyAttacking) {
+      heavyAttackTimer += Time.fixedDeltaTime;
+      
+      if(heavyAttackImpactOccurred) {
+        // Passed one frame, set currentDamage back to 0
+        currentDamage = 0;
+      } else if(heavyAttackTimer > heavyAttackImpactDelay) {
+        currentDamage = heavyAttackDamage;
+        heavyAttackImpactOccurred = true;
+      }
+
+      if (heavyAttackTimer > heavyAttackDuration) {
+        isHeavyAttacking = false;
+        heavyAttackImpactOccurred = false;
+      }
+    }
+
+    if(isLightAttacking) {
+      lightAttackTimer += Time.fixedDeltaTime;
+
+      if(lightAttackImpactOccurred) {
+        // Passed one frame, set currentDamage back to 0
+        currentDamage = 0;
+      } else if(lightAttackTimer > lightAttackImpactDelay) {
+        currentDamage = lightAttackDamage;
+        lightAttackImpactOccurred = true;
+      }
+
+      if (lightAttackTimer > lightAttackDuration) {
+        isLightAttacking = false;
+        lightAttackImpactOccurred = false;
+      }
+    }
+  }
   private void Update() {
-    //DebugInfo();
+    // DebugInfo();
   }
 }
