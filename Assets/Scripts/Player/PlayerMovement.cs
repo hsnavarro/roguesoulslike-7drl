@@ -15,15 +15,12 @@ public class PlayerMovement : MonoBehaviour {
   public Vector3 playerVelocity { get; set; }  = Vector3.zero; 
   public bool isRunButtonActive { get; set; } = false;
 
-  public Animator anim { get; set; }
+  public Animator anim;
 
   public bool isDashing { get; set; }= false;
   public Vector3 dashDirection { get; set; } = Vector3.zero;
   public float dashTimer { get; set; } = 0f;
 
-  private void Awake() {
-      anim = GetComponent<Animator>();
-  }
   private void updateLayer() {
     if (isDashing) gameObject.layer = (int)Layers.PLAYER_DASHING;
     else gameObject.layer = (int)Layers.PLAYER;

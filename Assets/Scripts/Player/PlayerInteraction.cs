@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour {
   public PlayerInput playerInput;
 
   public GameObject deathSceneCanvas;
+
   private void OnTriggerStay(Collider collider) {
     if(collider.isTrigger) return;
 

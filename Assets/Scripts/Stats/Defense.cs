@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Defense : MonoBehaviour {
-  public float maxHealth;
-  public float currentHealth;
+  public float maxHealth = 100f;
+  public float currentHealth = 100f;
 
-  public float maxShield;
-  public float currentShield;
+  public float maxShield = 0f;
+  public float currentShield = 0f;
 
   public void RecoverCurrentHealth(float value) {
     currentHealth = Mathf.Min(maxHealth, currentHealth + value);
