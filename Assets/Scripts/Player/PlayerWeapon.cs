@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerWeapon : MonoBehaviour {
     public GameObject initialWeapon;
@@ -10,6 +11,9 @@ public class PlayerWeapon : MonoBehaviour {
     private Vector3 weaponPosition;
 
     private GameObject currentWeapon;
+
+    [SerializeField]
+    private Animator anim;
 
     void Start() {
         Equip(initialWeapon);
@@ -28,5 +32,10 @@ public class PlayerWeapon : MonoBehaviour {
 
         currentWeapon.transform.SetParent(handBone);
         currentWeapon.transform.localPosition = weaponPosition;
+    }
+
+    public void OnAttack(InputAction.CallbackContext context) {
+        Debug.print(context);
+        anim.SetTrigger("LightAttack");
     }
 }

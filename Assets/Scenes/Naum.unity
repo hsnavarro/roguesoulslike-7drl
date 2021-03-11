@@ -2389,6 +2389,7 @@ MonoBehaviour:
     type: 3}
   handBone: {fileID: 1155147880}
   weaponPosition: {x: 0, y: 0.001, z: 0}
+  anim: {fileID: 559865734}
 --- !u!1 &1277773225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4254,6 +4255,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363278371932789064, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363278371932789064, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363278371932789064, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1268130532}
+    - target: {fileID: 3363278371932789064, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363278371932789064, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363278371932789064, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c00d45c2ae9f5944291cd4cd9b7a13e2, type: 3}
