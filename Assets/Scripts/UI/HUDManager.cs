@@ -69,7 +69,6 @@ public class HUDManager : MonoBehaviour {
   }
 
   void Update() {
-
     healthBarRectangle.sizeDelta = new Vector2(playerStats.defense.maxHealth, healthBarRectangle.sizeDelta.y);
     shieldBarRectangle.sizeDelta = new Vector2(playerStats.defense.maxShield, shieldBarRectangle.sizeDelta.y);
     staminaBarRectangle.sizeDelta = new Vector2(playerStats.maxStamina, staminaBarRectangle.sizeDelta.y);

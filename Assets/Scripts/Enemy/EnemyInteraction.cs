@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyInteraction : MonoBehaviour {
   public EnemyStats enemyStats;
+
+  public PlayerSkillTree playerSkillTree;
   public CharacterController enemyController;
 
   private void OnTriggerStay(Collider collider) {
@@ -23,5 +25,29 @@ public class EnemyInteraction : MonoBehaviour {
 
   private void Update() {
     TriggerAttack();
+     if(enemyStats.defense.IsDead()) {
+
+       float valueToIncrease = enemyStats.barIncreaseAfterDeath;
+
+      switch(enemyStats.type) {
+        case EnemyTypes.WHICH:
+          playerSkillTree.IncreaseHealthProgress(valueToIncrease);
+          break;
+
+        case EnemyTypes.CYCLOPS:
+          playerSkillTree.IncreaseShieldProgress(valueToIncrease);
+          break;
+
+        case EnemyTypes.FAUN:
+          playerSkillTree.IncreaseStaminaProgress(valueToIncrease);
+          break;
+
+
+        default:
+          break;
+      
+      }
+       Object.Destroy(gameObject);
+     }
   }
 }

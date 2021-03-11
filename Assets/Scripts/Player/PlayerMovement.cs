@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour {
     Debug.print("Player velocity vector " + playerVelocity);
   }
 
-  void Update() {
+  private void Update() {
     HandleRun();
     ApplyMovement();
 

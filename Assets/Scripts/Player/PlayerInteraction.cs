@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour {
   public PlayerStats playerStats;
-  public Collider playerCollider;
   public PlayerItemInteraction playerItemInteraction;
+  public PlayerSkillTree playerSkillTree;
+  public PlayerInput playerInput;
+
+  public GameObject deathSceneCanvas;
   private void OnTriggerStay(Collider collider) {
     if(collider.isTrigger) return;
 
@@ -19,6 +23,21 @@ public class PlayerInteraction : MonoBehaviour {
       EdibleItem item = hit.gameObject.GetComponent<EdibleItem>();
       playerItemInteraction.Use(item);
       hit.gameObject.SetActive(false);
+    }
+  }
+
+  private void Awake() {
+    playerSkillTree.GetPermanentInformation();
+    playerStats.defense.maxHealth += PermanentPlayerInformation.healthIncrease;
+    playerStats.defense.maxShield += PermanentPlayerInformation.shieldIncrease;
+    playerStats.maxStamina += PermanentPlayerInformation.staminaIncrease;
+  }
+
+  private void Update() {
+    if(playerStats.defense.IsDead()) {
+      playerSkillTree.SetPermanentInformation();
+      deathSceneCanvas.SetActive(true);
+      playerInput.SwitchCurrentActionMap("DeathUI");
     }
   }
 }

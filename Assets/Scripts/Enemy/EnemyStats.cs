@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour {
+  public EnemyTypes type;
   public Defense defense;
+
+  public float barIncreaseAfterDeath = 1f;
   public float currentDamage { get; set; }
   public float speed = 5f;
   public float attackDamage = 10f;

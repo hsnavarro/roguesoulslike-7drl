@@ -38,10 +38,10 @@ public class Defense : MonoBehaviour {
     }
     
     currentHealth = Mathf.Max(0f, currentHealth - value);
+  }
 
-    if(currentHealth == 0f) {
-      Object.Destroy(gameObject);
-    }
+  public bool IsDead() {
+    return currentHealth == 0f;
   }
 
   public void Awake() {

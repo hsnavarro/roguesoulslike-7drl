@@ -20,8 +20,9 @@ public class EnemyBarManager : MonoBehaviour {
   private float GetShieldBarFillRatio() {
     return enemyStats.defense.currentShield / enemyStats.defense.maxShield;
   }
-  void Update() {
-    defenseBarPivot.LookAt(Camera.main.transform.position);
+  
+  private void Update() {
+    //defenseBarPivot.LookAt(Camera.main.transform.position);
 
     healthBarRectangle.sizeDelta = new Vector2(enemyStats.defense.maxHealth, healthBarRectangle.sizeDelta.y);
     shieldBarRectangle.sizeDelta = new Vector2(enemyStats.defense.maxShield, shieldBarRectangle.sizeDelta.y);
