@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 public class PlayerCharacterController : MonoBehaviour {
-
   [SerializeField]
   private PlayerItemInteraction itemInteraction;
 
@@ -30,8 +26,8 @@ public class PlayerCharacterController : MonoBehaviour {
 
       skillTreeCanvas.gameObject.SetActive(isSkillTreeUIActive);
     }
-
   }
+
   public void OnInteractSlot1(InputAction.CallbackContext context) {
     if (context.started) itemInteraction.HandleInteractSlot(0);
   }
