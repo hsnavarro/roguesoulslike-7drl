@@ -14,6 +14,24 @@ public class PlayerCharacterController : MonoBehaviour {
   [SerializeField]
   private PlayerStats stats;
 
+  public PlayerInput playerInput;
+  bool isSkillTreeUIActive = false;
+  public Canvas skillTreeCanvas;
+
+  public void OnSeeProgress(InputAction.CallbackContext context) {
+    if(context.started) {
+      isSkillTreeUIActive ^= true;
+
+      if(isSkillTreeUIActive) {
+        foreach(var action in playerInput.actions) if(action.name != "See Progress") action.Disable();
+      } else {
+        playerInput.currentActionMap.Enable();
+      }
+
+      skillTreeCanvas.gameObject.SetActive(isSkillTreeUIActive);
+    }
+
+  }
   public void OnInteractSlot1(InputAction.CallbackContext context) {
     if (context.started) itemInteraction.HandleInteractSlot(0);
   }
