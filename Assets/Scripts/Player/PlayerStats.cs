@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour {
 
   public float staminaRunDecreaseRate = 15f;
   public float staminaRechargeRate = 20f;
-  public float staminaRechargeDelay = 5f;
+  public float staminaRechargeDelay = 1f;
 
   public float dashDuration = 0.5f;
   public float dashSpeed = 20f;
@@ -56,11 +56,11 @@ public class PlayerStats : MonoBehaviour {
   public bool isDashing;
 
   public void DebugInfo() {
-    //Debug.print("Player Health " + defense.currentHealth);
-    //Debug.print("Player Shield " + defense.currentShield);
-    //Debug.print("Player Stamina " + currentStamina);
-    Debug.print("Player Damage " + currentDamage * Time.fixedDeltaTime);
-    //Debug.print("Player isDashing " + isDashing);
+    //Debug.Log("Player Health " + defense.currentHealth);
+    //Debug.Log("Player Shield " + defense.currentShield);
+    //Debug.Log("Player Stamina " + currentStamina);
+    Debug.Log("Player Damage " + currentDamage * Time.fixedDeltaTime);
+    //Debug.Log("Player isDashing " + isDashing);
   }
 
   private void Start() {

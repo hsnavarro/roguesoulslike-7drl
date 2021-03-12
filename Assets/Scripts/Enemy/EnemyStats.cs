@@ -17,7 +17,7 @@ public class EnemyStats : MonoBehaviour {
   public bool isAttacking { set; get; } = false;
   public float attackTimer { set; get; } = 0f;
   public void DebugInfo() {
-    Debug.print("Enemy HP " + defense.currentHealth);
+    Debug.Log("Enemy HP " + defense.currentHealth);
   }
 
   private void FixedUpdate() {

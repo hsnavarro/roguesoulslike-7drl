@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour {
   }
 
   private void DebugInfo() {
-    Debug.print("Player velocity vector " + playerVelocity);
+    Debug.Log("Player velocity vector " + playerVelocity);
   }
 
   private void Update() {

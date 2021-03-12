@@ -40,7 +40,7 @@ public class NormalItem : MonoBehaviour {
     }
     public void AddEffects() {
         if(isEquipped) {
-            Debug.print("Item can't be equipped twice");
+            Debug.Log("Item can't be equipped twice");
             return;
         }
         isEquipped = true;
@@ -49,7 +49,7 @@ public class NormalItem : MonoBehaviour {
 
     public void RemoveEffects() {
         if(!isEquipped) {
-            Debug.print("Item can't be unequipped twice");
+            Debug.Log("Item can't be unequipped twice");
             return;           
         }
         isEquipped = false;

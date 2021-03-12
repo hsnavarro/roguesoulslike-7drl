@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillTreeManager : MonoBehaviour
-{
-
+public class SkillTreeManager : MonoBehaviour {
   [SerializeField]
   private Slider healthBarSlider;
   [SerializeField]
@@ -13,26 +9,25 @@ public class SkillTreeManager : MonoBehaviour
   [SerializeField]
   private Slider staminaBarSlider;
 
-  [SerializeField]
   private PlayerSkillTree playerSkillTree;
 
-  private float GetHealthBarFillRatio()
-  {
+  void Start() {
+    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
+  }
+
+  private float GetHealthBarFillRatio() {
     return playerSkillTree.healthBarProgression / playerSkillTree.healthBarSize;
   }
 
-  private float GetFlaskCapacityBarFillRatio()
-  {
+  private float GetFlaskCapacityBarFillRatio() {
     return playerSkillTree.flasksCapacityBarProgression / playerSkillTree.flasksCapacityBarSize;
   }
 
-  private float GetStaminaBarFillRatio()
-  {
+  private float GetStaminaBarFillRatio() {
     return playerSkillTree.staminaBarProgression / playerSkillTree.staminaBarSize;
   }
 
-  private void Update()
-  {
+  private void Update() {
     healthBarSlider.value = GetHealthBarFillRatio();
     flaskCapacityBarSlider.value = GetFlaskCapacityBarFillRatio();
     staminaBarSlider.value = GetStaminaBarFillRatio();

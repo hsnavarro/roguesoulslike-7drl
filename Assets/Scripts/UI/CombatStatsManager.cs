@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CombatStatsManager : MonoBehaviour {
-  
-  [SerializeField]
   private PlayerStats playerStats;
 
   [SerializeField]
@@ -21,6 +19,10 @@ public class CombatStatsManager : MonoBehaviour {
   private Slider shieldBarSlider;
   [SerializeField]
   private Slider staminaBarSlider;
+
+  void Start() {
+    playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+  }
 
   private float GetHealthBarFillRatio() {
     return playerStats.defense.currentHealth / playerStats.defense.maxHealth;

@@ -23,7 +23,7 @@ public class PlayerItemInteraction : MonoBehaviour {
   private NormalItem lastClosestItem = null;
   public void HandleInteractSlot(int slot) {
      if(slot >= PlayerStats.maxNumberOfItems) {
-      Debug.print("Slot number greater than array size");
+      Debug.Log("Slot number greater than array size");
       return;
     }
 

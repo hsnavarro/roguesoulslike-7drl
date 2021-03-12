@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemsManager : MonoBehaviour {
-  public PlayerStats playerStats;
+  private PlayerStats playerStats;
 
   [SerializeField]
   private List<Image> slotImages;
@@ -17,6 +17,10 @@ public class ItemsManager : MonoBehaviour {
   [SerializeField]
   private Image slotImage4;
 
+  void Start() {
+    playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+  }
+
   public void addSlotImage(int slot) {
     changeSlotImage(slot, true);
   }
@@ -27,7 +31,7 @@ public class ItemsManager : MonoBehaviour {
 
   public void changeSlotImage(int slot, bool isAdding) {
     if(slot >= PlayerStats.maxNumberOfItems) {
-      Debug.print("Slot number greater than array size");
+      Debug.Log("Slot number greater than array size");
       return;
     }
 

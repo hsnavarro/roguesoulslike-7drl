@@ -7,8 +7,12 @@ public class PlayerCharacterController : MonoBehaviour {
 
   [SerializeField]
   private PlayerMovement movement;
+
   [SerializeField]
   private PlayerStats stats;
+
+  [SerializeField]
+  private Animator anim;
 
   public PlayerInput playerInput;
   bool isControlsUIActive = false;
@@ -76,6 +80,8 @@ public class PlayerCharacterController : MonoBehaviour {
       stats.lightAttackTimer = 0f;
       stats.currentStamina = Mathf.Max(0f, stats.currentStamina - stats.lightAttackStaminaDecrease);
     }
+
+    anim.SetTrigger("LightAttack");
   }
 
   public void OnRun(InputAction.CallbackContext context) {
