@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour {
-    public GameObject initialWeapon;
+    [SerializeField]
+    private GameObject initialWeapon;
 
     [SerializeField]
     private Transform handBone;
@@ -15,7 +16,7 @@ public class PlayerWeapon : MonoBehaviour {
         Equip(initialWeapon);
     }
 
-    void Equip(GameObject weapon) {
+    public void Equip(GameObject weapon) {
         if (currentWeapon) {
             Destroy(currentWeapon);
         }
@@ -28,5 +29,17 @@ public class PlayerWeapon : MonoBehaviour {
 
         currentWeapon.transform.SetParent(handBone);
         currentWeapon.transform.localPosition = weaponPosition;
+    }
+
+    public void StartLightAttack() {
+        currentWeapon.GetComponent<WeaponDamage>().StartLightAttack();
+    }
+
+    public void StartHeavyAttack() {
+        currentWeapon.GetComponent<WeaponDamage>().StartHeavyAttack();
+    }
+
+    public void EndAttack() {
+        currentWeapon.GetComponent<WeaponDamage>().EndAttack();
     }
 }

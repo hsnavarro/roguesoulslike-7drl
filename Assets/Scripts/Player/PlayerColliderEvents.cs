@@ -2,6 +2,7 @@
 
 public class PlayerColliderEvents : MonoBehaviour {
   public PlayerStats playerStats;
+
   private void OnTriggerStay(Collider collider) {
     if(collider.isTrigger) return;
 

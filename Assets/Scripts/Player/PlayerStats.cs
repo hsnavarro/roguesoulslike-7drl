@@ -23,23 +23,12 @@ public class PlayerStats : MonoBehaviour {
   public float runSpeed = 10f;
 
   public float lightAttackDamage = 10f;
-  public float lightAttackDuration = 0.2f;
-  public float lightAttackImpactDelay = 0f;
-  private bool lightAttackImpactOccurred = false;
-  [HideInInspector]
-  public bool isLightAttacking = false;
-  [HideInInspector]
-  public float lightAttackTimer = 0f;
+  //public float lightAttackDuration = 0.2f;
+  //public float lightAttackImpactDelay = 0f;
 
   public float heavyAttackDamage = 30f;
-  public float heavyAttackDuration = 0.3f;
-  public float heavyAttackImpactDelay = 0.2f;
-
-  private bool heavyAttackImpactOccurred = false;
-  [HideInInspector]
-  public bool isHeavyAttacking = false;
-  [HideInInspector]
-  public float heavyAttackTimer = 0f;
+  //public float heavyAttackDuration = 0.3f;
+  //public float heavyAttackImpactDelay = 0.2f;
 
   public float lightAttackStaminaDecrease = 10f;
   public float heavyAttackStaminaDecrease = 30f;
@@ -75,6 +64,7 @@ public class PlayerStats : MonoBehaviour {
   }
 
   private void FixedUpdate() {
+    /*
     if(isHeavyAttacking) {
       heavyAttackTimer += Time.fixedDeltaTime;
       
@@ -108,6 +98,7 @@ public class PlayerStats : MonoBehaviour {
         lightAttackImpactOccurred = false;
       }
     }
+    */
   }
   private void Update() {
     // DebugInfo();

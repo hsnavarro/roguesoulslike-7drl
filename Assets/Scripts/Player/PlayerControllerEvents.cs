@@ -18,6 +18,9 @@ public class PlayerControllerEvents : MonoBehaviour {
   private PlayerSkillTree playerSkillTree;
 
   [SerializeField]
+  private PlayerWeapon playerWeapon;
+
+  [SerializeField]
   private Animator anim;
 
   public PlayerInput playerInput;
@@ -26,6 +29,48 @@ public class PlayerControllerEvents : MonoBehaviour {
 
   private float deathTime;
   private float deathTimeInputDelay = 2f;
+
+  // Attack variables. Maybe move to a better place
+  private bool isLightAttacking = false;
+  public bool IsLightAttacking {
+    get { return isLightAttacking; }
+    set {
+      if (value != isLightAttacking) {
+        isLightAttacking = value;
+
+        if (isLightAttacking) {
+          actingCount++;
+          playerWeapon.StartLightAttack();
+        } else {
+          actingCount--;
+          playerWeapon.EndAttack();
+        }
+      }
+    }
+  }
+
+  private bool isHeavyAttacking = false;
+  public bool IsHeavyAttacking {
+    get { return isHeavyAttacking; }
+    set {
+      if (value != isHeavyAttacking) {
+        isHeavyAttacking = value;
+
+        if (isHeavyAttacking) {
+          actingCount++;
+          playerWeapon.StartHeavyAttack();
+        } else {
+          actingCount--;
+          playerWeapon.EndAttack();
+        }
+      }
+    }
+  }
+
+  private int actingCount = 0;
+  public bool IsActing {
+    get { return actingCount > 0; }
+  }
 
   public void OnFlaskUse(InputAction.CallbackContext context) {
     if(stats.defense.currentHealth == stats.defense.maxHealth) return;
@@ -84,24 +129,19 @@ public class PlayerControllerEvents : MonoBehaviour {
     movement.playerDirection = Quaternion.Euler(0, -45, 0) * movement.playerDirection;    
   }
   public void OnHeavyAttack(InputAction.CallbackContext context) {
-    if(stats.currentStamina == 0f) return;
-    if(stats.isHeavyAttacking || stats.isLightAttacking) return;
+    if (IsActing) return;
 
     if (context.started) {
-      stats.isHeavyAttacking = true;
-      stats.heavyAttackTimer = 0f;
       movement.DecreaseStamina(stats.heavyAttackStaminaDecrease);
       movement.RestartStaminaRechargeTimer();
     }
   }
 
   public void OnLightAttack(InputAction.CallbackContext context) {
-    if(stats.currentStamina == 0f) return;
-    if(stats.isHeavyAttacking || stats.isLightAttacking) return;
+    if (IsActing) return;
 
     if (context.started) {
-      stats.isLightAttacking = true;
-      stats.lightAttackTimer = 0f;
+      stats.currentStamina = Mathf.Max(0f, stats.currentStamina - stats.lightAttackStaminaDecrease);
       movement.DecreaseStamina(stats.lightAttackStaminaDecrease);
       movement.RestartStaminaRechargeTimer();
     }

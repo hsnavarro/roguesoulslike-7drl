@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyInteraction : MonoBehaviour {
@@ -8,23 +7,44 @@ public class EnemyInteraction : MonoBehaviour {
   private PlayerSkillTree playerSkillTree;
   public CharacterController enemyController;
 
-  private void OnTriggerStay(Collider collider) {
-    if(collider.isTrigger) return;
+  // TEMPORARY until we have models
+  public Collider hitbox;
+  public Material attackingMaterial;
+  public MeshRenderer meshRenderer;
+  //private bool isAttacking = false;
+  // ---
 
+  void Start() {
+    StartCoroutine(AttackLoop());
+    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
+  }
+
+  private void OnTriggerEnter(Collider collider) {
+    // TODO enemy attack enemy
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
       Defense playerDefense = collider.gameObject.GetComponent<Defense>();
-      playerDefense.TakeDamage(enemyStats.currentDamage);
+      playerDefense.TakeDamage(enemyStats.attackDamage);
     }
   }
-  private void TriggerAttack() {
-    if(enemyStats.isAttacking) return;
-    
-    enemyStats.isAttacking = true;
-    enemyStats.attackTimer = 0f;
-  }
 
-  private void Update() {
-    TriggerAttack();
+  IEnumerator AttackLoop() {
+    Material material = meshRenderer.material;
+
+    while (true) {
+      hitbox.enabled = true;
+      //isAttacking = true;
+
+      meshRenderer.material = attackingMaterial;
+
+      yield return new WaitForSeconds(0.2f);
+
+      hitbox.enabled = false;
+      //isAttacking = false;
+
+      meshRenderer.material = material;
+
+      yield return new WaitForSeconds(1.0f);
+    }
   }
 
   public void OnDeath() {
@@ -48,9 +68,5 @@ public class EnemyInteraction : MonoBehaviour {
     }
 
     Object.Destroy(gameObject);
-  }
-
-  private void Start() {
-    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
   }
 }

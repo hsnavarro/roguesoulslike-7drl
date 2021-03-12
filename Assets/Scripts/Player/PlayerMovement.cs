@@ -5,13 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
   [SerializeField]
-  private CharacterController playerController;
+  private CharacterController characterController;
+
   [SerializeField]
   private PlayerStats playerStats;
 
+  [SerializeField]
+  private PlayerControllerEvents playerController;
+
   private float staminaDelayTimer = 0f;
 
-  public Vector3 playerDirection {get; set; } = Vector3.zero;
+  public Vector3 playerDirection { get; set; } = Vector3.zero;
+
   public Vector3 playerVelocity { get; set; }  = Vector3.zero; 
   public bool isRunButtonActive { get; set; } = false;
 
@@ -25,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
     if (isDashing) gameObject.layer = (int)Layers.PLAYER_DASHING;
     else gameObject.layer = (int)Layers.PLAYER;
   }
+
   public void handleDash() {
     if (isDashing) {
       dashTimer += Time.deltaTime;
@@ -33,6 +39,8 @@ public class PlayerMovement : MonoBehaviour {
   }
 
   private void ApplyMovement() {
+    if (playerController.IsActing) return;
+
     handleDash();
     updateLayer();
 
@@ -41,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
     if (isDashing) playerVelocity = dashDirection * playerStats.dashSpeed;
     else playerVelocity = playerDirection * playerStats.currentSpeed;
 
-    playerController.Move(playerVelocity * Time.deltaTime);
+    characterController.Move(playerVelocity * Time.deltaTime);
   }
 
   public void RestartStaminaRechargeTimer() {
@@ -63,6 +71,11 @@ public class PlayerMovement : MonoBehaviour {
     bool isRunning = isRunButtonActive && playerStats.currentStamina > 0f;
     bool isMoving = playerDirection != Vector3.zero;
 
+    // Animation update
+    anim.SetInteger("MoveState", isMoving ? (isRunning ? 2 : 1) : 0);
+
+    if (playerController.IsActing) return;
+
     if (isRunning) {
       playerStats.currentSpeed = playerStats.runSpeed;
 
@@ -74,7 +87,6 @@ public class PlayerMovement : MonoBehaviour {
       playerStats.currentSpeed = playerStats.normalSpeed;
     }
 
-
     if (!isRunning || !isMoving) {
       IncreaseStamina();
     }
@@ -83,9 +95,6 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 targetPosition = new Vector3(playerDirection.x, 0f, playerDirection.z);
     targetPosition += transform.position;
     transform.LookAt(targetPosition);
-
-    // Animation update
-    anim.SetInteger("MoveState", isMoving ? (isRunning ? 2 : 1) : 0);
   }
 
   private void DebugInfo() {
