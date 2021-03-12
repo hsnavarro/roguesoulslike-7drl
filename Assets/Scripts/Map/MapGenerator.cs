@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class MapGenerator : MonoBehaviour
-{
+public class MapGenerator : MonoBehaviour {
+    public bool generateMap = true;
+
     public MapGenerationAlgorithm generator;
 
+    public GameObject testFloor;
     public GameObject tilePrefab;
     public GameObject wallPrefab;
 
@@ -121,9 +123,10 @@ public class MapGenerator : MonoBehaviour
     }
 
     void Start() {
-        SpawnMap();
+        if (generateMap) {
+            SpawnMap();
+        } else {
+            Instantiate(testFloor, new Vector3(), Quaternion.identity);
+        }
     }
-
-    // Update is called once per frame
-    void Update() {}
 }

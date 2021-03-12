@@ -14,6 +14,7 @@ public class PlayerControllerEvents : MonoBehaviour {
 
   [SerializeField]
   private PlayerStats stats;
+
    [SerializeField]
   private PlayerSkillTree playerSkillTree;
 
