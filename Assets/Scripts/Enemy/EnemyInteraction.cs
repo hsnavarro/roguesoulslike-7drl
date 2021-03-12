@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyInteraction : MonoBehaviour {
   public EnemyStats enemyStats;
 
-  public PlayerSkillTree playerSkillTree;
+  private PlayerSkillTree playerSkillTree;
   public CharacterController enemyController;
 
   private void OnTriggerStay(Collider collider) {
@@ -49,5 +49,9 @@ public class EnemyInteraction : MonoBehaviour {
       }
        Object.Destroy(gameObject);
      }
+  }
+
+  private void Start() {
+    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
   }
 }

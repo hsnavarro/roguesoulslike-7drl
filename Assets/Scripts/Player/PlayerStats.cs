@@ -14,6 +14,9 @@ public class PlayerStats : MonoBehaviour {
   public Defense defense;
 
   public int flasksCapacity = 3;
+  public int flasksCarried = 0;
+  public float flaskShieldIncrease = 0f;
+  public float flaskHealthIncrease = 10f;
 
   public float maxStamina = 100f;
   public float normalSpeed = 5f;
@@ -47,6 +50,7 @@ public class PlayerStats : MonoBehaviour {
 
   public float dashDuration = 0.5f;
   public float dashSpeed = 20f;
+  public float dashStaminaDecrease = 10f;
 
   public float currentStamina;
   public float currentSpeed;

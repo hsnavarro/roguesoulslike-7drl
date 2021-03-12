@@ -692,7 +692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 2546114365176379613}
-  playerSkillTree: {fileID: 0}
   enemyController: {fileID: 2546114365176379611}
 --- !u!143 &2546114365176379611
 CharacterController:
@@ -726,7 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   defense: {fileID: 2546114365176379608}
-  barIncreaseAfterDeath: 1
+  barIncreaseAfterDeath: 9
   speed: 0
   attackDamage: 100
   attackDuration: 1
@@ -760,7 +759,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   maxShield: 100
-  currentShield: 200
+  currentShield: 100
 --- !u!65 &2546114365176379619
 BoxCollider:
   m_ObjectHideFlags: 0

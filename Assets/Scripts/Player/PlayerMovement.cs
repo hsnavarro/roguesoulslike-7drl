@@ -44,6 +44,9 @@ public class PlayerMovement : MonoBehaviour {
     playerController.Move(playerVelocity * Time.deltaTime);
   }
 
+  public void RestartStaminaRechargeTimer() {
+    staminaDelayTimer = 0f;
+  }
   private void IncreaseStamina() {
     if (staminaDelayTimer >= playerStats.staminaRechargeDelay) {      
       playerStats.currentStamina = Mathf.Min(playerStats.maxStamina, 
@@ -51,8 +54,9 @@ public class PlayerMovement : MonoBehaviour {
     }
   }
 
-  private void DecreaseStamina() {
-    
+  public void DecreaseStamina(float value) {
+    playerStats.currentStamina = Mathf.Max(0f,
+      playerStats.currentStamina - value);
   }
 
   private void HandleRun() {
@@ -63,19 +67,16 @@ public class PlayerMovement : MonoBehaviour {
       playerStats.currentSpeed = playerStats.runSpeed;
 
       if (isMoving) {
-        playerStats.currentStamina = Mathf.Max(0f,
-            playerStats.currentStamina - Time.deltaTime * playerStats.staminaRunDecreaseRate);
-
-        staminaDelayTimer = 0f;
+        DecreaseStamina(Time.deltaTime * playerStats.staminaRunDecreaseRate);
+        RestartStaminaRechargeTimer();
       }
     } else {
       playerStats.currentSpeed = playerStats.normalSpeed;
     }
 
 
-    if ((!isRunning || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay) {
-      playerStats.currentStamina = Mathf.Min(playerStats.maxStamina,
-           playerStats.currentStamina + Time.deltaTime * playerStats.staminaRechargeRate);
+    if (!isRunning || !isMoving) {
+      IncreaseStamina();
     }
 
     // Rotation update

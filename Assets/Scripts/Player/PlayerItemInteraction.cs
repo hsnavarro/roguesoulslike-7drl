@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerItemInteraction : MonoBehaviour {
   
-  [SerializeField]
-  Material highlightMaterial;
-  
-  [SerializeField]
   private ItemsManager itemsManager;
   public PlayerStats playerStats;
   [SerializeField]
@@ -15,8 +11,12 @@ public class PlayerItemInteraction : MonoBehaviour {
 
   public float itemDropDistance = 3f;
 
-  public void Use(EdibleItem item) {
-    item.Use();
+  public void UseFlask() {
+    if(playerStats.flasksCarried == 0) return;
+
+    playerStats.defense.RecoverCurrentHealth(playerStats.flaskHealthIncrease);
+    playerStats.defense.RecoverCurrentShield(playerStats.flaskShieldIncrease);
+    playerStats.flasksCarried--;
   }
 
   private Material lastClosestItemMaterial = null;
@@ -107,5 +107,9 @@ public class PlayerItemInteraction : MonoBehaviour {
 
   private void Update() {
     UpdateClosestItem();
+  }
+
+  private void Start() {
+    itemsManager = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemsManager>();
   }
 }

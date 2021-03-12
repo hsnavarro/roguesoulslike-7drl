@@ -1,1 +1,1 @@
-public enum Layers { ENEMY = 8, PLAYER = 9,  PLAYER_DASHING = 10, EDIBLE_ITEM = 11, NORMAL_ITEM = 12 };
+public enum Layers { ENEMY = 8, PLAYER = 9,  PLAYER_DASHING = 10, FLASK = 11, NORMAL_ITEM = 12 };

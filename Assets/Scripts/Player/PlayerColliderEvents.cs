@@ -2,18 +2,18 @@
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PlayerInteraction : MonoBehaviour {
+public class PlayerColliderEvents : MonoBehaviour {
   public PlayerStats playerStats;
   public PlayerItemInteraction playerItemInteraction;
   public PlayerSkillTree playerSkillTree;
   public PlayerInput playerInput;
 
-  private GameObject deathSceneCanvas;
+  public GameObject deathSceneCanvas;
   public string sceneName = "Naum";
 
-  void Start() {
-    deathSceneCanvas = GameObject.FindGameObjectWithTag("DeathSceneCanvas");
-  }
+  //void Start() {
+  //  deathSceneCanvas = GameObject.FindGameObjectWithTag("DeathSceneCanvas");
+  //}
 
   private void OnTriggerStay(Collider collider) {
     if(collider.isTrigger) return;
@@ -26,9 +26,10 @@ public class PlayerInteraction : MonoBehaviour {
   private void OnControllerColliderHit(ControllerColliderHit hit) {
 
     // Edible Item 
-    if (hit.gameObject.layer == (int)Layers.EDIBLE_ITEM) {
-      EdibleItem item = hit.gameObject.GetComponent<EdibleItem>();
-      playerItemInteraction.Use(item);
+    if (hit.gameObject.layer == (int)Layers.FLASK) {
+      if (playerStats.flasksCarried == playerStats.flasksCapacity) return;
+
+      playerStats.flasksCarried++;
       hit.gameObject.SetActive(false);
     }
   }
