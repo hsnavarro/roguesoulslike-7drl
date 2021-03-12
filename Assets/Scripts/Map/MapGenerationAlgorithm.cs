@@ -11,9 +11,13 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public int numberOfWalks;
     public int numberOfSmooths;
 
+    public int numberOfMonsterSpawns;
+    public int monstersPerSpawn;
+
     public int numberOfItemSpawns;
     public int itemSpawnMaxDistanceFromWall;
     public List<Tuple<int, int>> tilePositions;
+    public List<Tuple<int, int>> itemPositions;
     public bool[,] grid;
     public int width = 200;
     public int height = 200;
@@ -132,6 +136,20 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         }
     }
 
+    public Tuple<int, int> RandomWalkStep(Tuple<int, int> position) {
+        List<int> dir = new List<int>{0, 1, 2, 3};
+        dir = dir.OrderBy( x => Random.value ).ToList();
+        for (int d = 0; d < 4; d++) {
+            Tuple<int, int> randomDirection = GetDirection(dir[d]);
+            int newX = position.Item1 + randomDirection.Item1;
+            int newY = position.Item2 + randomDirection.Item2;
+            if (grid[newX, newY]) {
+                return new Tuple<int, int>(newX, newY);
+            }
+        }
+        return position;
+    }
+
     public List<Tuple<int, int>> GetWallsPositions() {
         List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
         for (int i = 0; i < width; i++) {
@@ -156,25 +174,13 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         List<Tuple<int, int>> wallsPositions = GetWallsPositions();
         List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
         for (int i = 0; i < numberOfItemSpawns; i++) {
-            Tuple<int, int> startingSpawnPoint = wallsPositions[Random.Range(0, wallsPositions.Count - 1)];
-            int curX = startingSpawnPoint.Item1;
-            int curY = startingSpawnPoint.Item2;
+            Tuple<int, int> spawnPoint = wallsPositions[Random.Range(0, wallsPositions.Count - 1)];
             for (int k = 0; k < itemSpawnMaxDistanceFromWall; k++) {
-                List<int> dir = new List<int>{0, 1, 2, 3};
-                dir = dir.OrderBy( x => Random.value ).ToList();
-                for (int d = 0; d < 4; d++) {
-                    Tuple<int, int> randomDirection = GetDirection(dir[d]);
-                    int newX = curX + randomDirection.Item1;
-                    int newY = curY + randomDirection.Item2;
-                    if (grid[newX, newY]) {
-                        curX = newX;
-                        curY = newY;
-                        break;
-                    }
-                }
+                spawnPoint = RandomWalkStep(spawnPoint);
             }
-            ans.Add(new Tuple<int, int>(curX, curY));
+            ans.Add(spawnPoint);
         }
+        itemPositions = ans;
         return ans;
     }
 
