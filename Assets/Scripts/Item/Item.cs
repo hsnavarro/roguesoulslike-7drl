@@ -7,8 +7,6 @@ public class Item : MonoBehaviour {
     private bool isEquipped;
 
     [SerializeField]
-    private int itemID;
-    [SerializeField]
     public string baseName;
     [SerializeField]
     public string modifierName;
@@ -34,7 +32,7 @@ public class Item : MonoBehaviour {
     [SerializeField]
     public int flasksCapacityIncrease;
     [SerializeField]
-    public int flaskHealthRegenerationIncrease;
+    public float flaskHealthRegenerationIncrease;
 
     private void UpdateStats(int multiplier) {
         playerStats.attackMultiplier += multiplier * attackDamageMultiplierIncrease;
