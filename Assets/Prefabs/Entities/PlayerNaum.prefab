@@ -56,8 +56,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.5
   m_Radius: 0.25
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -92,7 +92,13 @@ MonoBehaviour:
   characterController: {fileID: 3363278371932789070}
   playerStats: {fileID: 1268130528}
   playerController: {fileID: 1268130525}
+  playerDirection: {x: 0, y: 0, z: 0}
+  playerVelocity: {x: 0, y: 0, z: 0}
+  isRunButtonActive: 0
   anim: {fileID: 4917797909592766771}
+  isDashing: 0
+  dashDirection: {x: 0, y: 0, z: 0}
+  dashTimer: 0
 --- !u!114 &1268130523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +419,7 @@ MonoBehaviour:
     m_ActionName: Player/See Controls[/Keyboard/tab]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1268130523}
+      - m_Target: {fileID: 1268130525}
         m_MethodName: DeathSceneOnInput
         m_Mode: 0
         m_Arguments:
@@ -467,7 +473,18 @@ MonoBehaviour:
     m_ActionId: bb040778-21fe-40d5-bd1d-0fc75eb5517d
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1268130525}
+        m_MethodName: OnFlaskUse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e4a83a73-c7aa-4575-8891-848cc545f529
     m_ActionName: Player/Use Flask[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0

@@ -1091,18 +1091,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd091a2868b9f4e4ba8cd13e75ecad59, type: 3}
---- !u!114 &1795056245 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1268130525, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
-    type: 3}
-  m_PrefabInstance: {fileID: 3730721399764710009}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6282dfa458a7c54bb8df5bbe5388024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1890418302 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8775237651702744409, guid: f7f0a02af0ecd9c4da10449356abac7c,
@@ -1240,10 +1228,6 @@ PrefabInstance:
       propertyPath: deathSceneCanvas
       value: 
       objectReference: {fileID: 1890418302}
-    - target: {fileID: 1268130529, guid: c00d45c2ae9f5944291cd4cd9b7a13e2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1795056245}
     - target: {fileID: 1160922317266523166, guid: c00d45c2ae9f5944291cd4cd9b7a13e2,
         type: 3}
       propertyPath: m_Name

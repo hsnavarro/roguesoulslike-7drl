@@ -15,16 +15,16 @@ public class PlayerMovement : MonoBehaviour {
 
   private float staminaDelayTimer = 0f;
 
-  public Vector3 playerDirection { get; set; } = Vector3.zero;
+  public Vector3 playerDirection = Vector3.zero;
 
-  public Vector3 playerVelocity { get; set; }  = Vector3.zero; 
-  public bool isRunButtonActive { get; set; } = false;
+  public Vector3 playerVelocity = Vector3.zero; 
+  public bool isRunButtonActive = false;
 
   public Animator anim;
 
-  public bool isDashing { get; set; }= false;
-  public Vector3 dashDirection { get; set; } = Vector3.zero;
-  public float dashTimer { get; set; } = 0f;
+  public bool isDashing = false;
+  public Vector3 dashDirection = Vector3.zero;
+  public float dashTimer = 0f;
 
   private void updateLayer() {
     if (isDashing) gameObject.layer = (int)Layers.PLAYER_DASHING;
@@ -34,7 +34,10 @@ public class PlayerMovement : MonoBehaviour {
   public void handleDash() {
     if (isDashing) {
       dashTimer += Time.deltaTime;
-      if (dashTimer > playerStats.dashDuration) isDashing = false;
+      if (dashTimer > playerStats.dashDuration) {
+        isDashing = false;
+        anim.SetBool("Dashing", false);
+      }
     }
   }
 
@@ -93,6 +96,8 @@ public class PlayerMovement : MonoBehaviour {
 
     // Rotation update
     Vector3 targetPosition = new Vector3(playerDirection.x, 0f, playerDirection.z);
+    if (isDashing) targetPosition = dashDirection;
+
     targetPosition += transform.position;
     transform.LookAt(targetPosition);
   }

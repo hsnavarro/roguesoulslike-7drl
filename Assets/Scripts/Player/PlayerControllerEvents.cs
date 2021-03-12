@@ -112,7 +112,8 @@ public class PlayerControllerEvents : MonoBehaviour {
   }
   public void OnDash(InputAction.CallbackContext context) {
     if(stats.currentStamina == 0f) return;
-    if (movement.isDashing || movement.playerDirection == Vector3.zero) return;
+    if (IsActing || movement.isDashing || movement.playerDirection == Vector3.zero)
+        return;
 
     if (context.started) {
       movement.dashDirection = movement.playerDirection;
@@ -120,6 +121,8 @@ public class PlayerControllerEvents : MonoBehaviour {
       movement.isDashing = true;
       movement.DecreaseStamina(stats.dashStaminaDecrease);
       movement.RestartStaminaRechargeTimer();
+
+      anim.SetBool("Dashing", true);
     }
   }
 
