@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Navarro.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Naum.unity
     guid: 4f465f31f9df45e44954fcf2417d64a5
-  - enabled: 1
-    path: Assets/Scenes/DeathScene.unity
-    guid: b78ba3297110bba4da50058e93433443
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

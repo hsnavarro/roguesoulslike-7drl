@@ -8,6 +8,21 @@ TagManager:
   - MapGenerator
   - DeathSceneCanvas
   - CameraTarget
+  - ItemImageSlot1
+  - ItemImageSlot2
+  - ItemImageSlot3
+  - ItemImageSlot4
+  - HealthBarPlayer
+  - StaminaBarPlayer
+  - SkillTreeHealthProgressBar
+  - SkillTreeStaminaProgressBar
+  - SkillTreeFlaskCapacityProgressBar
+  - ImagesItemsGrid
+  - FlaskImageText
+  - ResiliencePivotEnemy
+  - HealthBarEnemy
+  - ShieldBarEnemy
+  - EmptyItem
   layers:
   - Default
   - TransparentFX

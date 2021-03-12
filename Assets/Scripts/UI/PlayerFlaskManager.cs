@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class FlaskManager : MonoBehaviour
-{
-    public Text flaskText;
+public class PlayerFlaskManager : MonoBehaviour {
+    private Text flaskText;
+
     private PlayerStats playerStats;
 
-    void Start() 
-    {
+    private void Start() {
+        flaskText = GameObject.FindGameObjectWithTag("FlaskImageText").GetComponent<Text>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
-    void Update()
-    {
+
+    private void Update() {
         flaskText.text = playerStats.flasksCarried.ToString() + " / " + playerStats.flasksCapacity.ToString();
     }
 }

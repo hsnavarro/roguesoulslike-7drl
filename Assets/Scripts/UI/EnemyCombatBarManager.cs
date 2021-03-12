@@ -1,31 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyCombatBarManager : MonoBehaviour {
-  public EnemyStats enemyStats;
-  public Transform defenseBarPivot;
+  [SerializeField]
+  private EnemyStats enemyStats;
 
-  public RectTransform healthBarRectangle;
-  public RectTransform shieldBarRectangle;
+  private Transform resilienceBarPivot;
 
-  public Slider healthBarSlider;
-  public Slider shieldBarSlider;
+  private RectTransform healthBarRectangle;
+  private RectTransform shieldBarRectangle;
+
+  private Slider healthBarSlider;
+  private Slider shieldBarSlider;
 
   private float GetHealthBarFillRatio() {
-    return enemyStats.defense.currentHealth / enemyStats.defense.maxHealth;
+    return enemyStats.enemyResilience.currentHealth / enemyStats.enemyResilience.maxHealth;
   }
 
   private float GetShieldBarFillRatio() {
-    return enemyStats.defense.currentShield / enemyStats.defense.maxShield;
+    return enemyStats.enemyResilience.currentShield / enemyStats.enemyResilience.maxShield;
+  }
+
+  private void Start() {
+    resilienceBarPivot = GameObject.FindGameObjectWithTag("ResiliencePivotEnemy").GetComponent<Transform>();
+
+    healthBarRectangle = GameObject.FindGameObjectWithTag("HealthBarEnemy").GetComponent<RectTransform>();
+    healthBarSlider = GameObject.FindGameObjectWithTag("HealthBarEnemy").GetComponent<Slider>();
+
+    shieldBarRectangle = GameObject.FindGameObjectWithTag("ShieldBarEnemy").GetComponent<RectTransform>();
+    shieldBarSlider = GameObject.FindGameObjectWithTag("ShieldBarEnemy").GetComponent<Slider>();
   }
 
   private void Update() {
     //defenseBarPivot.LookAt(Camera.main.transform.position);
 
-    healthBarRectangle.sizeDelta = new Vector2(enemyStats.defense.maxHealth, healthBarRectangle.sizeDelta.y);
-    shieldBarRectangle.sizeDelta = new Vector2(enemyStats.defense.maxShield, shieldBarRectangle.sizeDelta.y);
+    healthBarRectangle.sizeDelta = new Vector2(enemyStats.enemyResilience.maxHealth, healthBarRectangle.sizeDelta.y);
+    shieldBarRectangle.sizeDelta = new Vector2(enemyStats.enemyResilience.maxShield, shieldBarRectangle.sizeDelta.y);
 
     healthBarSlider.value = GetHealthBarFillRatio();
     shieldBarSlider.value = GetShieldBarFillRatio();

@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemInteraction : MonoBehaviour {
+public class ItemPlayerDetection : MonoBehaviour {
 
-  private PlayerItemInteraction playerInteraction;
+  private PlayerItemUsage playerInteraction;
+
+  private void Start() {
+    playerInteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerItemUsage>();
+  }
 
   private void OnTriggerEnter(Collider collider) {
     if(collider.isTrigger) return;
@@ -13,7 +15,6 @@ public class ItemInteraction : MonoBehaviour {
       Item item = gameObject.GetComponent<Item>();
       playerInteraction.itemsInRange.Add(item);
     }
-
   }
 
   private void OnTriggerExit(Collider collider) {
@@ -23,11 +24,5 @@ public class ItemInteraction : MonoBehaviour {
       Item item = gameObject.GetComponent<Item>();
       playerInteraction.itemsInRange.Remove(item);
     }
-
   }
-
-  private void Start() {
-    playerInteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerItemInteraction>();
-  }
-
 }

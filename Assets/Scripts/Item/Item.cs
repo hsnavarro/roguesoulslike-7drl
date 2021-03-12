@@ -1,51 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour {
+    [Header("Item Name")]
+    public string baseName;
+    public string modifierName;
+
+    [Header("Rarity")]
+    public Rarity rarity;
+
+    [Header("Attack Effects")]
+    public float attackDamageMultiplierIncrease;
+
+    [Header("Health Effects")]
+    public float healthIncrease;
+
+    [Header("Stamina Effects")]
+    public float staminaIncrease;
+    public float staminaRechargeDelayDecrease;
+    public float staminaRechargeRateIncrease;
+
+    [Header("Flask Effects")]
+    public int flasksCapacityIncrease;
+    public float flaskHealthRegenerationIncrease;
 
     private bool isEquipped;
 
-    [SerializeField]
-    public string baseName;
-    [SerializeField]
-    public string modifierName;
-
-    [SerializeField]
-    public Rarity rarity;
-
     private PlayerStats playerStats;
-
-    [SerializeField]
-    public float attackDamageMultiplierIncrease;
-
-    [SerializeField]
-    public float healthIncrease;
-
-    [SerializeField]
-    public float staminaIncrease;
-    [SerializeField]    
-    public float staminaRechargeDelayDecrease;
-    [SerializeField]
-    public float staminaRechargeRateIncrease;
-
-    [SerializeField]
-    public int flasksCapacityIncrease;
-    [SerializeField]
-    public float flaskHealthRegenerationIncrease;
-
-    private void UpdateStats(int multiplier) {
-        playerStats.attackMultiplier += multiplier * attackDamageMultiplierIncrease;
-        
-        playerStats.defense.maxHealth += multiplier * healthIncrease;
-
-        playerStats.maxStamina += multiplier * staminaIncrease;
-        playerStats.staminaRechargeDelay -= multiplier * staminaRechargeDelayDecrease;
-        playerStats.staminaRechargeRate += multiplier * staminaRechargeRateIncrease;
-
-        playerStats.flasksCapacity += multiplier * flasksCapacityIncrease;
-        playerStats.flaskHealthIncrease += multiplier * flaskHealthRegenerationIncrease;
-    }
 
     public void AddEffects() {
         if(isEquipped) {
@@ -69,5 +49,16 @@ public class Item : MonoBehaviour {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
+    private void UpdateStats(int multiplier) {
+        playerStats.attackMultiplier += multiplier * attackDamageMultiplierIncrease;
+        
+        playerStats.playerResilience.maxHealth += multiplier * healthIncrease;
 
+        playerStats.maxStamina += multiplier * staminaIncrease;
+        playerStats.staminaRechargeDelay -= multiplier * staminaRechargeDelayDecrease;
+        playerStats.staminaRechargeRate += multiplier * staminaRechargeRateIncrease;
+
+        playerStats.flasksCapacity += multiplier * flasksCapacityIncrease;
+        playerStats.flaskHealthIncrease += multiplier * flaskHealthRegenerationIncrease;
+    }
 }

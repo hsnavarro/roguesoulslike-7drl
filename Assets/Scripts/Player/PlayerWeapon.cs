@@ -12,7 +12,7 @@ public class PlayerWeapon : MonoBehaviour {
 
     private GameObject currentWeapon;
 
-    void Start() {
+    private void Start() {
         Equip(initialWeapon);
     }
 

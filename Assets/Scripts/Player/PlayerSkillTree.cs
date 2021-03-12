@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkillTree : MonoBehaviour
-{
-
-  public PlayerStats playerStats;
+public class PlayerSkillTree : MonoBehaviour {
+  [Header("Stamina Progress Stats")]
   public float staminaIncrease;
   public float staminaBarProgression;
   public float staminaIncreasePerBarCompleted;
   public float staminaBarSize;
 
+  [Header("Health Progress Stats")]
   public float healthIncrease;
   public float healthBarProgression;
   public float healthIncreasePerBarCompleted;
   public float healthBarSize;
 
+  [Header("Flask Progress Stats")]
   public int flasksCapacityIncrease;
   public float flasksCapacityBarProgression;
   public int flasksCapacityIncreasePerBarCompleted;
   public float flasksCapacityBarSize;
+
+  [SerializeField]
+  private PlayerStats playerStats;
 
   public void GetPermanentInformation() {
     staminaIncrease = PermanentPlayerInformation.staminaIncrease;
@@ -54,54 +55,43 @@ public class PlayerSkillTree : MonoBehaviour
     PermanentPlayerInformation.flasksCapacityIncreasePerBarCompleted = flasksCapacityIncreasePerBarCompleted;
     PermanentPlayerInformation.flasksCapacityBarSize = flasksCapacityBarSize;
   }
-  public void IncreaseHealthProgress(float increase)
-  {
-    if (healthBarProgression + increase >= healthBarSize)
-    {
+
+  public void IncreaseHealthProgress(float increase) {
+    if (healthBarProgression + increase >= healthBarSize) {
       healthIncrease += healthIncreasePerBarCompleted;
-      playerStats.defense.maxShield += healthIncreasePerBarCompleted;
+      playerStats.playerResilience.maxShield += healthIncreasePerBarCompleted;
       float valueLeft = healthBarProgression + increase - healthBarSize;
       healthBarProgression = valueLeft;
-    }
-    else
-    {
+    } else {
       healthBarProgression += increase;
     }
   }
 
-  public void IncreaseStaminaProgress(float increase)
-  {
-    if (staminaBarProgression + increase >= staminaBarSize)
-    {
+  public void IncreaseStaminaProgress(float increase) {
+    if (staminaBarProgression + increase >= staminaBarSize) {
       staminaIncrease += staminaIncreasePerBarCompleted;
       playerStats.maxStamina += staminaIncreasePerBarCompleted;
       float valueLeft = staminaBarProgression + increase - staminaBarSize;
       staminaBarProgression = valueLeft;
-    }
-    else
-    {
+    } else {
       staminaBarProgression += increase;
     }
   }
 
-  public void IncreaseFlasksCapacityProgress(float increase)
-  {
-    if (flasksCapacityBarProgression + increase >= flasksCapacityBarSize)
-    {
+  public void IncreaseFlasksCapacityProgress(float increase) {
+    if (flasksCapacityBarProgression + increase >= flasksCapacityBarSize) {
       flasksCapacityIncrease += flasksCapacityIncreasePerBarCompleted;
       playerStats.flasksCapacity += flasksCapacityIncreasePerBarCompleted;
       float valueLeft = flasksCapacityBarProgression + increase - flasksCapacityBarSize;
       flasksCapacityBarProgression = valueLeft;
-    }
-    else
-    {
+    } else {
       flasksCapacityBarProgression += increase;
     }
   }
 
   private void Awake() {
     GetPermanentInformation();
-    playerStats.defense.maxHealth += PermanentPlayerInformation.healthIncrease;
+    playerStats.playerResilience.maxHealth += PermanentPlayerInformation.healthIncrease;
     playerStats.flasksCapacity += PermanentPlayerInformation.flasksCapacityIncrease;
     playerStats.maxStamina += PermanentPlayerInformation.staminaIncrease;
   }

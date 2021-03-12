@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemDescriptionManager : MonoBehaviour {
-
   [SerializeField]
-  public Item item;
+  private Item item;
   [SerializeField]
-  public Transform itemUIPivot;
+  private Transform itemUIPivot;
+  [SerializeField]
+  private Text itemTextUI;
 
   private string itemName;
   private string itemDescription;
@@ -18,9 +17,6 @@ public class ItemDescriptionManager : MonoBehaviour {
   private Color blue;
   private Color purple;
   private Color orange;
-
-  [SerializeField]
-  public Text itemTextUI;
 
   public void FormName() {
     string rarity = "Default";
@@ -87,6 +83,14 @@ public class ItemDescriptionManager : MonoBehaviour {
     itemDescription = description;
   } 
 
+  public void Hide() {
+    itemTextUI.text = "";
+  }
+
+  public void Show() {
+    itemTextUI.text = itemName + "\n" + itemDescription;
+  }
+
   private void Start() {
     // RGB 0-1.0
     white = new Color(1f, 1f, 1f, 1f);
@@ -96,14 +100,6 @@ public class ItemDescriptionManager : MonoBehaviour {
 
     FormName();
     FormDescription();
-  }
-
-  public void Hide() {
-    itemTextUI.text = "";
-  }
-
-  public void Show() {
-    itemTextUI.text = itemName + "\n" + itemDescription;
   }
 
   private void Update() {

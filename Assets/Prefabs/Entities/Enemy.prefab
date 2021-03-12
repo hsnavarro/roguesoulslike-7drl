@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2546114363534494089}
   m_Layer: 5
   m_Name: Health Bar
-  m_TagString: Untagged
+  m_TagString: HealthBarEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,8 +281,8 @@ GameObject:
   - component: {fileID: 2546114363956320138}
   - component: {fileID: 1449965735}
   m_Layer: 8
-  m_Name: Defense Bar Pivot
-  m_TagString: Untagged
+  m_Name: Resilience Bar Pivot
+  m_TagString: ResiliencePivotEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,11 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 2546114365176379613}
-  defenseBarPivot: {fileID: 2546114363956320138}
-  healthBarRectangle: {fileID: 2546114363534494086}
-  shieldBarRectangle: {fileID: 2546114365256305931}
-  healthBarSlider: {fileID: 2546114363534494089}
-  shieldBarSlider: {fileID: 2546114365256305930}
 --- !u!1 &2546114363965507382
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2546114363998679637}
   m_Layer: 5
-  m_Name: Defense Bar
+  m_Name: Resilience Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,9 +589,9 @@ GameObject:
   - component: {fileID: 2546114365176379612}
   - component: {fileID: 2546114365176379611}
   - component: {fileID: 2546114365176379613}
-  - component: {fileID: 2546114365176379610}
   - component: {fileID: 2546114365176379608}
   - component: {fileID: 2546114365176379619}
+  - component: {fileID: 2113668930}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -693,6 +688,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 2546114365176379613}
   enemyController: {fileID: 2546114365176379611}
+  hitbox: {fileID: 2546114365176379615}
+  attackingMaterial: {fileID: 2100000, guid: 21f4262cc58ba6346a04f5bf834999de, type: 2}
+  meshRenderer: {fileID: 2546114365176379614}
 --- !u!143 &2546114365176379611
 CharacterController:
   m_ObjectHideFlags: 0
@@ -723,27 +721,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b244c03f4a78f184585265312527f9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  defense: {fileID: 2546114365176379608}
+  enemyType: 0
+  enemyResilience: {fileID: 2546114365176379608}
   barIncreaseAfterDeath: 9
   speed: 0
-  attackDamage: 100
+  attackDamage: 50
   attackDuration: 1
-  attackImpactDelay: 0.2
---- !u!114 &2546114365176379610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2546114365176379609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9d3f0dd11709140a5a1f4e64cc5253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angularVelocity: 20
-  enemyController: {fileID: 2546114365176379611}
 --- !u!114 &2546114365176379608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,10 +739,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4202f55ea52f243930dc15a2c7a290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  maxShield: 100
-  currentShield: 100
+  maxHealth: 20
+  currentHealth: 20
+  maxShield: 20
+  currentShield: 20
   deathCallback:
     m_PersistentCalls:
       m_Calls:
@@ -787,6 +770,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 3, z: 2}
   m_Center: {x: 0, y: 0, z: -1.55}
+--- !u!114 &2113668930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2546114365176379609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c86c1848e31eb24980cb165c3c54f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2546114365256305928
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +796,7 @@ GameObject:
   - component: {fileID: 2546114365256305930}
   m_Layer: 5
   m_Name: Shield Bar
-  m_TagString: Untagged
+  m_TagString: ShieldBarEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

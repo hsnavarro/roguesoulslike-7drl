@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemsManager : MonoBehaviour {
+public class PlayerItemsGridManager : MonoBehaviour {
   private PlayerStats playerStats;
-
-  [SerializeField]
+  
   private List<Image> slotImages;
-  [SerializeField]
   private Image slotImage1;
-  [SerializeField]
   private Image slotImage2;
-  [SerializeField]
   private Image slotImage3;
-  [SerializeField]
   private Image slotImage4;
 
   void Start() {
@@ -46,10 +41,11 @@ public class ItemsManager : MonoBehaviour {
     }
   }
 
-  void Awake() {
-    slotImages.Add(slotImage1);
-    slotImages.Add(slotImage2);
-    slotImages.Add(slotImage3);
-    slotImages.Add(slotImage4);
+  private void Awake() {
+    slotImages = new List<Image>();
+    slotImages.Add(GameObject.FindGameObjectWithTag("ItemImageSlot1").GetComponent<Image>());
+    slotImages.Add(GameObject.FindGameObjectWithTag("ItemImageSlot2").GetComponent<Image>());
+    slotImages.Add(GameObject.FindGameObjectWithTag("ItemImageSlot3").GetComponent<Image>());
+    slotImages.Add(GameObject.FindGameObjectWithTag("ItemImageSlot4").GetComponent<Image>());
   }
 }

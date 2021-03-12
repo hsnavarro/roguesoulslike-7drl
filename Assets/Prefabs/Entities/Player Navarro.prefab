@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1970250202368364196}
   - component: {fileID: 3363278371932789070}
   - component: {fileID: 5111474706222228769}
-  - component: {fileID: 115350603248455393}
   - component: {fileID: 1268130522}
   - component: {fileID: 1268130523}
   - component: {fileID: 1268130524}
@@ -22,7 +21,7 @@ GameObject:
   - component: {fileID: 1268130529}
   - component: {fileID: 1268130534}
   m_Layer: 9
-  m_Name: PlayerNavarro
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -78,19 +77,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &115350603248455393
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160922317266523166}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1268130522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,10 +89,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9026dca064a7c024eb1da33aff79217c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 3363278371932789070}
+  playerDirection: {x: 0, y: 0, z: 0}
+  isRunButtonActive: 0
+  isDashing: 0
+  dashDirection: {x: 0, y: 0, z: 0}
+  dashTimer: 0
+  playerAnimator: {fileID: 0}
+  playerCharacterController: {fileID: 0}
   playerStats: {fileID: 1268130528}
   playerController: {fileID: 1268130525}
-  anim: {fileID: 4917797909592766771}
 --- !u!114 &1268130523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811e1178bc142cf49b12e65fc649d0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 1268130528}
   itemsInRange: []
+  playerStats: {fileID: 1268130528}
   itemDropDistance: 3
 --- !u!114 &1268130525
 MonoBehaviour:
@@ -147,16 +138,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6282dfa458a7c54bb8df5bbe5388024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsCanvas: {fileID: 0}
   deathSceneCanvas: {fileID: 0}
-  sceneName: Navarro
-  itemInteraction: {fileID: 1268130524}
-  movement: {fileID: 1268130522}
-  stats: {fileID: 1268130528}
+  sceneName: Naum
+  playerInput: {fileID: 1268130529}
+  playerItemUsage: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerStats: {fileID: 0}
   playerSkillTree: {fileID: 1268130526}
   playerWeapon: {fileID: 1268130534}
-  anim: {fileID: 4917797909592766771}
-  playerInput: {fileID: 1268130529}
-  controlsCanvas: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!114 &1268130526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9eeb16fef6736428538861083b8601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 1268130528}
   staminaIncrease: 0
   staminaBarProgression: 0
   staminaIncreasePerBarCompleted: 0
@@ -182,6 +172,7 @@ MonoBehaviour:
   flasksCapacityBarProgression: 0
   flasksCapacityIncreasePerBarCompleted: 0
   flasksCapacityBarSize: 0
+  playerStats: {fileID: 1268130528}
 --- !u!114 &1268130527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +203,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  afterDamageInvulDuration: 0.5
 --- !u!114 &1268130528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,27 +217,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsEquipped: []
   isSlotEquipped: 
-  defense: {fileID: 1268130527}
+  currentStamina: 0
+  currentSpeed: 0
+  currentDamage: 0
+  playerResilience: {fileID: 0}
   flasksCapacity: 3
   flasksCarried: 0
   flaskShieldIncrease: 0
   flaskHealthIncrease: 10
-  maxStamina: 100
-  normalSpeed: 5
-  runSpeed: 10
-  lightAttackDamage: 10
-  heavyAttackDamage: 30
-  lightAttackStaminaDecrease: 10
-  heavyAttackStaminaDecrease: 30
   staminaRunDecreaseRate: 15
   staminaRechargeRate: 20
   staminaRechargeDelay: 1
+  maxStamina: 100
+  attackMultiplier: 100
+  lightAttackStaminaDecrease: 10
+  heavyAttackStaminaDecrease: 30
+  normalSpeed: 5
+  runSpeed: 10
   dashDuration: 0.2
   dashSpeed: 20
   dashStaminaDecrease: 10
-  currentStamina: 0
-  currentSpeed: 0
-  currentDamage: 0
   isDashing: 0
 --- !u!114 &1268130529
 MonoBehaviour:
@@ -427,7 +416,7 @@ MonoBehaviour:
     m_ActionName: Player/See Controls[/Keyboard/tab]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1268130525}
+      - m_Target: {fileID: 1268130523}
         m_MethodName: DeathSceneOnInput
         m_Mode: 0
         m_Arguments:
@@ -481,18 +470,7 @@ MonoBehaviour:
     m_ActionId: bb040778-21fe-40d5-bd1d-0fc75eb5517d
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1268130525}
-        m_MethodName: OnFlaskUse
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e4a83a73-c7aa-4575-8891-848cc545f529
     m_ActionName: Player/Use Flask[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
@@ -638,12 +616,6 @@ PrefabInstance:
 --- !u!4 &1359994660358103881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 518714060b93ccf4b88bcd7cfd3f2960,
-    type: 3}
-  m_PrefabInstance: {fileID: 1537155246188381346}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &4917797909592766771 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 518714060b93ccf4b88bcd7cfd3f2960,
     type: 3}
   m_PrefabInstance: {fileID: 1537155246188381346}
   m_PrefabAsset: {fileID: 0}

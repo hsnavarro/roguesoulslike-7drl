@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113ad5478ec8ff242bdc39c9a863fc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseItems: []
   itemGameObjectPrefab: {fileID: 0}
   numberOfRareItems: 5
   numberOfEpicItems: 3

@@ -1,44 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-  [SerializeField]
-  private CharacterController characterController;
-
-  [SerializeField]
-  private PlayerStats playerStats;
-
-  [SerializeField]
-  private PlayerControllerEvents playerController;
-
-  private float staminaDelayTimer = 0f;
-
+  [HideInInspector]
   public Vector3 playerDirection = Vector3.zero;
-
-  public Vector3 playerVelocity = Vector3.zero; 
+  [HideInInspector]
   public bool isRunButtonActive = false;
 
-  public Animator anim;
-
+  [HideInInspector]
   public bool isDashing = false;
+  [HideInInspector]
   public Vector3 dashDirection = Vector3.zero;
+  [HideInInspector]
   public float dashTimer = 0f;
 
-  private void updateLayer() {
-    if (isDashing) gameObject.layer = (int)Layers.PLAYER_DASHING;
-    else gameObject.layer = (int)Layers.PLAYER;
-  }
+  [Header("Player References")]
+  [SerializeField]
+  private Animator playerAnimator;
+  [SerializeField]
+  private CharacterController playerCharacterController;
+  [SerializeField]
+  private PlayerStats playerStats;
+  [SerializeField]
+  private PlayerController playerController;
+
+  private Vector3 playerVelocity = Vector3.zero; 
+
+  private float staminaDelayTimer = 0f;
 
   public void handleDash() {
     if (isDashing) {
       dashTimer += Time.deltaTime;
       if (dashTimer > playerStats.dashDuration) {
         isDashing = false;
-        anim.SetBool("Dashing", false);
+        playerAnimator.SetBool("Dashing", false);
       }
     }
+  }
+  
+  public void RestartStaminaRechargeTimer() {
+    staminaDelayTimer = 0f;
+  }
+
+  public void DecreaseStamina(float value) {
+    playerStats.currentStamina = Mathf.Max(0f,
+      playerStats.currentStamina - value);
+  }
+
+  private void updateLayer() {
+    if (isDashing) gameObject.layer = (int)Layers.PLAYER_DASHING;
+    else gameObject.layer = (int)Layers.PLAYER;
   }
 
   private void ApplyMovement() {
@@ -52,12 +63,9 @@ public class PlayerMovement : MonoBehaviour {
     if (isDashing) playerVelocity = dashDirection * playerStats.dashSpeed;
     else playerVelocity = playerDirection * playerStats.currentSpeed;
 
-    characterController.Move(playerVelocity * Time.deltaTime);
+    playerCharacterController.Move(playerVelocity * Time.deltaTime);
   }
 
-  public void RestartStaminaRechargeTimer() {
-    staminaDelayTimer = 0f;
-  }
   private void IncreaseStamina() {
     if (staminaDelayTimer >= playerStats.staminaRechargeDelay) {      
       playerStats.currentStamina = Mathf.Min(playerStats.maxStamina, 
@@ -65,17 +73,12 @@ public class PlayerMovement : MonoBehaviour {
     }
   }
 
-  public void DecreaseStamina(float value) {
-    playerStats.currentStamina = Mathf.Max(0f,
-      playerStats.currentStamina - value);
-  }
-
   private void HandleRun() {
     bool isRunning = isRunButtonActive && playerStats.currentStamina > 0f;
     bool isMoving = playerDirection != Vector3.zero;
 
     // Animation update
-    anim.SetInteger("MoveState", isMoving ? (isRunning ? 2 : 1) : 0);
+    playerAnimator.SetInteger("MoveState", isMoving ? (isRunning ? 2 : 1) : 0);
 
     if (playerController.IsActing) return;
 
@@ -102,18 +105,13 @@ public class PlayerMovement : MonoBehaviour {
     transform.LookAt(targetPosition);
   }
 
-  private void DebugInfo() {
-    Debug.Log("Player velocity vector " + playerVelocity);
-  }
-
   private void Update() {
-
     if (playerStats.currentStamina != playerStats.maxStamina) staminaDelayTimer += Time.deltaTime;
 
     HandleRun();
     ApplyMovement();
 
-    //DebugInfo();
+    // Debug.Log("Player velocity vector " + playerVelocity);
   }
 
 }

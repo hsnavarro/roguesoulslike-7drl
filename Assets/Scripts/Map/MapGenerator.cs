@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour {
@@ -54,7 +52,36 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
-    Vector3 GetCorrespondingRotationForWall(int d) {
+    public void DrawWalls() {
+        wallPool.localScale = new Vector3(scale, scale, scale);
+        activeWalls.localScale = new Vector3(scale, scale, scale);
+        while (activeWalls.childCount > 0) {
+            Transform child = activeWalls.GetChild(0);
+            child.SetParent(wallPool);
+            child.gameObject.SetActive(false);
+        }
+        activeWalls.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
+
+        for (int i = 0; i < 4; i++) {
+            DrawWallsInDirection(i);
+        }
+    }
+
+    private void Start() {
+        if (generateMap) {
+            SpawnMap();
+        } else {
+            Instantiate(testFloor, new Vector3(), Quaternion.identity);
+        }
+    }
+
+    private void SpawnMap() {
+        generator.Generate();
+        DrawFloor();
+        DrawWalls();
+    }
+
+    private Vector3 GetCorrespondingRotationForWall(int d) {
         switch (d) {
             case 0: 
                 return new Vector3(0, 0, 0);
@@ -69,7 +96,7 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
-    void CreateWall(Vector3 position, Vector3 rotation) {
+    private void CreateWall(Vector3 position, Vector3 rotation) {
         if (wallPool.childCount > 0) {
             Transform wall = wallPool.GetChild(0);
             wall.gameObject.SetActive(true);
@@ -88,7 +115,7 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
-    void DrawWallsInDirection(int d) {
+    private void DrawWallsInDirection(int d) {
         Tuple<int, int> dir = generator.GetDirection(d);
         for (int i = 0; i < generator.width; i++) {
             for (int j = 0; j < generator.height; j++) if (generator.grid[i, j] == true) {
@@ -98,35 +125,6 @@ public class MapGenerator : MonoBehaviour {
                     CreateWall(new Vector3(nI - dir.Item1/2f, 0.5f, nJ - dir.Item2/2f), GetCorrespondingRotationForWall(d));
                 }
             }
-        }
-    }
-
-    public void DrawWalls() {
-        wallPool.localScale = new Vector3(scale, scale, scale);
-        activeWalls.localScale = new Vector3(scale, scale, scale);
-        while (activeWalls.childCount > 0) {
-            Transform child = activeWalls.GetChild(0);
-            child.SetParent(wallPool);
-            child.gameObject.SetActive(false);
-        }
-        activeWalls.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
-
-        for (int i = 0; i < 4; i++) {
-            DrawWallsInDirection(i);
-        }
-    }
-
-    void SpawnMap() {
-        generator.Generate();
-        DrawFloor();
-        DrawWalls();
-    }
-
-    void Start() {
-        if (generateMap) {
-            SpawnMap();
-        } else {
-            Instantiate(testFloor, new Vector3(), Quaternion.identity);
         }
     }
 }

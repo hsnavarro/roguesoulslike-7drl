@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemGeneration : MonoBehaviour
-{   
-    [SerializeField]
+public class ItemGeneration : MonoBehaviour {   
     private List<Item> baseItems;
 
     private Vector3 offset;
@@ -12,6 +9,7 @@ public class ItemGeneration : MonoBehaviour
     [SerializeField]
     private GameObject itemGameObjectPrefab;
 
+    [Header("Item Quantities")]
     [SerializeField]
     private const int numberOfCommonItems = 7;
     [SerializeField]
@@ -20,6 +18,16 @@ public class ItemGeneration : MonoBehaviour
     private int numberOfEpicItems = 3;
     [SerializeField]
     private const int numberOfLegendaryItems = 1;
+
+    private void Start() {
+        //itemGameObjectPrefab = GameObject.FindGameObjectWithTag("EmptyItem");
+        baseItems = new List<Item>();
+        offset = new Vector3(4f, 1f, -4f);
+        GenerateCommon();
+        GenerateRare();
+        GenerateEpic();
+        GenerateLegendary();
+    }
 
     private GameObject InstantiateItem() {
         Vector3 randomUpwardsVector = new Vector3(Random.Range(-1f, 1f), Random.value, Random.Range(-1f, 1f));
@@ -67,7 +75,7 @@ public class ItemGeneration : MonoBehaviour
         staminaDelayGameObject.name = "Common Item 4";
         staminaDelayItem.baseName = "Stamina Delay Item";
         staminaDelayItem.modifierName = "Impatient";
-        staminaDelayItem.staminaRechargeDelayDecrease = 10f;
+        staminaDelayItem.staminaRechargeDelayDecrease = 0.5f;
 
         baseItems.Add(staminaDelayItem); 
 
@@ -117,15 +125,12 @@ public class ItemGeneration : MonoBehaviour
 
 
     private void GenerateCombined(int numberOfItemsCombined, int numberOfItemsToGenerate) {
-
         int generateCounter = 1;
 
         GameObject itemGameObject;
         Item item;
 
         Item itemChosen;
-
-        System.Random rand = new System.Random();
 
         while(generateCounter <= numberOfItemsToGenerate) {
             itemGameObject = InstantiateItem();
@@ -143,7 +148,7 @@ public class ItemGeneration : MonoBehaviour
 
             for(int i = 0; i < numberOfItemsCombined; i++) {
                 
-                int randomIndex = rand.Next(0, baseItems.Count);
+                int randomIndex = Random.Range(0, baseItems.Count);
                 itemChosen = baseItems[randomIndex];
                 CopyEffects(item, itemChosen);
 
@@ -156,7 +161,6 @@ public class ItemGeneration : MonoBehaviour
 
             generateCounter++;
         }
-
     }
 
     private void GenerateRare() {
@@ -185,16 +189,5 @@ public class ItemGeneration : MonoBehaviour
 
         legendaryItem.flasksCapacityIncrease = 1;
         legendaryItem.flaskHealthRegenerationIncrease = 10f;
-    }
-
-
-    
-    public void Start()
-    {
-        offset = new Vector3(4f, 1f, -4f);
-        GenerateCommon();
-        GenerateRare();
-        GenerateEpic();
-        GenerateLegendary();
     }
 }

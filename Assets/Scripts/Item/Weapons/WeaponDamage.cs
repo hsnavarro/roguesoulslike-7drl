@@ -10,7 +10,7 @@ public class WeaponDamage : MonoBehaviour {
     [SerializeField]
     private Collider hitbox;
 
-    enum AttackType {
+    private enum AttackType {
         None,
         Light,
         Heavy
@@ -30,12 +30,12 @@ public class WeaponDamage : MonoBehaviour {
         attacking = AttackType.None;
     }
 
-    void OnTriggerEnter(Collider collider) {
+    private void OnTriggerEnter(Collider collider) {
         if (attacking == AttackType.None) return;
 
-        Defense def = collider.gameObject.GetComponent<Defense>();
-        if (def) {
-            def.TakeDamage(attacking == AttackType.Light ? lightDamage : heavyDamage);
+        Resilience resilience = collider.gameObject.GetComponent<Resilience>();
+        if (resilience) {
+            resilience.TakeDamage(attacking == AttackType.Light ? lightDamage : heavyDamage);
         }
     }
 }
