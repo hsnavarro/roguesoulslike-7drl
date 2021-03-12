@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour {
   [HideInInspector]
   public const int maxNumberOfItems = 4;
   //[HideInInspector]
-  public NormalItem[] itemsEquipped;
+  public Item[] itemsEquipped;
   //[HideInInspector]
   public bool[] isSlotEquipped;
 
@@ -22,13 +22,7 @@ public class PlayerStats : MonoBehaviour {
   public float normalSpeed = 5f;
   public float runSpeed = 10f;
 
-  public float lightAttackDamage = 10f;
-  //public float lightAttackDuration = 0.2f;
-  //public float lightAttackImpactDelay = 0f;
-
-  public float heavyAttackDamage = 30f;
-  //public float heavyAttackDuration = 0.3f;
-  //public float heavyAttackImpactDelay = 0.2f;
+  public float attackMultiplier = 100f;
 
   public float lightAttackStaminaDecrease = 10f;
   public float heavyAttackStaminaDecrease = 30f;
@@ -57,7 +51,7 @@ public class PlayerStats : MonoBehaviour {
   }
 
   private void Start() {
-    itemsEquipped = new NormalItem[maxNumberOfItems];
+    itemsEquipped = new Item[maxNumberOfItems];
     isSlotEquipped = new bool[maxNumberOfItems];
     currentStamina = maxStamina;
     currentSpeed = normalSpeed;

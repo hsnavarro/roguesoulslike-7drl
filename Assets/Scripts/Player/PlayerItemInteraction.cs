@@ -7,7 +7,7 @@ public class PlayerItemInteraction : MonoBehaviour {
   private ItemsManager itemsManager;
   public PlayerStats playerStats;
   [SerializeField]
-  public List<NormalItem> itemsInRange;
+  public List<Item> itemsInRange;
 
   public float itemDropDistance = 3f;
 
@@ -20,7 +20,7 @@ public class PlayerItemInteraction : MonoBehaviour {
   }
 
   private Material lastClosestItemMaterial = null;
-  private NormalItem lastClosestItem = null;
+  private Item lastClosestItem = null;
   public void HandleInteractSlot(int slot) {
      if(slot >= PlayerStats.maxNumberOfItems) {
       Debug.Log("Slot number greater than array size");
@@ -43,7 +43,7 @@ public class PlayerItemInteraction : MonoBehaviour {
   private void UpdateClosestItem() {
 
     float smallestDistanceToPlayer = Mathf.Infinity;
-    NormalItem closestItemToPlayer = null;
+    Item closestItemToPlayer = null;
     Material closestItemToPlayerMaterial = null;
 
     foreach (var item in itemsInRange) {
@@ -61,6 +61,8 @@ public class PlayerItemInteraction : MonoBehaviour {
     if(closestItemToPlayer != lastClosestItem) {
       if (lastClosestItem != null) {
         Material material = lastClosestItem.gameObject.GetComponent<MeshRenderer>().material;
+        ItemDescriptionManager itemUI = lastClosestItem.gameObject.GetComponent<ItemDescriptionManager>();
+        itemUI.Hide();
 
         material.DisableKeyword("_EMISSION");
       }
@@ -71,6 +73,8 @@ public class PlayerItemInteraction : MonoBehaviour {
       if(closestItemToPlayer != null) {
 
         Material material = closestItemToPlayer.gameObject.GetComponent<MeshRenderer>().material;
+        ItemDescriptionManager itemUI = lastClosestItem.gameObject.GetComponent<ItemDescriptionManager>();
+        itemUI.Show();
 
         material.EnableKeyword("_EMISSION");
         material.SetColor("_EmissionColor", material.color);
@@ -90,7 +94,7 @@ public class PlayerItemInteraction : MonoBehaviour {
   public void Unequip(int slot) {
     if(!playerStats.isSlotEquipped[slot]) return;
 
-    NormalItem item = playerStats.itemsEquipped[slot];
+    Item item = playerStats.itemsEquipped[slot];
 
     item.RemoveEffects();
 

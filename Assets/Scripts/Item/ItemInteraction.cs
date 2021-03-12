@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour {
-  private PlayerItemInteraction playerInteraction;
-  private void OnTriggerEnter(Collider collider) {
 
+  private PlayerItemInteraction playerInteraction;
+
+  private void OnTriggerEnter(Collider collider) {
     if(collider.isTrigger) return;
 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
-      NormalItem item = gameObject.GetComponent<NormalItem>();
+      Item item = gameObject.GetComponent<Item>();
       playerInteraction.itemsInRange.Add(item);
     }
 
   }
 
   private void OnTriggerExit(Collider collider) {
-
     if(collider.isTrigger) return;
 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
-      NormalItem item = gameObject.GetComponent<NormalItem>();
+      Item item = gameObject.GetComponent<Item>();
       playerInteraction.itemsInRange.Remove(item);
     }
 

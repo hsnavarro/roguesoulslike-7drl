@@ -2,42 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalItem : MonoBehaviour {
+public class Item : MonoBehaviour {
+
+    private bool isEquipped;
 
     [SerializeField]
     private int itemID;
     [SerializeField]
-    private string typeName;
+    public string baseName;
+    [SerializeField]
+    public string modifierName;
 
     [SerializeField]
-    private Rarity rarity;
+    public Rarity rarity;
 
     private PlayerStats playerStats;
 
     [SerializeField]
-    private float heavyAttackDamageIncrease;
+    public float attackDamageMultiplierIncrease;
+
     [SerializeField]
-    private float lightAttackDamageIncrease;
+    public float healthIncrease;
+
     [SerializeField]
-    private float speedIncrease;
+    public float staminaIncrease;
+    [SerializeField]    
+    public float staminaRechargeDelayDecrease;
     [SerializeField]
-    private float healthIncrease;
+    public float staminaRechargeRateIncrease;
+
     [SerializeField]
-    private float staminaIncrease;
+    public int flasksCapacityIncrease;
     [SerializeField]
-    private float shieldIncrease;
-    private bool isEquipped;
+    public int flaskHealthRegenerationIncrease;
+
     private void UpdateStats(int multiplier) {
-        playerStats.lightAttackDamage += multiplier * lightAttackDamageIncrease;
-        playerStats.heavyAttackDamage += multiplier * heavyAttackDamageIncrease;
-        
-        playerStats.normalSpeed += multiplier * speedIncrease;
-        playerStats.runSpeed += multiplier * speedIncrease;
+        playerStats.attackMultiplier += multiplier * attackDamageMultiplierIncrease;
         
         playerStats.defense.maxHealth += multiplier * healthIncrease;
+
         playerStats.maxStamina += multiplier * staminaIncrease;
-        playerStats.defense.maxShield += multiplier * shieldIncrease;
+        playerStats.staminaRechargeDelay -= multiplier * staminaRechargeDelayDecrease;
+        playerStats.staminaRechargeRate += multiplier * staminaRechargeRateIncrease;
+
+        playerStats.flasksCapacity += multiplier * flasksCapacityIncrease;
+        playerStats.flaskHealthIncrease += multiplier * flaskHealthRegenerationIncrease;
     }
+
     public void AddEffects() {
         if(isEquipped) {
             Debug.Log("Item can't be equipped twice");
