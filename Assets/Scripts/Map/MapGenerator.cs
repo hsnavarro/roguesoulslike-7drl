@@ -1,13 +1,127 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
     public MapGenerationAlgorithm generator;
 
-    void Start() {
+    public GameObject tilePrefab;
+    public GameObject wallPrefab;
+
+    public Transform activeTiles;
+    public Transform tilePool;
+
+    public Transform activeWalls;
+    public Transform wallPool;
+
+    public float scale = 2;
+
+    public void CreateTile(Vector3 position) {
+        if (tilePool.childCount > 0) {
+            Transform tile = tilePool.GetChild(0);
+            tile.gameObject.SetActive(true);
+            tile.SetParent(activeTiles);
+            tile.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            tile.localPosition = position;
+        } else {
+            GameObject tile = GameObject.Instantiate(tilePrefab, 
+                                                     new Vector3(), 
+                                                     Quaternion.identity);
+            tile.transform.SetParent(activeTiles);
+            tile.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            tile.transform.localPosition = position;
+        }
+    }
+
+    public void DrawFloor() {
+        tilePool.localScale = new Vector3(scale, scale, scale);
+        activeTiles.localScale = new Vector3(scale, scale, scale);
+        while (activeTiles.childCount > 0) {
+            Transform child = activeTiles.GetChild(0);
+            child.SetParent(tilePool);
+            child.gameObject.SetActive(false);
+        }
+        activeTiles.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
+
+        for (int i = 0; i < generator.tilePositions.Count; i++) {
+            int x = generator.tilePositions[i].Item1;
+            int y = generator.tilePositions[i].Item2;
+            CreateTile(new Vector3(x, 0, y));
+        }
+    }
+
+    Vector3 GetCorrespondingRotationForWall(int d) {
+        switch (d) {
+            case 0: 
+                return new Vector3(0, 0, 0);
+            case 1: 
+                return new Vector3(0, 180, 0);
+            case 2: 
+                return new Vector3(0, 90, 0);
+            case 3: 
+                return new Vector3(0, -90, 0);
+            default:
+                return new Vector3(0, 0, 0);
+        }
+    }
+
+    void CreateWall(Vector3 position, Vector3 rotation) {
+        if (wallPool.childCount > 0) {
+            Transform wall = wallPool.GetChild(0);
+            wall.gameObject.SetActive(true);
+            wall.SetParent(activeWalls);
+            wall.localScale = new Vector3(1f, 1f, 0.1f);
+            wall.localPosition = position;
+            wall.localEulerAngles = rotation;
+        } else {
+            GameObject wall = GameObject.Instantiate(wallPrefab, 
+                                                     new Vector3(), 
+                                                     Quaternion.identity);
+            wall.transform.SetParent(activeWalls);
+            wall.transform.localScale = new Vector3(1f, 1f, 0.1f);
+            wall.transform.localPosition = position;
+            wall.transform.localEulerAngles = rotation;
+        }
+    }
+
+    void DrawWallsInDirection(int d) {
+        Tuple<int, int> dir = generator.GetDirection(d);
+        for (int i = 0; i < generator.width; i++) {
+            for (int j = 0; j < generator.height; j++) if (generator.grid[i, j] == true) {
+                int nI = i + dir.Item1;
+                int nJ = j + dir.Item2;
+                if (generator.grid[nI, nJ] == false) {
+                    CreateWall(new Vector3(nI - dir.Item1/2f, 0.5f, nJ - dir.Item2/2f), GetCorrespondingRotationForWall(d));
+                }
+            }
+        }
+    }
+
+    public void DrawWalls() {
+        wallPool.localScale = new Vector3(scale, scale, scale);
+        activeWalls.localScale = new Vector3(scale, scale, scale);
+        while (activeWalls.childCount > 0) {
+            Transform child = activeWalls.GetChild(0);
+            child.SetParent(wallPool);
+            child.gameObject.SetActive(false);
+        }
+        activeWalls.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
+
+        for (int i = 0; i < 4; i++) {
+            DrawWallsInDirection(i);
+        }
+    }
+
+    void SpawnMap() {
         generator.Generate();
+        DrawFloor();
+        DrawWalls();
+    }
+
+    void Start() {
+        SpawnMap();
     }
 
     // Update is called once per frame

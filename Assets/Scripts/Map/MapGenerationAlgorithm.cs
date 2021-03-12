@@ -9,22 +9,16 @@ using Random = UnityEngine.Random;
 public class MapGenerationAlgorithm : MonoBehaviour {
 
     int numberOfSteps;
-    List<Tuple<int, int>> tilePositions;
-    bool[,] grid;
-
-    public GameObject tilePrefab;
-
-    public Transform activeTiles;
-    public Transform tilePool;
+    public List<Tuple<int, int>> tilePositions;
+    public bool[,] grid;
     public int width = 200;
     public int height = 200;
-    public float scale = 2;
 
     bool IsLimit(int i, int j) {
         return i == 0 || i == width - 1 || j == 0 || j == height - 1;
     }
 
-    Tuple<int, int> GetDirection(int i) {
+    public Tuple<int, int> GetDirection(int i) {
         // 0-3: horizontal/vertical directions
         // 4-7: diagonals
         switch (i) {
@@ -57,31 +51,6 @@ public class MapGenerationAlgorithm : MonoBehaviour {
                     tilePositions.Add(new Tuple<int, int>(i, j));
                 }
             }
-        }
-    }
-
-    public void CreateTile(Vector3 position) {
-        if (tilePool.childCount > 0) {
-            Transform tile = tilePool.GetChild(0);
-            tile.gameObject.SetActive(true);
-            tile.SetParent(activeTiles);
-            tile.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            tile.localPosition = position;
-        } else {
-            GameObject tile = GameObject.Instantiate(tilePrefab, 
-                                                     new Vector3(), 
-                                                     Quaternion.identity);
-            tile.transform.SetParent(activeTiles);
-            tile.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            tile.transform.localPosition = position;
-        }
-    }
-
-    public void Draw() {
-        for (int i = 0; i < tilePositions.Count; i++) {
-            int x = tilePositions[i].Item1;
-            int y = tilePositions[i].Item2;
-            CreateTile(new Vector3(x, 0, y));
         }
     }
 
@@ -163,15 +132,6 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         grid = new bool[width, height];
         tilePositions = new List<Tuple<int, int>>();
 
-        tilePool.localScale = new Vector3(scale, scale, scale);
-        activeTiles.localScale = new Vector3(scale, scale, scale);
-        while (activeTiles.childCount > 0) {
-            Transform child = activeTiles.GetChild(0);
-            child.SetParent(tilePool);
-            child.gameObject.SetActive(false);
-        }
-        activeTiles.position = scale*(new Vector3(-width/2, 0, -height/2));
-
         for (int i = 0; i < 10; i++) {
             numberOfSteps = 2000;
             GenerationWalk();
@@ -180,7 +140,6 @@ public class MapGenerationAlgorithm : MonoBehaviour {
             Smooth();
         }
         UpdateTilesList();
-        Draw();
     }
 
     void Start() {
