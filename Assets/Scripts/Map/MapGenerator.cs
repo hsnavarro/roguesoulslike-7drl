@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour {
@@ -15,6 +16,7 @@ public class MapGenerator : MonoBehaviour {
 
     public Transform activeWalls;
     public Transform wallPool;
+    public ItemGeneration itemGenerator;
 
     public float scale = 2;
 
@@ -67,6 +69,17 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
+    public void SpawnItems() {
+        List<Tuple<int, int>> positions = generator.GenerateItemsStartPositions();
+        itemGenerator.transform.localScale = new Vector3(scale, scale, scale);
+        itemGenerator.transform.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
+        for (int i = 0; i < positions.Count; i++) {
+            GameObject item = itemGenerator.InstantiateItem();
+            item.transform.SetParent(itemGenerator.transform);
+            item.transform.localPosition = new Vector3(positions[i].Item1, 0.5f, positions[i].Item2);
+        }
+    }
+
     private void Start() {
         if (generateMap) {
             SpawnMap();
@@ -75,10 +88,12 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
-    private void SpawnMap() {
-        generator.Generate();
+
+    void SpawnMap() {
+        generator.GenerateMap();
         DrawFloor();
         DrawWalls();
+        SpawnItems();
     }
 
     private Vector3 GetCorrespondingRotationForWall(int d) {

@@ -6,12 +6,21 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class MapGenerationAlgorithm : MonoBehaviour {
+
+    public int numberOfSteps;
+    public int numberOfWalks;
+    public int numberOfSmooths;
+
+    public int numberOfItemSpawns;
+    public int itemSpawnMaxDistanceFromWall;
     public List<Tuple<int, int>> tilePositions;
     public bool[,] grid;
     public int width = 200;
     public int height = 200;
 
-    private int numberOfSteps;
+    bool IsLimit(int i, int j) {
+        return i == 0 || i == width - 1 || j == 0 || j == height - 1;
+    }
 
     public Tuple<int, int> GetDirection(int i) {
         // 0-3: horizontal/vertical directions
@@ -73,24 +82,6 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         }
     }
 
-    public void Generate() {
-        grid = new bool[width, height];
-        tilePositions = new List<Tuple<int, int>>();
-
-        for (int i = 0; i < 10; i++) {
-            numberOfSteps = 2000;
-            GenerationWalk();
-        }
-        for (int i = 0; i < 5; i++) {
-            Smooth();
-        }
-        UpdateTilesList();
-    }
-
-    private bool IsLimit(int i, int j) {
-        return i == 0 || i == width - 1 || j == 0 || j == height - 1;
-    }
-
     private int CountAdjacentWalls(int i, int j) {
         if (IsLimit(i, j)) {
             return -1;
@@ -139,5 +130,67 @@ public class MapGenerationAlgorithm : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public List<Tuple<int, int>> GetWallsPositions() {
+        List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                if (grid[i, j] == false && !IsLimit(i, j)) {
+                    for(int d = 0; d < 4; d++) {
+                        Tuple<int, int> dir = GetDirection(d);
+                        int nI = i + dir.Item1;
+                        int nJ = j + dir.Item2;
+                        if (grid[nI, nJ] == true) {
+                            ans.Add(new Tuple<int, int>(i, j));
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
+    public List<Tuple<int, int>> GenerateItemsStartPositions() {
+        List<Tuple<int, int>> wallsPositions = GetWallsPositions();
+        List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
+        for (int i = 0; i < numberOfItemSpawns; i++) {
+            Tuple<int, int> startingSpawnPoint = wallsPositions[Random.Range(0, wallsPositions.Count - 1)];
+            int curX = startingSpawnPoint.Item1;
+            int curY = startingSpawnPoint.Item2;
+            for (int k = 0; k < itemSpawnMaxDistanceFromWall; k++) {
+                List<int> dir = new List<int>{0, 1, 2, 3};
+                dir = dir.OrderBy( x => Random.value ).ToList();
+                for (int d = 0; d < 4; d++) {
+                    Tuple<int, int> randomDirection = GetDirection(dir[d]);
+                    int newX = curX + randomDirection.Item1;
+                    int newY = curY + randomDirection.Item2;
+                    if (grid[newX, newY]) {
+                        curX = newX;
+                        curY = newY;
+                        break;
+                    }
+                }
+            }
+            ans.Add(new Tuple<int, int>(curX, curY));
+        }
+        return ans;
+    }
+
+    public void GenerateMap() {
+        grid = new bool[width, height];
+        tilePositions = new List<Tuple<int, int>>();
+
+        for (int i = 0; i < numberOfWalks; i++) {
+            GenerationWalk();
+        }
+        for (int i = 0; i < numberOfSmooths; i++) {
+            Smooth();
+        }
+        UpdateTilesList();
+    }
+
+    void Start() {
     }
 }

@@ -78,6 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8b533a38e0fe14e818e395e5579243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfSteps: 0
+  numberOfWalks: 0
+  numberOfSmooths: 0
   width: 200
   height: 200
 --- !u!114 &7673829972370452774
@@ -92,7 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925aa71b39be0474daee10748e4e4672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateMap: 1
   generator: {fileID: 3844274243191091934}
+  testFloor: {fileID: 241119796702575034, guid: ff720bc85c0f9d348a54332330e73c35,
+    type: 3}
   tilePrefab: {fileID: 9194480819854467933, guid: 311cc97a96b2bf2449d6a92bfb2a20f4,
     type: 3}
   wallPrefab: {fileID: 3607472406924255951, guid: a85559d96395a1a43bc9ac2a609f6658,

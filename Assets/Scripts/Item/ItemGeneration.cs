@@ -29,7 +29,7 @@ public class ItemGeneration : MonoBehaviour {
         GenerateLegendary();
     }
 
-    private GameObject InstantiateItem() {
+    public GameObject InstantiateItem() {
         Vector3 randomUpwardsVector = new Vector3(Random.Range(-1f, 1f), Random.value, Random.Range(-1f, 1f));
         randomUpwardsVector = randomUpwardsVector.normalized;
 
