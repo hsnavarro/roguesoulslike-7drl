@@ -35,7 +35,6 @@ public class PlayerWeapon : MonoBehaviour {
     }
 
     public void OnAttack(InputAction.CallbackContext context) {
-        Debug.print(context);
         anim.SetTrigger("LightAttack");
     }
 }
