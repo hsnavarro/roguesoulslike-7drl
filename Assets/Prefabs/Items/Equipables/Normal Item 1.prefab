@@ -119,7 +119,6 @@ MonoBehaviour:
   itemID: 0
   typeName: 
   rarity: 0
-  playerStats: {fileID: 0}
   heavyAttackDamageIncrease: 0
   lightAttackDamageIncrease: 0
   speedIncrease: 0
@@ -188,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb24f3051efca349a0cf4958d57eda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInteraction: {fileID: 0}
 --- !u!54 &5568801684496052632
 Rigidbody:
   m_ObjectHideFlags: 0

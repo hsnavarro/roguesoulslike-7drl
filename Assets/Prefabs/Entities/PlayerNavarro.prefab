@@ -119,11 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 1268130528}
-  playerItemInteraction: {fileID: 1268130524}
-  playerSkillTree: {fileID: 1268130526}
-  playerInput: {fileID: 1268130529}
-  deathSceneCanvas: {fileID: 0}
-  sceneName: Navarro
 --- !u!114 &1268130524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811e1178bc142cf49b12e65fc649d0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsManager: {fileID: 0}
   playerStats: {fileID: 1268130528}
   itemsInRange: []
   itemDropDistance: 3
@@ -152,9 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6282dfa458a7c54bb8df5bbe5388024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSceneCanvas: {fileID: 0}
+  sceneName: Navarro
   itemInteraction: {fileID: 1268130524}
   movement: {fileID: 1268130522}
   stats: {fileID: 1268130528}
+  playerSkillTree: {fileID: 1268130526}
   anim: {fileID: 4917797909592766771}
   playerInput: {fileID: 1268130529}
   controlsCanvas: {fileID: 0}
@@ -199,6 +196,20 @@ MonoBehaviour:
   currentHealth: 100
   maxShield: 0
   currentShield: 0
+  deathCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1268130525}
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1268130528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +249,7 @@ MonoBehaviour:
   staminaRechargeDelay: 1
   dashDuration: 0.2
   dashSpeed: 20
+  dashStaminaDecrease: 10
   currentStamina: 0
   currentSpeed: 0
   currentDamage: 0
@@ -420,7 +432,7 @@ MonoBehaviour:
     m_ActionName: Player/See Controls[/Keyboard/tab]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1268130523}
+      - m_Target: {fileID: 1268130525}
         m_MethodName: DeathSceneOnInput
         m_Mode: 0
         m_Arguments:

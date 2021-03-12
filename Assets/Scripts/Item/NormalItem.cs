@@ -12,7 +12,7 @@ public class NormalItem : MonoBehaviour {
     [SerializeField]
     private Rarity rarity;
 
-    public PlayerStats playerStats;
+    private PlayerStats playerStats;
 
     [SerializeField]
     private float heavyAttackDamageIncrease;
@@ -54,6 +54,10 @@ public class NormalItem : MonoBehaviour {
         }
         isEquipped = false;
         UpdateStats(-1);
+    }
+
+    private void Start() {
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
 

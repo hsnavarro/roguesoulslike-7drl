@@ -407,30 +407,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -189}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &155977211 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1268130528, guid: c87d8de43d42ad348ae01591c84905ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 913853103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626c8df978ed15e4d90bfac721bf32c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &155977215 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1268130524, guid: c87d8de43d42ad348ae01591c84905ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 913853103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811e1178bc142cf49b12e65fc649d0dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &156378959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,18 +2270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1268130523, guid: c87d8de43d42ad348ae01591c84905ff, type: 3}
-      propertyPath: deathSceneCanvas
-      value: 
-      objectReference: {fileID: 1420206418}
-    - target: {fileID: 1268130524, guid: c87d8de43d42ad348ae01591c84905ff, type: 3}
-      propertyPath: itemsManager
-      value: 
-      objectReference: {fileID: 1835526185}
     - target: {fileID: 1268130525, guid: c87d8de43d42ad348ae01591c84905ff, type: 3}
       propertyPath: controlsCanvas
       value: 
       objectReference: {fileID: 742844916}
+    - target: {fileID: 1268130525, guid: c87d8de43d42ad348ae01591c84905ff, type: 3}
+      propertyPath: deathSceneCanvas
+      value: 
+      objectReference: {fileID: 1420206418}
     - target: {fileID: 1160922317266523166, guid: c87d8de43d42ad348ae01591c84905ff,
         type: 3}
       propertyPath: m_Name
@@ -4281,18 +4253,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785682908}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1835526185 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8697522021094271122, guid: d1569f4590da18f498e87cf061b32666,
-    type: 3}
-  m_PrefabInstance: {fileID: 8697522020332716219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 853b2852f7888dd42a49b11cf6b7f842, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1887814225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4786,11 +4746,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal Item 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5568801684496052628, guid: f5e79c0b30bf64146b4ca0acf73ca1bb,
-        type: 3}
-      propertyPath: playerInteraction
-      value: 
-      objectReference: {fileID: 155977215}
     - target: {fileID: 5568801684496052633, guid: f5e79c0b30bf64146b4ca0acf73ca1bb,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4896,11 +4851,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5568801684496052637, guid: f5e79c0b30bf64146b4ca0acf73ca1bb,
-        type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 155977211}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5e79c0b30bf64146b4ca0acf73ca1bb, type: 3}
 --- !u!1001 &5850461774482459919
@@ -4910,11 +4860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5850461774408320692, guid: b999d5bff30de074cb2cf6a0d1f12166,
-        type: 3}
-      propertyPath: playerInteraction
-      value: 
-      objectReference: {fileID: 155977215}
     - target: {fileID: 5850461774408320694, guid: b999d5bff30de074cb2cf6a0d1f12166,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5020,11 +4965,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5850461774408320698, guid: b999d5bff30de074cb2cf6a0d1f12166,
-        type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 155977211}
     - target: {fileID: 5850461774408320702, guid: b999d5bff30de074cb2cf6a0d1f12166,
         type: 3}
       propertyPath: m_Name
@@ -5044,11 +4984,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal Item 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6299256723917736777, guid: 42aae7b1a8efe304fb6abff0f422852f,
-        type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 155977211}
     - target: {fileID: 6299256723917736781, guid: 42aae7b1a8efe304fb6abff0f422852f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5154,11 +5089,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6299256723917736787, guid: 42aae7b1a8efe304fb6abff0f422852f,
-        type: 3}
-      propertyPath: playerInteraction
-      value: 
-      objectReference: {fileID: 155977215}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42aae7b1a8efe304fb6abff0f422852f, type: 3}
 --- !u!1001 &8697522020332716219
@@ -5340,16 +5270,6 @@ PrefabInstance:
     - target: {fileID: 8705640476875561249, guid: 50d22525b5eddee48a2c0b907ed1c51a,
         type: 3}
       propertyPath: m_Name
-      value: DeathSceneCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8705640476875561249, guid: 50d22525b5eddee48a2c0b907ed1c51a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8705640476875561249, guid: 50d22525b5eddee48a2c0b907ed1c51a,
-        type: 3}
-      propertyPath: m_TagString
       value: DeathSceneCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8705640476875561252, guid: 50d22525b5eddee48a2c0b907ed1c51a,

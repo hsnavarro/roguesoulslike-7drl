@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerEvents : MonoBehaviour {
+  public GameObject deathSceneCanvas;
+  public string sceneName = "Naum";
+
   [SerializeField]
   private PlayerItemInteraction itemInteraction;
 
@@ -10,6 +14,8 @@ public class PlayerControllerEvents : MonoBehaviour {
 
   [SerializeField]
   private PlayerStats stats;
+   [SerializeField]
+  private PlayerSkillTree playerSkillTree;
 
   [SerializeField]
   private Animator anim;
@@ -17,6 +23,9 @@ public class PlayerControllerEvents : MonoBehaviour {
   public PlayerInput playerInput;
   bool isControlsUIActive = false;
   public Canvas controlsCanvas;
+
+  private float deathTime;
+  private float deathTimeInputDelay = 2f;
 
   public void OnFlaskUse(InputAction.CallbackContext context) {
     if(stats.defense.currentHealth == stats.defense.maxHealth) return;
@@ -100,8 +109,24 @@ public class PlayerControllerEvents : MonoBehaviour {
     anim.SetTrigger("LightAttack");
   }
 
+  public void DeathSceneOnInput(InputAction.CallbackContext context) {
+    if (Time.time - deathTime < deathTimeInputDelay) return;
+
+    if (context.started) {
+        SceneManager.LoadScene(sceneName);
+    }
+  }
+
   public void OnRun(InputAction.CallbackContext context) {
     if (context.canceled) movement.isRunButtonActive = false;
     else if (context.performed) movement.isRunButtonActive = true;
   }
+
+  public void OnDeath() {
+    playerSkillTree.SetPermanentInformation();
+    deathSceneCanvas.SetActive(true);
+    deathTime = Time.time;
+    playerInput.SwitchCurrentActionMap("DeathUI");
+  }
+
 }

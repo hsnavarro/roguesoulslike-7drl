@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour {
-  [SerializeField]
   private PlayerItemInteraction playerInteraction;
   private void OnTriggerEnter(Collider collider) {
 
@@ -27,5 +26,8 @@ public class ItemInteraction : MonoBehaviour {
 
   }
 
-    
+  private void Start() {
+    playerInteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerItemInteraction>();
+  }
+
 }

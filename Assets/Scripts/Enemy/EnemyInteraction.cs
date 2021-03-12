@@ -25,30 +25,29 @@ public class EnemyInteraction : MonoBehaviour {
 
   private void Update() {
     TriggerAttack();
-     if(enemyStats.defense.IsDead()) {
+  }
 
-       float valueToIncrease = enemyStats.barIncreaseAfterDeath;
+  public void OnDeath() {
+    float valueToIncrease = enemyStats.barIncreaseAfterDeath;
 
-      switch(enemyStats.type) {
-        case EnemyTypes.CYCLOPS:
-          playerSkillTree.IncreaseHealthProgress(valueToIncrease);
-          break;
+    switch(enemyStats.type) {
+      case EnemyTypes.CYCLOPS:
+        playerSkillTree.IncreaseHealthProgress(valueToIncrease);
+        break;
 
-        case EnemyTypes.WHICH:
-          playerSkillTree.IncreaseFlasksCapacityProgress(valueToIncrease);
-          break;
+      case EnemyTypes.WITCH:
+        playerSkillTree.IncreaseFlasksCapacityProgress(valueToIncrease);
+        break;
 
-        case EnemyTypes.FAUN:
-          playerSkillTree.IncreaseStaminaProgress(valueToIncrease);
-          break;
+      case EnemyTypes.FAUN:
+        playerSkillTree.IncreaseStaminaProgress(valueToIncrease);
+        break;
 
+      default:
+        break;
+    }
 
-        default:
-          break;
-      
-      }
-       Object.Destroy(gameObject);
-     }
+    Object.Destroy(gameObject);
   }
 
   private void Start() {

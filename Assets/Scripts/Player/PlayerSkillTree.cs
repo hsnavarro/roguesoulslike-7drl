@@ -99,4 +99,11 @@ public class PlayerSkillTree : MonoBehaviour
     }
   }
 
+  private void Awake() {
+    GetPermanentInformation();
+    playerStats.defense.maxHealth += PermanentPlayerInformation.healthIncrease;
+    playerStats.flasksCapacity += PermanentPlayerInformation.flasksCapacityIncrease;
+    playerStats.maxStamina += PermanentPlayerInformation.staminaIncrease;
+  }
+
 }

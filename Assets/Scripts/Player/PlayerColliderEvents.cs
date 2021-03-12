@@ -1,20 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerColliderEvents : MonoBehaviour {
   public PlayerStats playerStats;
-  public PlayerItemInteraction playerItemInteraction;
-  public PlayerSkillTree playerSkillTree;
-  public PlayerInput playerInput;
-
-  public GameObject deathSceneCanvas;
-  public string sceneName = "Naum";
-
-  //void Start() {
-  //  deathSceneCanvas = GameObject.FindGameObjectWithTag("DeathSceneCanvas");
-  //}
-
   private void OnTriggerStay(Collider collider) {
     if(collider.isTrigger) return;
 
@@ -31,27 +18,6 @@ public class PlayerColliderEvents : MonoBehaviour {
 
       playerStats.flasksCarried++;
       hit.gameObject.SetActive(false);
-    }
-  }
-
-  private void Awake() {
-    playerSkillTree.GetPermanentInformation();
-    playerStats.defense.maxHealth += PermanentPlayerInformation.healthIncrease;
-    playerStats.flasksCapacity += PermanentPlayerInformation.flasksCapacityIncrease;
-    playerStats.maxStamina += PermanentPlayerInformation.staminaIncrease;
-  }
-
-  private void Update() {
-    if(playerStats.defense.IsDead()) {
-      playerSkillTree.SetPermanentInformation();
-      deathSceneCanvas.SetActive(true);
-      playerInput.SwitchCurrentActionMap("DeathUI");
-    }
-  }
-
-  public void DeathSceneOnInput(InputAction.CallbackContext context) {
-    if (context.started) {
-        SceneManager.LoadScene(sceneName);
     }
   }
 }

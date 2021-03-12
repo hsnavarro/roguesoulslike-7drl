@@ -110,6 +110,6 @@ public class PlayerItemInteraction : MonoBehaviour {
   }
 
   private void Start() {
-    itemsManager = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemsManager>();
+    itemsManager = GameObject.FindGameObjectWithTag("HUD").GetComponent<ItemsManager>();
   }
 }
