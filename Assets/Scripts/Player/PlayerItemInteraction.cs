@@ -8,7 +8,7 @@ public class PlayerItemInteraction : MonoBehaviour {
   Material highlightMaterial;
   
   [SerializeField]
-  private HUDManager HUDManager;
+  private ItemsManager itemsManager;
   public PlayerStats playerStats;
   [SerializeField]
   public List<NormalItem> itemsInRange;
@@ -28,7 +28,6 @@ public class PlayerItemInteraction : MonoBehaviour {
     }
 
     if(itemsInRange.Count == 0) {
-      Debug.print("entrou aqui");
       Unequip(slot);
       return;
     }
@@ -81,7 +80,7 @@ public class PlayerItemInteraction : MonoBehaviour {
   private void Equip(int slot) {
     playerStats.itemsEquipped[slot] = lastClosestItem;
     playerStats.isSlotEquipped[slot] = true;
-    HUDManager.addSlotImage(slot);
+    itemsManager.addSlotImage(slot);
     
     lastClosestItem.AddEffects();
     lastClosestItem.gameObject.SetActive(false);
@@ -101,7 +100,7 @@ public class PlayerItemInteraction : MonoBehaviour {
     item.gameObject.transform.position = playerStats.gameObject.transform.position + randomUpwardsVector * itemDropDistance;
     item.gameObject.SetActive(true);
 
-    HUDManager.removeSlotImage(slot);
+    itemsManager.removeSlotImage(slot);
     playerStats.isSlotEquipped[slot] = false;
     playerStats.itemsEquipped[slot] = null;
   }

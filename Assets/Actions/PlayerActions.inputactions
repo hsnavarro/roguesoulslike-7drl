@@ -78,7 +78,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "See Progress",
+                    "name": "See Controls",
                     "type": "Button",
                     "id": "d85aaf32-f7bf-4c6c-95fe-067191022af1",
                     "expectedControlType": "Button",
@@ -441,6 +441,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ae097e53-d547-4268-9fdb-cff38562e351",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact Slot 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "dce026a0-429e-4bd0-8c5f-0fb455d417b4",
                     "path": "<Keyboard>/2",
                     "interactions": "",
@@ -475,7 +486,7 @@
                 {
                     "name": "",
                     "id": "fd211ed5-5f7a-450b-9af0-61d39951ca97",
-                    "path": "<XInputController>/dpad/right",
+                    "path": "<XInputController>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -496,74 +507,8 @@
                 },
                 {
                     "name": "",
-                    "id": "c2b234b6-1f62-47e2-b4ed-38595ff42b22",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact Slot 3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "21775b54-fd35-41d5-a745-03001addd275",
-                    "path": "<DualShockGamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact Slot 3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d2848b3b-8bd8-4901-ac64-8d11e7b021d5",
-                    "path": "<XInputController>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact Slot 3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c34ef5bf-b165-41c0-a52a-8622324c3d0a",
                     "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact Slot 4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b57d38a8-11a9-4ee4-8763-17a0ea16a901",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact Slot 4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e7aec32a-41a5-4b0b-95c3-a7b072b2dd89",
-                    "path": "<DualShockGamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact Slot 4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5d0df01a-0559-489d-8788-77c78e50afcf",
-                    "path": "<XInputController>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -578,7 +523,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "See Progress",
+                    "action": "See Controls",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -589,7 +534,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "See Progress",
+                    "action": "See Controls",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -600,7 +545,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "See Progress",
+                    "action": "See Controls",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -611,7 +556,73 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "See Progress",
+                    "action": "See Controls",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b57d38a8-11a9-4ee4-8763-17a0ea16a901",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact Slot 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7aec32a-41a5-4b0b-95c3-a7b072b2dd89",
+                    "path": "<DualShockGamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact Slot 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d0df01a-0559-489d-8788-77c78e50afcf",
+                    "path": "<XInputController>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact Slot 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2b234b6-1f62-47e2-b4ed-38595ff42b22",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact Slot 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21775b54-fd35-41d5-a745-03001addd275",
+                    "path": "<DualShockGamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact Slot 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2848b3b-8bd8-4901-ac64-8d11e7b021d5",
+                    "path": "<XInputController>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact Slot 4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -622,73 +633,9 @@
             "id": "469c6640-7005-42bf-bf9d-db61dabc1e76",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "PassThrough",
-                    "id": "41e32754-ac9f-4b7f-8a86-1692bfc22a4e",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Light Attack",
+                    "name": "Any Game Input",
                     "type": "Button",
-                    "id": "3a0cb07c-45df-47dd-8285-930b4d75c412",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Heavy Attack",
-                    "type": "Button",
-                    "id": "35744f00-192f-4fbc-b3fc-1a9abcd49716",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Run",
-                    "type": "Button",
-                    "id": "d65e80ed-a100-49f6-bb55-67685faac64a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "6cfe8400-3093-4e92-9a15-b91dca170d7b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Interact Slot 1",
-                    "type": "Button",
-                    "id": "4fb4fbda-6fee-4926-94af-a773203f7658",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Interact Slot 2",
-                    "type": "Button",
-                    "id": "97c1cec8-3135-42c5-9b8f-acb3c0586530",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Interact Slot 3",
-                    "type": "Button",
-                    "id": "690e867d-6517-415c-b383-b4ae504639ef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Interact Slot 4",
-                    "type": "Button",
-                    "id": "eca19670-7c29-49a3-8392-b1e7003d229b",
+                    "id": "8aed941f-3227-4a6a-93d4-7e82b7275d9f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -702,7 +649,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -713,7 +660,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -724,7 +671,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -735,7 +682,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -746,7 +693,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -757,7 +704,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -768,7 +715,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -779,7 +726,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -790,7 +737,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -801,7 +748,7 @@
                     "interactions": "",
                     "processors": "StickDeadzone(min=0.4)",
                     "groups": ";Gamepad",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -812,7 +759,7 @@
                     "interactions": "",
                     "processors": "StickDeadzone(min=0.4)",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -823,7 +770,7 @@
                     "interactions": "",
                     "processors": "StickDeadzone(min=0.4)",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -834,7 +781,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Light Attack",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -845,7 +792,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Light Attack",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -856,7 +803,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Light Attack",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -867,51 +814,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Light Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "119540a5-ec8e-4e7a-8501-9bb50a046f76",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "29b8b3e7-1e5d-4a9e-ad53-24d33c091d66",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "515b9e21-3cf0-4292-a407-11f68d647eee",
-                    "path": "<DualShockGamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a3bad3af-c065-4f58-84cf-bf5567063e97",
-                    "path": "<XInputController>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Run",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -922,7 +825,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Heavy Attack",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -933,7 +836,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Heavy Attack",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -944,7 +847,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Heavy Attack",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -955,7 +858,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Heavy Attack",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "119540a5-ec8e-4e7a-8501-9bb50a046f76",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29b8b3e7-1e5d-4a9e-ad53-24d33c091d66",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "515b9e21-3cf0-4292-a407-11f68d647eee",
+                    "path": "<DualShockGamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3bad3af-c065-4f58-84cf-bf5567063e97",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -966,7 +913,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -977,7 +924,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -988,7 +935,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -999,7 +946,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1010,7 +957,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 1",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1021,7 +968,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 1",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1032,7 +979,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 1",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1043,7 +990,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 1",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1054,7 +1001,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 2",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1065,7 +1012,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 2",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1076,7 +1023,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 2",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1087,7 +1034,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 2",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1098,7 +1045,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 3",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1109,7 +1056,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 3",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1120,7 +1067,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 3",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1131,7 +1078,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 3",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1142,7 +1089,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 4",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1153,7 +1100,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 4",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1164,7 +1111,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 4",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1175,7 +1122,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact Slot 4",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f03416c-e097-4359-8996-42dee9c72cb5",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c020e8e-6c60-4cdf-ab96-a95ab6915192",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b62e86f-6e6e-44b6-a304-fd9069263698",
+                    "path": "<DualShockGamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Game Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e48c258-a436-42b5-9f4e-d6acf54bb963",
+                    "path": "<XInputController>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Any Game Input",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

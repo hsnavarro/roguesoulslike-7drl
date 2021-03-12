@@ -6,20 +6,24 @@ using UnityEngine.UI;
 public class SkillTreeManager : MonoBehaviour
 {
 
-  public Slider healthBarSlider;
-  public Slider shieldBarSlider;
-  public Slider staminaBarSlider;
+  [SerializeField]
+  private Slider healthBarSlider;
+  [SerializeField]
+  private Slider flaskCapacityBarSlider;
+  [SerializeField]
+  private Slider staminaBarSlider;
 
-  public PlayerSkillTree playerSkillTree;
+  [SerializeField]
+  private PlayerSkillTree playerSkillTree;
 
   private float GetHealthBarFillRatio()
   {
     return playerSkillTree.healthBarProgression / playerSkillTree.healthBarSize;
   }
 
-  private float GetShieldBarFillRatio()
+  private float GetFlaskCapacityBarFillRatio()
   {
-    return playerSkillTree.shieldBarProgression / playerSkillTree.shieldBarSize;
+    return playerSkillTree.flasksCapacityBarProgression / playerSkillTree.flasksCapacityBarSize;
   }
 
   private float GetStaminaBarFillRatio()
@@ -30,7 +34,7 @@ public class SkillTreeManager : MonoBehaviour
   private void Update()
   {
     healthBarSlider.value = GetHealthBarFillRatio();
-    shieldBarSlider.value = GetShieldBarFillRatio();
+    flaskCapacityBarSlider.value = GetFlaskCapacityBarFillRatio();
     staminaBarSlider.value = GetStaminaBarFillRatio();
   }
 }

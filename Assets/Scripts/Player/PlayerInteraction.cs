@@ -30,7 +30,7 @@ public class PlayerInteraction : MonoBehaviour {
   private void Awake() {
     playerSkillTree.GetPermanentInformation();
     playerStats.defense.maxHealth += PermanentPlayerInformation.healthIncrease;
-    playerStats.defense.maxShield += PermanentPlayerInformation.shieldIncrease;
+    playerStats.flasksCapacity += PermanentPlayerInformation.flasksCapacityIncrease;
     playerStats.maxStamina += PermanentPlayerInformation.staminaIncrease;
   }
 

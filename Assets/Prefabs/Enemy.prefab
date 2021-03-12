@@ -183,7 +183,6 @@ GameObject:
   - component: {fileID: 2546114363662156508}
   - component: {fileID: 2546114363662156509}
   - component: {fileID: 2546114363662156506}
-  - component: {fileID: 2546114363662156507}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -271,24 +270,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2546114363662156507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2546114363662156505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dbd7403318bb204fbdcc2ff88509c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyStats: {fileID: 2546114365176379613}
-  defenseBarPivot: {fileID: 2546114363956320138}
-  healthBarRectangle: {fileID: 2546114363534494086}
-  shieldBarRectangle: {fileID: 2546114365256305931}
-  healthBarSlider: {fileID: 2546114363534494089}
-  shieldBarSlider: {fileID: 2546114365256305930}
 --- !u!1 &2546114363956320139
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2546114363956320138}
+  - component: {fileID: 1449965735}
   m_Layer: 8
   m_Name: Defense Bar Pivot
   m_TagString: Untagged
@@ -312,14 +294,32 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2546114363956320139}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.32556805, z: 0, w: 0.9455186}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2546114363662156504}
   m_Father: {fileID: 2546114365176379616}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -38, z: 0}
+--- !u!114 &1449965735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2546114363956320139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59f3a52fe930e446beb6d5401b9e7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStats: {fileID: 2546114365176379613}
+  defenseBarPivot: {fileID: 2546114363956320138}
+  healthBarRectangle: {fileID: 2546114363534494086}
+  shieldBarRectangle: {fileID: 2546114365256305931}
+  healthBarSlider: {fileID: 2546114363534494089}
+  shieldBarSlider: {fileID: 2546114365256305930}
 --- !u!1 &2546114363965507382
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 2546114365176379613}
+  playerSkillTree: {fileID: 0}
   enemyController: {fileID: 2546114365176379611}
 --- !u!143 &2546114365176379611
 CharacterController:
@@ -723,9 +724,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b244c03f4a78f184585265312527f9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   defense: {fileID: 2546114365176379608}
+  barIncreaseAfterDeath: 1
   speed: 0
-  attackDamage: 10
+  attackDamage: 100
   attackDuration: 1
   attackImpactDelay: 0.2
 --- !u!114 &2546114365176379610

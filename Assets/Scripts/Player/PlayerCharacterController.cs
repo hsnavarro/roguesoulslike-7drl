@@ -11,20 +11,20 @@ public class PlayerCharacterController : MonoBehaviour {
   private PlayerStats stats;
 
   public PlayerInput playerInput;
-  bool isSkillTreeUIActive = false;
-  public Canvas skillTreeCanvas;
+  bool isControlsUIActive = false;
+  public Canvas controlsCanvas;
 
   public void OnSeeProgress(InputAction.CallbackContext context) {
     if(context.started) {
-      isSkillTreeUIActive ^= true;
+      isControlsUIActive ^= true;
 
-      if(isSkillTreeUIActive) {
-        foreach(var action in playerInput.actions) if(action.name != "See Progress") action.Disable();
+      if(isControlsUIActive) {
+        foreach(var action in playerInput.actions) if(action.name != "See Controls") action.Disable();
       } else {
         playerInput.currentActionMap.Enable();
       }
 
-      skillTreeCanvas.gameObject.SetActive(isSkillTreeUIActive);
+      controlsCanvas.gameObject.SetActive(isControlsUIActive);
     }
   }
 

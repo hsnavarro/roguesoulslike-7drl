@@ -44,6 +44,17 @@ public class PlayerMovement : MonoBehaviour {
     playerController.Move(playerVelocity * Time.deltaTime);
   }
 
+  private void IncreaseStamina() {
+    if (staminaDelayTimer >= playerStats.staminaRechargeDelay) {      
+      playerStats.currentStamina = Mathf.Min(playerStats.maxStamina, 
+        playerStats.currentStamina + Time.deltaTime * playerStats.staminaRechargeRate);
+    }
+  }
+
+  private void DecreaseStamina() {
+    
+  }
+
   private void HandleRun() {
     bool isRunning = isRunButtonActive && playerStats.currentStamina > 0f;
     bool isMoving = playerDirection != Vector3.zero;
@@ -61,7 +72,6 @@ public class PlayerMovement : MonoBehaviour {
       playerStats.currentSpeed = playerStats.normalSpeed;
     }
 
-    if (playerStats.currentStamina != playerStats.maxStamina) staminaDelayTimer += Time.deltaTime;
 
     if ((!isRunning || !isMoving) && staminaDelayTimer >= playerStats.staminaRechargeDelay) {
       playerStats.currentStamina = Mathf.Min(playerStats.maxStamina,
@@ -82,6 +92,9 @@ public class PlayerMovement : MonoBehaviour {
   }
 
   private void Update() {
+
+    if (playerStats.currentStamina != playerStats.maxStamina) staminaDelayTimer += Time.deltaTime;
+
     HandleRun();
     ApplyMovement();
 

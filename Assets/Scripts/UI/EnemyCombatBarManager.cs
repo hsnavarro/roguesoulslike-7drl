@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyBarManager : MonoBehaviour {
+public class EnemyCombatBarManager : MonoBehaviour {
   public EnemyStats enemyStats;
   public Transform defenseBarPivot;
 
@@ -20,7 +20,7 @@ public class EnemyBarManager : MonoBehaviour {
   private float GetShieldBarFillRatio() {
     return enemyStats.defense.currentShield / enemyStats.defense.maxShield;
   }
-  
+
   private void Update() {
     //defenseBarPivot.LookAt(Camera.main.transform.position);
 

@@ -12,6 +12,9 @@ public class PlayerStats : MonoBehaviour {
   public bool[] isSlotEquipped;
 
   public Defense defense;
+
+  public int flasksCapacity = 3;
+
   public float maxStamina = 100f;
   public float normalSpeed = 5f;
   public float runSpeed = 10f;

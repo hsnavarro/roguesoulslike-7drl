@@ -30,12 +30,12 @@ public class EnemyInteraction : MonoBehaviour {
        float valueToIncrease = enemyStats.barIncreaseAfterDeath;
 
       switch(enemyStats.type) {
-        case EnemyTypes.WHICH:
+        case EnemyTypes.CYCLOPS:
           playerSkillTree.IncreaseHealthProgress(valueToIncrease);
           break;
 
-        case EnemyTypes.CYCLOPS:
-          playerSkillTree.IncreaseShieldProgress(valueToIncrease);
+        case EnemyTypes.WHICH:
+          playerSkillTree.IncreaseFlasksCapacityProgress(valueToIncrease);
           break;
 
         case EnemyTypes.FAUN:

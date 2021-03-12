@@ -16,10 +16,10 @@ public class PlayerSkillTree : MonoBehaviour
   public float healthIncreasePerBarCompleted;
   public float healthBarSize;
 
-  public float shieldIncrease;
-  public float shieldBarProgression;
-  public float shieldIncreasePerBarCompleted;
-  public float shieldBarSize;
+  public int flasksCapacityIncrease;
+  public float flasksCapacityBarProgression;
+  public int flasksCapacityIncreasePerBarCompleted;
+  public float flasksCapacityBarSize;
 
   public void GetPermanentInformation() {
     staminaIncrease = PermanentPlayerInformation.staminaIncrease;
@@ -32,10 +32,10 @@ public class PlayerSkillTree : MonoBehaviour
     healthIncreasePerBarCompleted = PermanentPlayerInformation.healthIncreasePerBarCompleted;
     healthBarSize = PermanentPlayerInformation.healthBarSize;
 
-    shieldIncrease = PermanentPlayerInformation.shieldIncrease;
-    shieldBarProgression = PermanentPlayerInformation.shieldBarProgression;
-    shieldIncreasePerBarCompleted = PermanentPlayerInformation.shieldIncreasePerBarCompleted;
-    shieldBarSize = PermanentPlayerInformation.shieldBarSize;
+    flasksCapacityIncrease = PermanentPlayerInformation.flasksCapacityIncrease;
+    flasksCapacityBarProgression = PermanentPlayerInformation.flasksCapacityBarProgression;
+    flasksCapacityIncreasePerBarCompleted = PermanentPlayerInformation.flasksCapacityIncreasePerBarCompleted;
+    flasksCapacityBarSize = PermanentPlayerInformation.flasksCapacityBarSize;
   }
 
   public void SetPermanentInformation() {
@@ -49,10 +49,10 @@ public class PlayerSkillTree : MonoBehaviour
     PermanentPlayerInformation.healthIncreasePerBarCompleted = healthIncreasePerBarCompleted;
     PermanentPlayerInformation.healthBarSize = healthBarSize;
 
-    PermanentPlayerInformation.shieldIncrease = shieldIncrease;
-    PermanentPlayerInformation.shieldBarProgression = shieldBarProgression;
-    PermanentPlayerInformation.shieldIncreasePerBarCompleted = shieldIncreasePerBarCompleted;
-    PermanentPlayerInformation.shieldBarSize = shieldBarSize;
+    PermanentPlayerInformation.flasksCapacityIncrease = flasksCapacityIncrease;
+    PermanentPlayerInformation.flasksCapacityBarProgression = flasksCapacityBarProgression;
+    PermanentPlayerInformation.flasksCapacityIncreasePerBarCompleted = flasksCapacityIncreasePerBarCompleted;
+    PermanentPlayerInformation.flasksCapacityBarSize = flasksCapacityBarSize;
   }
   public void IncreaseHealthProgress(float increase)
   {
@@ -84,18 +84,18 @@ public class PlayerSkillTree : MonoBehaviour
     }
   }
 
-  public void IncreaseShieldProgress(float increase)
+  public void IncreaseFlasksCapacityProgress(float increase)
   {
-    if (shieldBarProgression + increase >= shieldBarSize)
+    if (flasksCapacityBarProgression + increase >= flasksCapacityBarSize)
     {
-      shieldIncrease += shieldIncreasePerBarCompleted;
-      playerStats.defense.maxShield += shieldIncreasePerBarCompleted;
-      float valueLeft = shieldBarProgression + increase - shieldBarSize;
-      shieldBarProgression = valueLeft;
+      flasksCapacityIncrease += flasksCapacityIncreasePerBarCompleted;
+      playerStats.flasksCapacity += flasksCapacityIncreasePerBarCompleted;
+      float valueLeft = flasksCapacityBarProgression + increase - flasksCapacityBarSize;
+      flasksCapacityBarProgression = valueLeft;
     }
     else
     {
-      shieldBarProgression += increase;
+      flasksCapacityBarProgression += increase;
     }
   }
 
