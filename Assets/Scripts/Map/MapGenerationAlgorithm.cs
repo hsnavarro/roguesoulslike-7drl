@@ -16,14 +16,16 @@ public class MapGenerationAlgorithm : MonoBehaviour {
 
     public int numberOfItemSpawns;
     public int randomWalkMaxSteps;
+
+    public float illuminationPercentage = 0.01f;
     public List<Tuple<int, int>> tilePositions;
     public List<Tuple<int, int>> itemPositions;
     public bool[,] grid;
     public int width = 200;
     public int height = 200;
 
-    bool IsLimit(int i, int j) {
-        return i == 0 || i == width - 1 || j == 0 || j == height - 1;
+    public bool IsLimit(int i, int j) {
+        return i <= 0 || i >= width - 1 || j <= 0 || j >= height - 1;
     }
 
     public Tuple<int, int> GetDirection(int i) {
@@ -60,6 +62,7 @@ public class MapGenerationAlgorithm : MonoBehaviour {
                 }
             }
         }
+        tilePositions = tilePositions.OrderBy( x => Random.value ).ToList();
     }
 
     public void Smooth() {
@@ -209,6 +212,16 @@ public class MapGenerationAlgorithm : MonoBehaviour {
             }
         }
         return ans;
+    }
+
+    public List<Tuple<int, int>> GenerateIlluminationSpots() {
+        // tiles list is randomly ordered, so I'll get the first spots in the list lol
+        List<Tuple<int, int>> spots = new List<Tuple<int, int>>();
+        int numberOfSpots = (int) Math.Floor(tilePositions.Count * illuminationPercentage);
+        for (int i = 0; i < numberOfSpots; i++) {
+            spots.Add(tilePositions[i]);
+        }
+        return spots;
     }
 
     public void GenerateMap() {

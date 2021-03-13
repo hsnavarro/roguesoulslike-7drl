@@ -11,6 +11,8 @@ public class MapGenerator : MonoBehaviour {
     public GameObject tilePrefab;
     public GameObject wallPrefab;
 
+    public GameObject torchPrefab;
+
     public Transform activeTiles;
     public Transform tilePool;
 
@@ -18,6 +20,12 @@ public class MapGenerator : MonoBehaviour {
     public Transform wallPool;
     public ItemGeneration itemGenerator;
     public EnemyGeneration enemyGenerator;
+
+    public GameObject torchGenerator;
+
+    public int torchCoverArea;
+    public int maxTorchesNearby;
+    bool [,] hasTorch;
 
     public float scale = 2;
 
@@ -92,6 +100,37 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
+    public int CountTorchesNearby(Tuple<int, int> position) {
+        int ans = 0;
+        for (int i = position.Item1 - torchCoverArea; i <= position.Item1 + torchCoverArea; i++) {
+            for (int j = position.Item2 - torchCoverArea; j <= position.Item2 + torchCoverArea; j++) {
+                if (!generator.IsLimit(i, j) && hasTorch[i, j]) {
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+
+    public void Illuminate() {
+        List<Tuple<int, int>> positions = generator.GenerateIlluminationSpots();
+        hasTorch = new bool[generator.width, generator.height];
+        torchGenerator.transform.localScale = new Vector3(scale, scale, scale);
+        torchGenerator.transform.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
+
+        for (int i = 0; i < positions.Count; i++) {
+            if (CountTorchesNearby(positions[i]) <= maxTorchesNearby) {
+                hasTorch[positions[i].Item1, positions[i].Item2] = true;
+                GameObject torch = Instantiate(torchPrefab, Vector3.zero, Quaternion.identity);
+                torch.SetActive(true);
+                torch.transform.SetParent(torchGenerator.transform);
+                torch.transform.localPosition = new Vector3(positions[i].Item1, 0, positions[i].Item2);
+                torch.transform.eulerAngles = new Vector3(90, 0, 0);
+            }
+        }
+
+    }
+
     private void Start() {
         if (generateMap) {
             SpawnMap();
@@ -107,6 +146,7 @@ public class MapGenerator : MonoBehaviour {
         DrawWalls();
         SpawnItems();
         SpawnMonsters();
+        Illuminate();
     }
 
     private Vector3 GetCorrespondingRotationForWall(int d) {
