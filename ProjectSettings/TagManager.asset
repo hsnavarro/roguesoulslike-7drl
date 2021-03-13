@@ -26,6 +26,7 @@ TagManager:
   - HitboxTrigger
   - AggroTrigger
   - AttackTrigger
+  - WallDetectTrigger
   layers:
   - Default
   - TransparentFX
@@ -45,7 +46,7 @@ TagManager:
   - Aggro Trigger
   - Hitbox Trigger Player
   - Attack Trigger
-  - 
+  - Wall Detect Trigger
   - 
   - 
   - 

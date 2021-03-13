@@ -39,7 +39,7 @@ public class EnemyCombatBarManager : MonoBehaviour {
   private void Update() {
     resilienceBarPivot.rotation = resilienceBarRotation;
 
-    //defenseBarPivot.LookAt(Camera.main.transform.position);
+    // resilienceBarPivot.LookAt(Camera.main.transform.position);
 
     healthBarRectangle.sizeDelta = new Vector2(enemyStats.enemyResilience.maxHealth, healthBarRectangle.sizeDelta.y);
     shieldBarRectangle.sizeDelta = new Vector2(enemyStats.enemyResilience.maxShield, shieldBarRectangle.sizeDelta.y);

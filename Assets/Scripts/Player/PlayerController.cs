@@ -122,12 +122,6 @@ public class PlayerController : MonoBehaviour {
         return;
 
     if (context.started) {
-      playerMovement.dashDirection = playerMovement.playerDirection;
-      playerMovement.dashTimer = 0f;
-      playerMovement.isDashing = true;
-      playerMovement.DecreaseStamina(playerStats.dashStaminaDecrease);
-      playerMovement.RestartStaminaRechargeTimer();
-
       playerAnimator.SetBool("Dashing", true);
     }
   }
@@ -138,12 +132,12 @@ public class PlayerController : MonoBehaviour {
     playerMovement.playerDirection = new Vector3(input.x, 0, input.y);
     playerMovement.playerDirection = Quaternion.Euler(0, -45, 0) * playerMovement.playerDirection;    
   }
+
   public void OnHeavyAttack(InputAction.CallbackContext context) {
     if (IsActing) return;
 
     if (context.started) {
-      playerMovement.DecreaseStamina(playerStats.heavyAttackStaminaDecrease);
-      playerMovement.RestartStaminaRechargeTimer();
+      // playerAnimator.SetTrigger("HeavyAttack");
     }
   }
 
@@ -151,18 +145,13 @@ public class PlayerController : MonoBehaviour {
     if (IsActing) return;
 
     if (context.started) {
-      playerStats.currentStamina = Mathf.Max(0f, playerStats.currentStamina - playerStats.lightAttackStaminaDecrease);
-      playerMovement.DecreaseStamina(playerStats.lightAttackStaminaDecrease);
-      playerMovement.RestartStaminaRechargeTimer();
+      playerAnimator.SetTrigger("LightAttack");
     }
 
-    playerAnimator.SetTrigger("LightAttack");
   }
 
   public void DeathSceneOnInput(InputAction.CallbackContext context) {
-    if (Time.time - deathTime < deathTimeInputDelay) return;
-
-    if (context.started) {
+    if (context.started && Time.time - deathTime > deathTimeInputDelay) {
       SceneManager.LoadScene(sceneName);
     }
   }

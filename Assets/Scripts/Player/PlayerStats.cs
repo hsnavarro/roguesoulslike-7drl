@@ -42,8 +42,6 @@ public class PlayerStats : MonoBehaviour {
   public float dashDuration = 0.5f;
   public float dashSpeed = 20f;
   public float dashStaminaDecrease = 10f;
-  [HideInInspector]
-  public bool isDashing;
 
   private void Start() {
     itemsEquipped = new Item[maxNumberOfItems];
@@ -57,6 +55,5 @@ public class PlayerStats : MonoBehaviour {
     // Debug.Log("Player Shield " + defense.currentShield);
     // Debug.Log("Player Stamina " + currentStamina);
     // Debug.Log("Player Damage " + currentDamage * Time.fixedDeltaTime);
-    // Debug.Log("Player isDashing " + isDashing);
   }
 }

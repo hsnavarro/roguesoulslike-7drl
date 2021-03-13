@@ -7,17 +7,18 @@ public class EnemyAttack : MonoBehaviour {
   private EnemyStats enemyStats;
   [SerializeField]
   private CharacterController enemyController;
+  [SerializeField]
+  private Animator enemyAnimator;
 
   private PlayerSkillTree playerSkillTree;
 
   // TEMPORARY until we have models
-  [SerializeField]
-  private Collider hitbox;
+  public Collider hitbox;
   [SerializeField]
   private Material attackingMaterial;
   [SerializeField]
   private MeshRenderer meshRenderer;
-  private bool isAttacking = false;
+  public bool isAttacking = false;
   private Material enemyMaterial;
   // ---
 
@@ -36,7 +37,7 @@ public class EnemyAttack : MonoBehaviour {
         playerSkillTree.IncreaseFlasksCapacityProgress(valueToIncrease);
         break;
 
-      case EnemyTypes.FAUN:
+      case EnemyTypes.SATYR:
         playerSkillTree.IncreaseStaminaProgress(valueToIncrease);
         break;
 
@@ -48,13 +49,12 @@ public class EnemyAttack : MonoBehaviour {
   }
 
   private void Start() {
-    enemyMaterial = meshRenderer.material;
     playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
   }
 
   public void TriggerAttack() {
     if(!isAttacking && Time.time - lastAttackTime >= enemyStats.attackDelay) {
-      StartCoroutine(AttackCoroutine());
+      enemyAnimator.SetTrigger("Attack");
     }
   }
 
@@ -67,22 +67,5 @@ public class EnemyAttack : MonoBehaviour {
       Resilience playerResilience = collider.gameObject.GetComponent<Resilience>();
       playerResilience.TakeDamage(enemyStats.attackDamage);
     }
-  }
-
-  private IEnumerator AttackCoroutine() {
-    hitbox.enabled = true;
-    isAttacking = true;
-
-    meshRenderer.material = attackingMaterial;
-
-    yield return new WaitForSeconds(0.2f);
-
-    lastAttackTime = Time.time;
-    hitbox.enabled = false;
-    isAttacking = false;
-
-    meshRenderer.material = enemyMaterial;
-
-    yield return null;
   }
 }
