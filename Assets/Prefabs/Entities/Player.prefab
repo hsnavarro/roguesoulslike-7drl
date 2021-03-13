@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlsCanvas: {fileID: 0}
   deathSceneCanvas: {fileID: 0}
-  sceneName: Navarro
+  sceneName: Naum
   playerInput: {fileID: 1268130529}
   playerItemUsage: {fileID: 1268130524}
   playerMovement: {fileID: 1268130522}
@@ -228,18 +228,18 @@ MonoBehaviour:
   flasksCarried: 0
   flaskShieldIncrease: 0
   flaskHealthIncrease: 10
-  staminaRunDecreaseRate: 15
-  staminaRechargeRate: 20
+  staminaRunDecreaseRate: 20
+  staminaRechargeRate: 40
   staminaRechargeDelay: 1
   maxStamina: 100
   attackMultiplier: 100
-  lightAttackStaminaDecrease: 10
-  heavyAttackStaminaDecrease: 30
-  normalSpeed: 5
-  runSpeed: 10
-  dashDuration: 0.2
-  dashSpeed: 20
-  dashStaminaDecrease: 10
+  lightAttackStaminaDecrease: 30
+  heavyAttackStaminaDecrease: 50
+  normalSpeed: 4
+  runSpeed: 7
+  dashDuration: 0.15
+  dashSpeed: 15
+  dashStaminaDecrease: 20
 --- !u!114 &1268130529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,16 +554,16 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -591,12 +591,12 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 534016
+    m_Bits: 534272
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}

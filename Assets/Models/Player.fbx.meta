@@ -128,35 +128,7 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths:
-    - Player.Rig/root
-    - Player.Rig/root/DEF-spine
-    - Player.Rig/root/DEF-spine/DEF-spine.001
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-spine.004
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-spine.004/DEF-neck
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-spine.004/DEF-neck/DEF-head
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-spine.004/DEF-neck/DEF-head/DEF-head_end
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.L
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.L/DEF-upper_arm.L
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.L/DEF-upper_arm.L/DEF-forearm.L
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.L/DEF-upper_arm.L/DEF-forearm.L/DEF-hand.L
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.L/DEF-upper_arm.L/DEF-forearm.L/DEF-hand.L/DEF-hand.L_end
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.R
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.R/DEF-upper_arm.R
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.R/DEF-upper_arm.R/DEF-forearm.R
     - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.R/DEF-upper_arm.R/DEF-forearm.R/DEF-hand.R
-    - Player.Rig/root/DEF-spine/DEF-spine.001/DEF-spine.002/DEF-spine.003/DEF-shoulder.R/DEF-upper_arm.R/DEF-forearm.R/DEF-hand.R/DEF-hand.R_end
-    - Player.Rig/root/DEF-spine/DEF-thigh.L
-    - Player.Rig/root/DEF-spine/DEF-thigh.L/DEF-shin.L
-    - Player.Rig/root/DEF-spine/DEF-thigh.L/DEF-shin.L/DEF-foot.L
-    - Player.Rig/root/DEF-spine/DEF-thigh.L/DEF-shin.L/DEF-foot.L/DEF-toe.L
-    - Player.Rig/root/DEF-spine/DEF-thigh.L/DEF-shin.L/DEF-foot.L/DEF-toe.L/DEF-toe.L_end
-    - Player.Rig/root/DEF-spine/DEF-thigh.R
-    - Player.Rig/root/DEF-spine/DEF-thigh.R/DEF-shin.R
-    - Player.Rig/root/DEF-spine/DEF-thigh.R/DEF-shin.R/DEF-foot.R
-    - Player.Rig/root/DEF-spine/DEF-thigh.R/DEF-shin.R/DEF-foot.R/DEF-toe.R
-    - Player.Rig/root/DEF-spine/DEF-thigh.R/DEF-shin.R/DEF-foot.R/DEF-toe.R/DEF-toe.R_end
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
