@@ -11,7 +11,7 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public int numberOfWalks;
     public int numberOfSmooths;
 
-    private int numberOfMonsterSpawns;
+    public int numberOfMonsterSpawns;
     public int monstersPerSpawn;
 
     public int randomWalkMaxSteps;
@@ -187,7 +187,6 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public List<Tuple<int, int>> GenerateItemsStartPositions() {
         List<Tuple<int, int>> wallsPositions = GetWallsPositions();
         List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
-        Debug.Log("NumberOfItemSpaws "+ numberOfItemSpawns);
         for (int i = 0; i < numberOfItemSpawns; i++) {
             Tuple<int, int> spawnPoint = wallsPositions[Random.Range(0, wallsPositions.Count - 1)];
             for (int k = 0; k < randomWalkMaxSteps; k++) {

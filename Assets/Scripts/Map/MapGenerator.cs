@@ -86,13 +86,6 @@ public class MapGenerator : MonoBehaviour {
         
         itemGenerator.GenerateItems(generator.numberOfRareItems, generator.numberOfEpicItems);
 
-        foreach(var itemObject in itemGenerator.itemsGenerated) {
-            Debug.Log(itemObject.name);
-        }
-
-        Debug.Log(positions.Count);
-        Debug.Log(itemGenerator.itemsGenerated.Count);
-
         for (int i = 0; i < positions.Count; i++) {
             GameObject item = itemGenerator.itemsGenerated[i];
             item.transform.SetParent(itemGenerator.transform);

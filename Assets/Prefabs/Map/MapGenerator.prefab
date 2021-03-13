@@ -114,6 +114,7 @@ MonoBehaviour:
   numberOfSteps: 2000
   numberOfWalks: 10
   numberOfSmooths: 5
+  numberOfMonsterSpawns: 10
   monstersPerSpawn: 5
   randomWalkMaxSteps: 10
   illuminationPercentage: 0.05
