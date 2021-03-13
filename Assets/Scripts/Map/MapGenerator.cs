@@ -80,10 +80,21 @@ public class MapGenerator : MonoBehaviour {
 
     public void SpawnItems() {
         List<Tuple<int, int>> positions = generator.GenerateItemsStartPositions();
+
         itemGenerator.transform.localScale = new Vector3(scale, scale, scale);
         itemGenerator.transform.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
+        
+        itemGenerator.GenerateItems(generator.numberOfRareItems, generator.numberOfEpicItems);
+
+        foreach(var itemObject in itemGenerator.itemsGenerated) {
+            Debug.Log(itemObject.name);
+        }
+
+        Debug.Log(positions.Count);
+        Debug.Log(itemGenerator.itemsGenerated.Count);
+
         for (int i = 0; i < positions.Count; i++) {
-            GameObject item = itemGenerator.InstantiateItem();
+            GameObject item = itemGenerator.itemsGenerated[i];
             item.transform.SetParent(itemGenerator.transform);
             item.transform.localPosition = new Vector3(positions[i].Item1, 0.5f, positions[i].Item2);
         }
@@ -133,6 +144,7 @@ public class MapGenerator : MonoBehaviour {
 
     private void Start() {
         if (generateMap) {
+            generator.Start();
             SpawnMap();
         } else {
             Instantiate(testFloor, new Vector3(), Quaternion.identity);

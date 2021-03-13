@@ -114,13 +114,13 @@ MonoBehaviour:
   numberOfSteps: 2000
   numberOfWalks: 10
   numberOfSmooths: 5
-  numberOfMonsterSpawns: 15
   monstersPerSpawn: 5
-  numberOfItemSpawns: 5
   randomWalkMaxSteps: 10
   illuminationPercentage: 0.05
   width: 200
   height: 200
+  numberOfRareItems: 5
+  numberOfEpicItems: 3
 --- !u!114 &7673829972370452774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemGameObjectPrefab
       value: 
-      objectReference: {fileID: 4028166270128972103, guid: 340e88625d504f34a947dd7d283d4131,
+      objectReference: {fileID: 4258686713843432773, guid: 139d6ba2d7f90e34aa61136c865d5cfd,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca2f8bdbbc69e0a47a5d786966625346, type: 3}

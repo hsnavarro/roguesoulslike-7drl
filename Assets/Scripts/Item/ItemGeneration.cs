@@ -1,41 +1,31 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ItemGeneration : MonoBehaviour {   
     private List<Item> baseItems;
+    public List<GameObject> itemsGenerated;
 
     private Vector3 offset;
     
     [SerializeField]
     private GameObject itemGameObjectPrefab;
 
-    [Header("Item Quantities")]
-    [SerializeField]
-    private const int numberOfCommonItems = 7;
-    [SerializeField]
-    private int numberOfRareItems = 5;
-    [SerializeField]
-    private int numberOfEpicItems = 3;
-    [SerializeField]
-    private const int numberOfLegendaryItems = 1;
+    public GameObject InstantiateItem() {
+        GameObject itemGameObject =  Instantiate(itemGameObjectPrefab, Vector3.zero, Quaternion.identity);
+        itemGameObject.SetActive(true);
+        return itemGameObject;
+    }
 
-    private void Start() {
-        baseItems = new List<Item>();
-        offset = new Vector3(4f, 1f, -4f);
-        
+    public void GenerateItems(int numberOfRareItems, int numberOfEpicItems) {
         GenerateCommon();
-        GenerateRare();
-        GenerateEpic();
+        GenerateRare(numberOfRareItems);
+        GenerateEpic(numberOfEpicItems);
         GenerateLegendary();
     }
 
-    public GameObject InstantiateItem() {
-        Vector3 randomUpwardsVector = new Vector3(Random.Range(-1f, 1f), Random.value, Random.Range(-1f, 1f));
-        randomUpwardsVector = randomUpwardsVector.normalized;
-
-        GameObject itemGameObject =  Instantiate(itemGameObjectPrefab, Vector3.zero + Random.Range(3f, 20f) * randomUpwardsVector, Quaternion.identity);
-        itemGameObject.SetActive(true);
-        return itemGameObject;
+    private void Start() {
+        baseItems = new List<Item>();
     }
 
     private void GenerateCommon() {
@@ -48,6 +38,7 @@ public class ItemGeneration : MonoBehaviour {
         attackItem.attackDamageMultiplierIncrease = 10f;
 
         baseItems.Add(attackItem);
+        itemsGenerated.Add(attackGameObject);
 
         GameObject healthIncreaseGameObject = InstantiateItem();
         Item healthItem = healthIncreaseGameObject.GetComponent<Item>();
@@ -58,6 +49,7 @@ public class ItemGeneration : MonoBehaviour {
         healthItem.healthIncrease = 10f;
 
         baseItems.Add(healthItem);
+        itemsGenerated.Add(healthIncreaseGameObject);
 
         GameObject staminaGameObject = InstantiateItem();
         Item staminaItem = staminaGameObject.GetComponent<Item>();
@@ -68,6 +60,7 @@ public class ItemGeneration : MonoBehaviour {
         staminaItem.staminaIncrease = 10f;
 
         baseItems.Add(staminaItem);
+        itemsGenerated.Add(staminaGameObject);
 
         GameObject staminaDelayGameObject = InstantiateItem();
         Item staminaDelayItem = staminaDelayGameObject.GetComponent<Item>();
@@ -78,6 +71,7 @@ public class ItemGeneration : MonoBehaviour {
         staminaDelayItem.staminaRechargeDelayDecrease = 0.5f;
 
         baseItems.Add(staminaDelayItem); 
+        itemsGenerated.Add(staminaDelayGameObject);
 
         GameObject staminaRechargeGameObject = InstantiateItem();
         Item staminaRechargeItem = staminaRechargeGameObject.GetComponent<Item>();
@@ -88,6 +82,7 @@ public class ItemGeneration : MonoBehaviour {
         staminaRechargeItem.staminaRechargeRateIncrease = 10f;
 
         baseItems.Add(staminaRechargeItem);
+        itemsGenerated.Add(staminaRechargeGameObject);
 
         GameObject flaskCapacityGameObject = InstantiateItem();
         Item flaskCapacityItem = flaskCapacityGameObject.GetComponent<Item>();
@@ -98,6 +93,7 @@ public class ItemGeneration : MonoBehaviour {
         flaskCapacityItem.flasksCapacityIncrease = 1;
 
         baseItems.Add(flaskCapacityItem);
+        itemsGenerated.Add(flaskCapacityGameObject);
 
         GameObject flaskRegenerationGameObject = InstantiateItem();
         Item flaskRegenerationItem = flaskRegenerationGameObject.GetComponent<Item>();
@@ -108,6 +104,7 @@ public class ItemGeneration : MonoBehaviour {
         flaskRegenerationItem.flaskHealthRegenerationIncrease = 10f;
 
         baseItems.Add(flaskRegenerationItem);
+        itemsGenerated.Add(flaskRegenerationGameObject);
     }
 
     private void CopyEffects(Item setItem, Item getItem) {
@@ -159,15 +156,17 @@ public class ItemGeneration : MonoBehaviour {
                 }
             }
 
+            itemsGenerated.Add(itemGameObject);
+
             generateCounter++;
         }
     }
 
-    private void GenerateRare() {
+    private void GenerateRare(int numberOfRareItems) {
         GenerateCombined(2, numberOfRareItems);
     }   
 
-    private void GenerateEpic() {
+    private void GenerateEpic(int numberOfEpicItems) {
         GenerateCombined(3, numberOfEpicItems);
     }
 
@@ -189,5 +188,7 @@ public class ItemGeneration : MonoBehaviour {
 
         legendaryItem.flasksCapacityIncrease = 1;
         legendaryItem.flaskHealthRegenerationIncrease = 10f;
+
+        itemsGenerated.Add(legendaryGameObject);
     }
 }

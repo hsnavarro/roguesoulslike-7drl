@@ -11,10 +11,9 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public int numberOfWalks;
     public int numberOfSmooths;
 
-    public int numberOfMonsterSpawns;
+    private int numberOfMonsterSpawns;
     public int monstersPerSpawn;
 
-    public int numberOfItemSpawns;
     public int randomWalkMaxSteps;
 
     public float illuminationPercentage = 0.01f;
@@ -23,6 +22,18 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public bool[,] grid;
     public int width = 200;
     public int height = 200;
+
+    private int numberOfItemSpawns;
+
+    [Header("Item Quantities")]
+    public const int numberOfCommonItems = 7;
+    public int numberOfRareItems = 5;
+    public int numberOfEpicItems = 3;
+    public const int numberOfLegendaryItems = 1;
+
+    public void Start() {
+        numberOfItemSpawns = numberOfCommonItems + numberOfRareItems + numberOfEpicItems + numberOfLegendaryItems;
+    }
 
     public bool IsLimit(int i, int j) {
         return i <= 0 || i >= width - 1 || j <= 0 || j >= height - 1;
@@ -176,6 +187,7 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public List<Tuple<int, int>> GenerateItemsStartPositions() {
         List<Tuple<int, int>> wallsPositions = GetWallsPositions();
         List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
+        Debug.Log("NumberOfItemSpaws "+ numberOfItemSpawns);
         for (int i = 0; i < numberOfItemSpawns; i++) {
             Tuple<int, int> spawnPoint = wallsPositions[Random.Range(0, wallsPositions.Count - 1)];
             for (int k = 0; k < randomWalkMaxSteps; k++) {
@@ -235,8 +247,5 @@ public class MapGenerationAlgorithm : MonoBehaviour {
             Smooth();
         }
         UpdateTilesList();
-    }
-
-    void Start() {
     }
 }
