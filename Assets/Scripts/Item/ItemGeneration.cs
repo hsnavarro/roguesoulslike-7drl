@@ -23,10 +23,12 @@ public class ItemGeneration : MonoBehaviour {
         //itemGameObjectPrefab = GameObject.FindGameObjectWithTag("EmptyItem");
         baseItems = new List<Item>();
         offset = new Vector3(4f, 1f, -4f);
+        /*
         GenerateCommon();
         GenerateRare();
         GenerateEpic();
         GenerateLegendary();
+        */
     }
 
     public GameObject InstantiateItem() {

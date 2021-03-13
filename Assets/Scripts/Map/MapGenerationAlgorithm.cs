@@ -15,7 +15,7 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public int monstersPerSpawn;
 
     public int numberOfItemSpawns;
-    public int itemSpawnMaxDistanceFromWall;
+    public int randomWalkMaxSteps;
     public List<Tuple<int, int>> tilePositions;
     public List<Tuple<int, int>> itemPositions;
     public bool[,] grid;
@@ -143,7 +143,7 @@ public class MapGenerationAlgorithm : MonoBehaviour {
             Tuple<int, int> randomDirection = GetDirection(dir[d]);
             int newX = position.Item1 + randomDirection.Item1;
             int newY = position.Item2 + randomDirection.Item2;
-            if (grid[newX, newY]) {
+            if (grid[newX, newY] == true) {
                 return new Tuple<int, int>(newX, newY);
             }
         }
@@ -175,12 +175,39 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
         for (int i = 0; i < numberOfItemSpawns; i++) {
             Tuple<int, int> spawnPoint = wallsPositions[Random.Range(0, wallsPositions.Count - 1)];
-            for (int k = 0; k < itemSpawnMaxDistanceFromWall; k++) {
+            for (int k = 0; k < randomWalkMaxSteps; k++) {
                 spawnPoint = RandomWalkStep(spawnPoint);
             }
             ans.Add(spawnPoint);
         }
         itemPositions = ans;
+        return ans;
+    }
+
+    public List<Tuple<int, int>> GenerateMonsterSpawnPositions() {
+        List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
+        // Prioritize spawn near items
+        int itemSpawners = Math.Min(numberOfItemSpawns, numberOfMonsterSpawns);
+        for (int i = 0; i < itemSpawners; i++) {
+            int amountOfMonsters = Random.Range(1, monstersPerSpawn);
+            for (int j = 0; j < amountOfMonsters; j++) {
+                Tuple<int, int> position = itemPositions[i];
+                for (int k = 0; k < randomWalkMaxSteps; k++) {
+                    position = RandomWalkStep(position);
+                }
+                ans.Add(position);
+            }
+        }
+        for (int i = 0; i < numberOfMonsterSpawns - itemSpawners; i++) {
+            int amountOfMonsters = Random.Range(1, monstersPerSpawn);
+            for (int j = 0; j < amountOfMonsters; j++) {
+                Tuple<int, int> position = tilePositions[Random.Range(0, tilePositions.Count)];
+                for (int k = 0; k < randomWalkMaxSteps; k++) {
+                    position = RandomWalkStep(position);
+                }
+                ans.Add(position);
+            }
+        }
         return ans;
     }
 
