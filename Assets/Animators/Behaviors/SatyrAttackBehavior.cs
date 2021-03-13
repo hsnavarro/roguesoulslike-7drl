@@ -6,7 +6,8 @@ public class SatyrAttackBehavior : StateMachineBehaviour
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        enemyAttack = GameObject.FindGameObjectWithTag("HitboxTrigger").GetComponent<EnemyAttack>();
+        enemyAttack = animator.transform.parent.GetComponentInChildren<EnemyAttack>();
+        GameObject.FindGameObjectWithTag("HitboxTrigger").GetComponent<EnemyAttack>();
         enemyAttack.isAttacking = true;
         enemyAttack.hitbox.enabled = true;
     }

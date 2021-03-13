@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 
 public class EnemyStats : MonoBehaviour {
-  public EnemyTypes enemyType;
+  public enum RewardType {
+    Health,
+    Stamina,
+    Flask
+  }
+
   public Resilience enemyResilience;
 
   [Header("Player Progress Bar Stats")]
-  public float barIncreaseAfterDeath = 1f;
+  public float rewardAmount = 1f;
+  public RewardType reward;
   
   [Header("Speed Stats")]
   public float speed = 5f;

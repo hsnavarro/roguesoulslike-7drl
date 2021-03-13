@@ -13,6 +13,8 @@ public class EnemyAIBasic : MonoBehaviour {
   [SerializeField]
   private CharacterController enemyCharacterController;
 
+  public bool inAttackRange = false;
+
   private Vector3 enemyDirection;
 
   /*
@@ -102,7 +104,10 @@ public class EnemyAIBasic : MonoBehaviour {
   }
 
   private void OnTriggerEnter(Collider collider) {
-    if (gameObject.tag == "AttackTrigger") enemyAttack.TriggerAttack();
+    if (gameObject.tag == "AttackTrigger") {
+      Debug.Log("enter");
+      inAttackRange = true;
+    }
   }
 
   private void OnTriggerStay(Collider collider) {
@@ -111,5 +116,15 @@ public class EnemyAIBasic : MonoBehaviour {
 
   private void OnTriggerExit(Collider collider) {
     if (gameObject.tag == "AggroTrigger") enemyAnimator.SetBool("Moving", false);
+    if (gameObject.tag == "AttackTrigger") {
+      inAttackRange = false;
+      Debug.Log("exit");
+    }
+  }
+
+  void Update() {
+    if (inAttackRange)
+      enemyAttack.TriggerAttack();
+
   }
 }

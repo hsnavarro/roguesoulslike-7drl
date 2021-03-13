@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EnemyGeneration : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
 
     public GameObject InstantiateEnemy() {
-        int enemyType = Random.Range(0, 3);
+        int type = Random.Range(0, enemyPrefabs.Length);
 
-        GameObject enemy =  Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity);
-        enemy.GetComponent<EnemyStats>().enemyType = (EnemyTypes) enemyType;
+        GameObject enemy =  Instantiate(enemyPrefabs[type], Vector3.zero, Quaternion.identity);
         enemy.SetActive(true);
         return enemy;
     }

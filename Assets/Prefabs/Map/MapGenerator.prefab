@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1043022821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1043022822}
+  m_Layer: 0
+  m_Name: Torch Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1043022822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043022821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2570772515265667415}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &732826913512086552
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,6 +95,7 @@ Transform:
   - {fileID: 5308515158325790161}
   - {fileID: 7624614270740634110}
   - {fileID: 2146205486}
+  - {fileID: 1043022822}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,6 +118,7 @@ MonoBehaviour:
   monstersPerSpawn: 5
   numberOfItemSpawns: 5
   randomWalkMaxSteps: 10
+  illuminationPercentage: 0.05
   width: 200
   height: 200
 --- !u!114 &7673829972370452774
@@ -109,12 +141,17 @@ MonoBehaviour:
     type: 3}
   wallPrefab: {fileID: 3607472406924255951, guid: a85559d96395a1a43bc9ac2a609f6658,
     type: 3}
+  torchPrefab: {fileID: 2270852510897634151, guid: 435adbb4ae4b21643bf22b46d55c92b7,
+    type: 3}
   activeTiles: {fileID: 4800000754095039864}
   tilePool: {fileID: 3559793831203022461}
   activeWalls: {fileID: 8665510158679952282}
   wallPool: {fileID: 5308515158325790161}
   itemGenerator: {fileID: 7624614270740634111}
   enemyGenerator: {fileID: 2146205485}
+  torchGenerator: {fileID: 1043022821}
+  torchCoverArea: 0
+  maxTorchesNearby: 0
   scale: 2
 --- !u!1 &2934996160583749848
 GameObject:
@@ -275,6 +312,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
         type: 3}
+      propertyPath: numberOfEpicItems
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
+        type: 3}
+      propertyPath: numberOfRareItems
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
+        type: 3}
       propertyPath: itemGameObjectPrefab
       value: 
       objectReference: {fileID: 4028166270128972103, guid: 340e88625d504f34a947dd7d283d4131,
@@ -306,6 +353,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2570772515265667415}
     m_Modifications:
+    - target: {fileID: 2502145701672734092, guid: e284e34acbd5dee4487a2e447f07ef28,
+        type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 5970826515709941469, guid: 15ef399b49e591d46bc838d575823963,
+        type: 3}
+    - target: {fileID: 2502145701672734092, guid: e284e34acbd5dee4487a2e447f07ef28,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502145701672734092, guid: e284e34acbd5dee4487a2e447f07ef28,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5970826515709941469, guid: 15ef399b49e591d46bc838d575823963,
+        type: 3}
+    - target: {fileID: 2502145701672734092, guid: e284e34acbd5dee4487a2e447f07ef28,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5970826515709941469, guid: 56ada3850eb9f9948b700dcc94f1e2c4,
+        type: 3}
     - target: {fileID: 2502145701672734094, guid: e284e34acbd5dee4487a2e447f07ef28,
         type: 3}
       propertyPath: m_Name

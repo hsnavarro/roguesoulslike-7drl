@@ -96,7 +96,7 @@ public class MapGenerator : MonoBehaviour {
         for (int i = 0; i < positions.Count; i++) {
             GameObject enemy = enemyGenerator.InstantiateEnemy();
             enemy.transform.SetParent(enemyGenerator.transform);
-            enemy.transform.localPosition = new Vector3(positions[i].Item1, 0.5f, positions[i].Item2);
+            enemy.transform.localPosition = new Vector3(positions[i].Item1, 0f, positions[i].Item2);
         }
     }
 

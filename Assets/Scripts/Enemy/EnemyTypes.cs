@@ -1,1 +1,0 @@
-public enum EnemyTypes { WITCH, CYCLOPS, SATYR };

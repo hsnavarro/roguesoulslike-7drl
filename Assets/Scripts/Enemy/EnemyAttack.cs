@@ -25,19 +25,23 @@ public class EnemyAttack : MonoBehaviour {
   [HideInInspector]
   public float lastAttackTime;
 
-  public void OnDeath() {
-    float valueToIncrease = enemyStats.barIncreaseAfterDeath;
+  private void Start() {
+    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
+  }
 
-    switch(enemyStats.enemyType) {
-      case EnemyTypes.CYCLOPS:
+  public void OnDeath() {
+    float valueToIncrease = enemyStats.rewardAmount;
+
+    switch(enemyStats.reward) {
+      case EnemyStats.RewardType.Health:
         playerSkillTree.IncreaseHealthProgress(valueToIncrease);
         break;
 
-      case EnemyTypes.WITCH:
+      case EnemyStats.RewardType.Flask:
         playerSkillTree.IncreaseFlasksCapacityProgress(valueToIncrease);
         break;
 
-      case EnemyTypes.SATYR:
+      case EnemyStats.RewardType.Stamina:
         playerSkillTree.IncreaseStaminaProgress(valueToIncrease);
         break;
 
@@ -48,12 +52,9 @@ public class EnemyAttack : MonoBehaviour {
     Object.Destroy(transform.parent.gameObject);
   }
 
-  private void Start() {
-    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
-  }
-
   public void TriggerAttack() {
     if(!isAttacking && Time.time - lastAttackTime >= enemyStats.attackDelay) {
+      isAttacking = true;
       enemyAnimator.SetTrigger("Attack");
     }
   }

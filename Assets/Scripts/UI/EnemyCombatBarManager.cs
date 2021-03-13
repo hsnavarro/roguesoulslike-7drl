@@ -7,10 +7,12 @@ public class EnemyCombatBarManager : MonoBehaviour {
 
   private Transform resilienceBarPivot;
 
-  private RectTransform healthBarRectangle;
-  private RectTransform shieldBarRectangle;
-
+  [SerializeField]
+  private RectTransform healthBar;
   private Slider healthBarSlider;
+
+  [SerializeField]
+  private RectTransform shieldBar;
   private Slider shieldBarSlider;
 
   
@@ -27,22 +29,17 @@ public class EnemyCombatBarManager : MonoBehaviour {
   private void Start() {
     resilienceBarRotation = Quaternion.Euler(0f, -38f, 0f);
 
-    resilienceBarPivot = GameObject.FindGameObjectWithTag("ResiliencePivotEnemy").GetComponent<Transform>();
-
-    healthBarRectangle = GameObject.FindGameObjectWithTag("HealthBarEnemy").GetComponent<RectTransform>();
-    healthBarSlider = GameObject.FindGameObjectWithTag("HealthBarEnemy").GetComponent<Slider>();
-
-    shieldBarRectangle = GameObject.FindGameObjectWithTag("ShieldBarEnemy").GetComponent<RectTransform>();
-    shieldBarSlider = GameObject.FindGameObjectWithTag("ShieldBarEnemy").GetComponent<Slider>();
+    healthBarSlider = healthBar.GetComponent<Slider>();
+    shieldBarSlider = shieldBar.GetComponent<Slider>();
   }
 
   private void Update() {
-    resilienceBarPivot.rotation = resilienceBarRotation;
+    transform.rotation = resilienceBarRotation;
 
     // resilienceBarPivot.LookAt(Camera.main.transform.position);
 
-    healthBarRectangle.sizeDelta = new Vector2(enemyStats.enemyResilience.maxHealth, healthBarRectangle.sizeDelta.y);
-    shieldBarRectangle.sizeDelta = new Vector2(enemyStats.enemyResilience.maxShield, shieldBarRectangle.sizeDelta.y);
+    healthBar.sizeDelta = new Vector2(enemyStats.enemyResilience.maxHealth, healthBar.sizeDelta.y);
+    shieldBar.sizeDelta = new Vector2(enemyStats.enemyResilience.maxShield, shieldBar.sizeDelta.y);
 
     healthBarSlider.value = GetHealthBarFillRatio();
     shieldBarSlider.value = GetShieldBarFillRatio();

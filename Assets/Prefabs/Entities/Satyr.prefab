@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &243431726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243431727}
+  - component: {fileID: 243431728}
+  m_Layer: 18
+  m_Name: WallDetect Trigger
+  m_TagString: WallDetectTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &243431727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243431726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 639226652581903345}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &243431728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243431726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1, z: 2}
 --- !u!1 &301855589
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,8 +107,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 1.55}
+  m_Size: {x: 1, y: 1.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &1987187805
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,8 +152,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 1.55}
+  m_Size: {x: 1, y: 1.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!114 &2116878221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +170,7 @@ MonoBehaviour:
   enemyStats: {fileID: 2481120369144729033}
   enemyAttack: {fileID: 130509744067095085}
   enemyCharacterController: {fileID: 8864429155479431924}
+  inAttackRange: 0
 --- !u!1 &845920438774825713
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +219,7 @@ MonoBehaviour:
   enemyStats: {fileID: 2481120369144729033}
   enemyAttack: {fileID: 130509744067095085}
   enemyCharacterController: {fileID: 8864429155479431924}
+  inAttackRange: 0
 --- !u!135 &7934764244108177272
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -232,6 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 2481120369144729033}
+  healthBar: {fileID: 4364616991925641740}
+  shieldBar: {fileID: 2645319565864796431}
 --- !u!1 &1854318380061988674
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +540,7 @@ GameObject:
   - component: {fileID: 2481120369144729033}
   - component: {fileID: 6537164406827064781}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: Satyr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,6 +561,7 @@ Transform:
   - {fileID: 301855590}
   - {fileID: 6334760558853115854}
   - {fileID: 1987187806}
+  - {fileID: 243431727}
   - {fileID: 7608633070708661157}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -528,7 +577,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
+  m_Height: 2
   m_Radius: 0.4
   m_SlopeLimit: 0
   m_StepOffset: 0
@@ -547,9 +596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b244c03f4a78f184585265312527f9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 2
   enemyResilience: {fileID: 6537164406827064781}
-  barIncreaseAfterDeath: 9
+  rewardAmount: 1
+  reward: 1
   speed: 3
   attackDamage: 10
   attackDelay: 1
@@ -565,10 +614,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4202f55ea52f243930dc15a2c7a290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  maxShield: 100
-  currentShield: 100
+  maxHealth: 30
+  currentHealth: 30
+  maxShield: 0
+  currentShield: 0
   deathCallback:
     m_PersistentCalls:
       m_Calls:
@@ -1002,7 +1051,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 22b7626370d425e418733395ee288505,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22b7626370d425e418733395ee288505,
         type: 3}
