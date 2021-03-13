@@ -94,11 +94,11 @@ public class MapGenerator : MonoBehaviour {
     }
 
     public void SpawnMonsters() {
-        List<Tuple<int, int>> positions = generator.GenerateMonsterSpawnPositions();
+        List<Tuple<int, int, int>> positions = generator.GenerateMonsterSpawnPositions();
         enemyGenerator.transform.localScale = new Vector3(scale, scale, scale);
         enemyGenerator.transform.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
         for (int i = 0; i < positions.Count; i++) {
-            GameObject enemy = enemyGenerator.InstantiateEnemy();
+            GameObject enemy = enemyGenerator.InstantiateEnemy(positions[i].Item3);
             enemy.transform.SetParent(enemyGenerator.transform);
             enemy.transform.localPosition = new Vector3(positions[i].Item1, 0f, positions[i].Item2);
         }

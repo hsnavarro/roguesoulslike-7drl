@@ -115,8 +115,13 @@ MonoBehaviour:
   numberOfWalks: 10
   numberOfSmooths: 5
   numberOfMonsterSpawns: 10
-  monstersPerSpawn: 5
-  randomWalkMaxSteps: 10
+  itemRandomWalkMaxSteps: 15
+  cyclopRandomWalkMaxSteps: 10
+  cyclopPerSpawn: 2
+  satyrRandomWalkMaxSteps: 7
+  satyrPerSpawn: 6
+  witchRandomWalkMaxSteps: 5
+  witchPerSpawn: 3
   illuminationPercentage: 0.05
   width: 200
   height: 200
@@ -151,7 +156,7 @@ MonoBehaviour:
   itemGenerator: {fileID: 7624614270740634111}
   enemyGenerator: {fileID: 2146205485}
   torchGenerator: {fileID: 1043022821}
-  torchCoverArea: 0
+  torchCoverArea: 3
   maxTorchesNearby: 0
   scale: 2
 --- !u!1 &2934996160583749848

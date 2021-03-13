@@ -12,9 +12,14 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public int numberOfSmooths;
 
     public int numberOfMonsterSpawns;
-    public int monstersPerSpawn;
+    public int itemRandomWalkMaxSteps;
 
-    public int randomWalkMaxSteps;
+    public int cyclopRandomWalkMaxSteps;
+    public int cyclopPerSpawn;
+    public int satyrRandomWalkMaxSteps;
+    public int satyrPerSpawn;
+    public int witchRandomWalkMaxSteps;
+    public int witchPerSpawn;
 
     public float illuminationPercentage = 0.01f;
     public List<Tuple<int, int>> tilePositions;
@@ -189,7 +194,7 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
         for (int i = 0; i < numberOfItemSpawns; i++) {
             Tuple<int, int> spawnPoint = wallsPositions[Random.Range(0, wallsPositions.Count - 1)];
-            for (int k = 0; k < randomWalkMaxSteps; k++) {
+            for (int k = 0; k < itemRandomWalkMaxSteps; k++) {
                 spawnPoint = RandomWalkStep(spawnPoint);
             }
             ans.Add(spawnPoint);
@@ -198,28 +203,72 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         return ans;
     }
 
-    public List<Tuple<int, int>> GenerateMonsterSpawnPositions() {
-        List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
+    int GetEnemiesPerSpawn(int enemyType) {
+        switch (enemyType) {
+            // SATYR
+            case 0:
+                return satyrPerSpawn;
+            // CYCLOPS
+            case 1:
+                return cyclopPerSpawn;
+            //  WITCH 
+            case 2:
+                return witchPerSpawn;
+            default:
+                return 0;
+        }
+    }
+
+    int GetEnemiesRandomWalkMaxSteps(int enemyType) {
+        switch (enemyType) {
+            // SATYR
+            case 0:
+                return satyrRandomWalkMaxSteps;
+            // CYCLOPS
+            case 1:
+                return cyclopRandomWalkMaxSteps;
+            //  WITCH 
+            case 2:
+                return witchRandomWalkMaxSteps;
+            default:
+                return 0;
+        }
+    }
+
+    public List<Tuple<int, int, int>> GenerateMonsterSpawnPositions() {
+        List<Tuple<int, int, int>> ans = new List<Tuple<int, int, int>>();
+
         // Prioritize spawn near items
         int itemSpawners = Math.Min(numberOfItemSpawns, numberOfMonsterSpawns);
         for (int i = 0; i < itemSpawners; i++) {
-            int amountOfMonsters = Random.Range(1, monstersPerSpawn);
+            int monsterType = Random.Range(0, 2);
+            int monstersPerSpawn = GetEnemiesPerSpawn(monsterType);
+            int randomWalkMaxSteps = GetEnemiesRandomWalkMaxSteps(monsterType);
+
+            int amountOfMonsters = Random.Range(1, monstersPerSpawn+1);
             for (int j = 0; j < amountOfMonsters; j++) {
-                Tuple<int, int> position = itemPositions[i];
+                Tuple<int, int> position = new Tuple<int, int>(itemPositions[i].Item1, itemPositions[i].Item2);
                 for (int k = 0; k < randomWalkMaxSteps; k++) {
                     position = RandomWalkStep(position);
                 }
-                ans.Add(position);
+                Tuple<int, int, int> positionAndMonsterType = new Tuple<int, int, int>(position.Item1, position.Item2, monsterType);
+                ans.Add(positionAndMonsterType);
             }
         }
+
         for (int i = 0; i < numberOfMonsterSpawns - itemSpawners; i++) {
-            int amountOfMonsters = Random.Range(1, monstersPerSpawn);
+            int monsterType = Random.Range(0, 2);
+            int monstersPerSpawn = GetEnemiesPerSpawn(monsterType);
+            int randomWalkMaxSteps = GetEnemiesRandomWalkMaxSteps(monsterType);
+
+            int amountOfMonsters = Random.Range(1, monstersPerSpawn+1);
             for (int j = 0; j < amountOfMonsters; j++) {
                 Tuple<int, int> position = tilePositions[Random.Range(0, tilePositions.Count)];
                 for (int k = 0; k < randomWalkMaxSteps; k++) {
                     position = RandomWalkStep(position);
                 }
-                ans.Add(position);
+                Tuple<int, int, int> positionAndMonsterType = new Tuple<int, int, int>(position.Item1, position.Item2, monsterType);
+                ans.Add(positionAndMonsterType);
             }
         }
         return ans;
