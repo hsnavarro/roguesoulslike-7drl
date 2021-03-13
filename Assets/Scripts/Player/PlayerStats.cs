@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour {
   public float dashSpeed = 20f;
   public float dashStaminaDecrease = 10f;
 
-  private void Start() {
+  public void Start() {
     itemsEquipped = new Item[maxNumberOfItems];
     isSlotEquipped = new bool[maxNumberOfItems];
     currentStamina = maxStamina;

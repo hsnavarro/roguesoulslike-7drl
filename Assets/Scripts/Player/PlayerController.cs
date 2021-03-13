@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour {
   }
 
   public void OnDash(InputAction.CallbackContext context) {
-    if(playerStats.currentStamina == 0f) return;
+    if(playerStats.currentStamina < playerStats.dashStaminaDecrease) return;
     if (IsActing || playerMovement.isDashing || playerMovement.playerDirection == Vector3.zero)
         return;
 
@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour {
   }
 
   public void OnLightAttack(InputAction.CallbackContext context) {
+    if (playerStats.currentStamina < playerStats.lightAttackStaminaDecrease) return;
     if (IsActing) return;
 
     if (context.started) {

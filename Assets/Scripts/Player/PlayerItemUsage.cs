@@ -15,6 +15,11 @@ public class PlayerItemUsage : MonoBehaviour {
   private Material lastClosestItemMaterial = null;
   private Item lastClosestItem = null;
 
+  public void Start() {
+    itemsInRange = new List<Item>();
+    playerItemsGridManager = GameObject.FindGameObjectWithTag("ImagesItemsGrid").GetComponent<PlayerItemsGridManager>();
+  }
+
   public void UseFlask() {
     if(playerStats.flasksCarried == 0) return;
 
@@ -57,11 +62,6 @@ public class PlayerItemUsage : MonoBehaviour {
     playerItemsGridManager.removeSlotImage(slot);
     playerStats.isSlotEquipped[slot] = false;
     playerStats.itemsEquipped[slot] = null;
-  }
-
-  private void Start() {
-    itemsInRange = new List<Item>();
-    playerItemsGridManager = GameObject.FindGameObjectWithTag("ImagesItemsGrid").GetComponent<PlayerItemsGridManager>();
   }
 
   private void UpdateClosestItem() {

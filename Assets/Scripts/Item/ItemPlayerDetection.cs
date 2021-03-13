@@ -6,6 +6,7 @@ public class ItemPlayerDetection : MonoBehaviour {
 
   private void Start() {
     playerItemUsage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerItemUsage>();
+    playerItemUsage.Start();
   }
 
   private void OnTriggerEnter(Collider collider) {
