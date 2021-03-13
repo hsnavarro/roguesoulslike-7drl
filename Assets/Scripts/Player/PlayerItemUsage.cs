@@ -49,7 +49,7 @@ public class PlayerItemUsage : MonoBehaviour {
     item.RemoveEffects();
 
     Vector3 randomUpwardsVector = new Vector3(Random.Range(-1f, 1f), Random.value, Random.Range(-1f, 1f));
-    randomUpwardsVector = randomUpwardsVector.normalized;
+    //randomUpwardsVector = randomUpwardsVector.normalized;
 
     item.gameObject.transform.position = playerStats.gameObject.transform.position + randomUpwardsVector * itemDropDistance;
     item.gameObject.SetActive(true);
@@ -60,6 +60,7 @@ public class PlayerItemUsage : MonoBehaviour {
   }
 
   private void Start() {
+    itemsInRange = new List<Item>();
     playerItemsGridManager = GameObject.FindGameObjectWithTag("ImagesItemsGrid").GetComponent<PlayerItemsGridManager>();
   }
 

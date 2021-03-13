@@ -2,9 +2,11 @@
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
-  public EnemyStats enemyStats;
-
-  public CharacterController enemyController;
+  [Header("Enemy References")]
+  [SerializeField]
+  private EnemyStats enemyStats;
+  [SerializeField]
+  private CharacterController enemyController;
 
   private PlayerSkillTree playerSkillTree;
 
@@ -15,8 +17,12 @@ public class EnemyAttack : MonoBehaviour {
   private Material attackingMaterial;
   [SerializeField]
   private MeshRenderer meshRenderer;
-  //private bool isAttacking = false;
+  private bool isAttacking = false;
+  private Material enemyMaterial;
   // ---
+
+  [HideInInspector]
+  public float lastAttackTime;
 
   public void OnDeath() {
     float valueToIncrease = enemyStats.barIncreaseAfterDeath;
@@ -38,15 +44,23 @@ public class EnemyAttack : MonoBehaviour {
         break;
     }
 
-    Object.Destroy(gameObject);
+    Object.Destroy(transform.parent.gameObject);
   }
 
   private void Start() {
-    StartCoroutine(AttackLoop());
+    enemyMaterial = meshRenderer.material;
     playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
   }
 
+  public void TriggerAttack() {
+    if(!isAttacking && Time.time - lastAttackTime >= enemyStats.attackDelay) {
+      StartCoroutine(AttackCoroutine());
+    }
+  }
+
   private void OnTriggerEnter(Collider collider) {
+    if (gameObject.tag != "HitboxTrigger") return;
+
     // TODO enemy attack enemy
     // hsnavarro: We are not doing this :/ 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
@@ -55,23 +69,20 @@ public class EnemyAttack : MonoBehaviour {
     }
   }
 
-  private IEnumerator AttackLoop() {
-    Material material = meshRenderer.material;
+  private IEnumerator AttackCoroutine() {
+    hitbox.enabled = true;
+    isAttacking = true;
 
-    while (true) {
-      hitbox.enabled = true;
-      //isAttacking = true;
+    meshRenderer.material = attackingMaterial;
 
-      meshRenderer.material = attackingMaterial;
+    yield return new WaitForSeconds(0.2f);
 
-      yield return new WaitForSeconds(0.2f);
+    lastAttackTime = Time.time;
+    hitbox.enabled = false;
+    isAttacking = false;
 
-      hitbox.enabled = false;
-      //isAttacking = false;
+    meshRenderer.material = enemyMaterial;
 
-      meshRenderer.material = material;
-
-      yield return new WaitForSeconds(1.0f);
-    }
+    yield return null;
   }
 }

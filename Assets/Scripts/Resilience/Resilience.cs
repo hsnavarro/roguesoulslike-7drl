@@ -32,8 +32,6 @@ public class Resilience : MonoBehaviour {
   public void TakeDamage(float value) {
     if (currentHealth == 0f) return;
 
-    Debug.Log("Taking damage " + gameObject.name);
-
     // Only positive values!
     if(value < 0f) return;
 

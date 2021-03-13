@@ -23,6 +23,9 @@ TagManager:
   - HealthBarEnemy
   - ShieldBarEnemy
   - EmptyItem
+  - HitboxTrigger
+  - AggroTrigger
+  - AttackTrigger
   layers:
   - Default
   - TransparentFX
@@ -38,10 +41,10 @@ TagManager:
   - Flask
   - Normal Item
   - Weapon
-  - 
-  - 
-  - 
-  - 
+  - Hitbox Trigger Enemy
+  - Aggro Trigger
+  - Hitbox Trigger Player
+  - Attack Trigger
   - 
   - 
   - 

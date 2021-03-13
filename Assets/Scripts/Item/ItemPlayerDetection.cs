@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ItemPlayerDetection : MonoBehaviour {
 
-  private PlayerItemUsage playerInteraction;
+  private PlayerItemUsage playerItemUsage;
 
   private void Start() {
-    playerInteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerItemUsage>();
+    playerItemUsage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerItemUsage>();
   }
 
   private void OnTriggerEnter(Collider collider) {
@@ -13,7 +13,7 @@ public class ItemPlayerDetection : MonoBehaviour {
 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
       Item item = gameObject.GetComponent<Item>();
-      playerInteraction.itemsInRange.Add(item);
+      playerItemUsage.itemsInRange.Add(item);
     }
   }
 
@@ -22,7 +22,7 @@ public class ItemPlayerDetection : MonoBehaviour {
 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
       Item item = gameObject.GetComponent<Item>();
-      playerInteraction.itemsInRange.Remove(item);
+      playerItemUsage.itemsInRange.Remove(item);
     }
   }
 }

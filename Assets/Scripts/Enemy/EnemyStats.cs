@@ -12,5 +12,5 @@ public class EnemyStats : MonoBehaviour {
 
   [Header("Attack Stats")]
   public float attackDamage = 10f;
-  public float attackDuration = 1f;
+  public float attackDelay = 1f; 
 }

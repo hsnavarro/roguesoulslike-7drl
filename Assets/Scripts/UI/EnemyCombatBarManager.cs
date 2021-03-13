@@ -13,6 +13,9 @@ public class EnemyCombatBarManager : MonoBehaviour {
   private Slider healthBarSlider;
   private Slider shieldBarSlider;
 
+  
+  Quaternion resilienceBarRotation;
+
   private float GetHealthBarFillRatio() {
     return enemyStats.enemyResilience.currentHealth / enemyStats.enemyResilience.maxHealth;
   }
@@ -22,6 +25,8 @@ public class EnemyCombatBarManager : MonoBehaviour {
   }
 
   private void Start() {
+    resilienceBarRotation = Quaternion.Euler(0f, -38f, 0f);
+
     resilienceBarPivot = GameObject.FindGameObjectWithTag("ResiliencePivotEnemy").GetComponent<Transform>();
 
     healthBarRectangle = GameObject.FindGameObjectWithTag("HealthBarEnemy").GetComponent<RectTransform>();
@@ -32,6 +37,8 @@ public class EnemyCombatBarManager : MonoBehaviour {
   }
 
   private void Update() {
+    resilienceBarPivot.rotation = resilienceBarRotation;
+
     //defenseBarPivot.LookAt(Camera.main.transform.position);
 
     healthBarRectangle.sizeDelta = new Vector2(enemyStats.enemyResilience.maxHealth, healthBarRectangle.sizeDelta.y);
