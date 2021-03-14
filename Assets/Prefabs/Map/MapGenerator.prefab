@@ -127,6 +127,7 @@ MonoBehaviour:
   height: 200
   numberOfRareItems: 5
   numberOfEpicItems: 3
+  numberOfFlasks: 5
 --- !u!114 &7673829972370452774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,10 @@ MonoBehaviour:
   wallPrefab: {fileID: 3607472406924255951, guid: a85559d96395a1a43bc9ac2a609f6658,
     type: 3}
   torchPrefab: {fileID: 2270852510897634151, guid: 435adbb4ae4b21643bf22b46d55c92b7,
+    type: 3}
+  statuePrefab: {fileID: 2737606670502254544, guid: 94013cf56354d22459d10f5027384980,
+    type: 3}
+  flaskPrefab: {fileID: 387330024667597678, guid: 0837383213ecea74cba1c39e86abd827,
     type: 3}
   activeTiles: {fileID: 4800000754095039864}
   tilePool: {fileID: 3559793831203022461}

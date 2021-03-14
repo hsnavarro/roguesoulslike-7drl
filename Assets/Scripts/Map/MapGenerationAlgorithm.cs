@@ -35,9 +35,10 @@ public class MapGenerationAlgorithm : MonoBehaviour {
     public int numberOfRareItems = 5;
     public int numberOfEpicItems = 3;
     public const int numberOfLegendaryItems = 1;
+    public int numberOfFlasks = 5;
 
     public void Start() {
-        numberOfItemSpawns = numberOfCommonItems + numberOfRareItems + numberOfEpicItems + numberOfLegendaryItems;
+        numberOfItemSpawns = numberOfCommonItems + numberOfRareItems + numberOfEpicItems + numberOfLegendaryItems + numberOfFlasks;
     }
 
     public bool IsLimit(int i, int j) {

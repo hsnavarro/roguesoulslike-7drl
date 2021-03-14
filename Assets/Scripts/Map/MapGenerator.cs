@@ -13,6 +13,7 @@ public class MapGenerator : MonoBehaviour {
 
     public GameObject torchPrefab;
     public GameObject statuePrefab;
+    public GameObject flaskPrefab;
 
     public Transform activeTiles;
     public Transform tilePool;
@@ -86,11 +87,17 @@ public class MapGenerator : MonoBehaviour {
         itemGenerator.transform.position = scale*(new Vector3(-generator.width/2, 0, -generator.height/2));
         
         itemGenerator.GenerateItems(generator.numberOfRareItems, generator.numberOfEpicItems);
+        int totalItems = MapGenerationAlgorithm.numberOfCommonItems + generator.numberOfRareItems + generator.numberOfEpicItems + MapGenerationAlgorithm.numberOfLegendaryItems;
 
-        for (int i = 0; i < positions.Count; i++) {
+        for (int i = 0; i < totalItems; i++) {
             GameObject item = itemGenerator.itemsGenerated[i];
             item.transform.SetParent(itemGenerator.transform);
             item.transform.localPosition = new Vector3(positions[i].Item1, 0.5f, positions[i].Item2);
+        }
+
+        // flasks
+        for (int i = 0; i < generator.numberOfFlasks; i++) {
+            GameObject flask = Instantiate(flaskPrefab, new Vector3(), Quaternion.identity);
         }
     }
 
