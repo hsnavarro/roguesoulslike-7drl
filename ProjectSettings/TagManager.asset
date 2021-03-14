@@ -28,6 +28,7 @@ TagManager:
   - AttackTrigger
   - WallDetectTrigger
   - HurtboxTrigger
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -57,7 +58,7 @@ TagManager:
   - Projectile
   - Reaper
   - Witch
-  - 
+  - ReaperStatue
   - 
   - 
   - 

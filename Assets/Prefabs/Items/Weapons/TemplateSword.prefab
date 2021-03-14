@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2524019867237014492}
   m_Layer: 13
   m_Name: TemplateSword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

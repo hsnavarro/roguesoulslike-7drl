@@ -12,6 +12,7 @@ public class MapGenerator : MonoBehaviour {
     public GameObject wallPrefab;
 
     public GameObject torchPrefab;
+    public GameObject statuePrefab;
 
     public Transform activeTiles;
     public Transform tilePool;
@@ -132,7 +133,12 @@ public class MapGenerator : MonoBehaviour {
                 torch.transform.eulerAngles = new Vector3(90, 0, 0);
             }
         }
+    }
 
+    public void SpawnStatue() {
+        var position = generator.GenerateStatueSpot();
+        Debug.Log(position);
+        GameObject statue = Instantiate(statuePrefab, Vector3.zero, Quaternion.identity);
     }
 
     private void Start() {
@@ -152,6 +158,7 @@ public class MapGenerator : MonoBehaviour {
         SpawnItems();
         SpawnMonsters();
         Illuminate();
+        SpawnStatue();
     }
 
     private Vector3 GetCorrespondingRotationForWall(int d) {

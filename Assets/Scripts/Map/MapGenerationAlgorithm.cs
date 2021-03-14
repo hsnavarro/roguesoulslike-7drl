@@ -284,6 +284,11 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         return spots;
     }
 
+    public Tuple<int, int> GenerateStatueSpot() {
+        int numberLights = (int) Math.Floor(tilePositions.Count * illuminationPercentage);
+        return tilePositions[numberLights];
+    }
+
     public void GenerateMap() {
         grid = new bool[width, height];
         tilePositions = new List<Tuple<int, int>>();
