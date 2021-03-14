@@ -96,8 +96,10 @@ public class MapGenerator : MonoBehaviour {
         }
 
         // flasks
-        for (int i = 0; i < generator.numberOfFlasks; i++) {
+        for (int i = totalItems; i < totalItems + generator.numberOfFlasks; i++) {
             GameObject flask = Instantiate(flaskPrefab, new Vector3(), Quaternion.identity);
+            flask.transform.SetParent(itemGenerator.transform);
+            flask.transform.localPosition = new Vector3(positions[i].Item1, 0, positions[i].Item2);
         }
     }
 
@@ -143,9 +145,10 @@ public class MapGenerator : MonoBehaviour {
     }
 
     public void SpawnStatue() {
-        var position = generator.GenerateStatueSpot();
-        Debug.Log(position);
+        var p = generator.GenerateStatueSpot();
         GameObject statue = Instantiate(statuePrefab, Vector3.zero, Quaternion.identity);
+        statue.transform.SetParent(itemGenerator.transform);
+        statue.transform.localPosition = new Vector3(p.Item1, 0, p.Item2);
     }
 
     private void Start() {

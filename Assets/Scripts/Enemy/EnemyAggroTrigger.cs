@@ -28,6 +28,7 @@ public class EnemyAggroTrigger : MonoBehaviour {
       enemyAnimator.SetBool("Moving", false);
       return;
     }
+
     enemyAnimator.SetBool("Moving", true);
 
     if(playerStats) {
@@ -46,8 +47,10 @@ public class EnemyAggroTrigger : MonoBehaviour {
   }
 
   private void OnTriggerExit(Collider collider) {
-    if (collider.gameObject.tag == "Player")
+    if (collider.gameObject.tag == "Player") {
       isMoving = false;
+      enemyAnimator.SetBool("Moving", false);
+    }
   }
 
   void FixedUpdate() {
