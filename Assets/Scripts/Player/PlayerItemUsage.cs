@@ -54,7 +54,8 @@ public class PlayerItemUsage : MonoBehaviour {
 
     Vector3 randomVector = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
 
-    item.gameObject.transform.parent.position = playerStats.gameObject.transform.position + randomVector * itemDropDistance;
+    //item.gameObject.transform.parent.position = playerStats.gameObject.transform.position + randomVector * itemDropDistance;
+    item.gameObject.transform.parent.position = playerStats.gameObject.transform.position + new Vector3(0f, 0.5f, 0f);
     item.transform.parent.gameObject.SetActive(true);
 
     playerItemsGridManager.removeSlotImage(slot);
