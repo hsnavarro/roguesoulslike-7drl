@@ -12,6 +12,8 @@ public class HeavyAttackBehavior : StateMachineBehaviour {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         playerController.IsHeavyAttacking = true;
         playerMovement.DecreaseStamina(playerStats.heavyAttackStaminaDecrease);
+
+        playerMovement.StartedAttacking();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

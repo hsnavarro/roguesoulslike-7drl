@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
@@ -27,6 +28,10 @@ public class PlayerMovement : MonoBehaviour {
   private PlayerStats playerStats;
   [SerializeField]
   private PlayerController playerController;
+  
+  public Action StartedDash = delegate {  };
+  public Action StartedWalking = delegate {  };
+  public Action StartedAttacking = delegate {  };
 
   public void UpdateDashState() {
     if (Time.time - lastTimeUsedDash > playerStats.dashDuration) {

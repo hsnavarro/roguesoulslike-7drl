@@ -12,6 +12,8 @@ public class LightAttackBehavior : StateMachineBehaviour {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         playerController.IsLightAttacking = true;
         playerMovement.DecreaseStamina(playerStats.lightAttackStaminaDecrease);
+        
+        playerMovement.StartedAttacking();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
