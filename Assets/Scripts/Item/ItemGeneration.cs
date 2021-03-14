@@ -9,12 +9,36 @@ public class ItemGeneration : MonoBehaviour {
     private Vector3 offset;
     
     [SerializeField]
-    private GameObject itemGameObjectPrefab;
+    public GameObject legendaryItemPrefab;
+    public GameObject epicItemPrefab;
+    public GameObject rareItemPrefab;
+    public GameObject commonItemPrefab;
 
-    public GameObject InstantiateItem() {
-        GameObject itemGameObject =  Instantiate(itemGameObjectPrefab, Vector3.zero, Quaternion.identity);
-        itemGameObject.SetActive(true);
-        return itemGameObject;
+    public GameObject InstantiateItem(Rarity itemRarity) {
+        GameObject itemGameObject;
+        switch (itemRarity) {
+            case Rarity.COMMON:
+                itemGameObject = Instantiate(commonItemPrefab, Vector3.zero, Quaternion.identity);
+                itemGameObject.SetActive(true);
+                return itemGameObject;
+            case Rarity.RARE:
+                itemGameObject = Instantiate(rareItemPrefab, Vector3.zero, Quaternion.identity);
+                itemGameObject.SetActive(true);
+                return itemGameObject;
+            case Rarity.EPIC:
+                itemGameObject = Instantiate(epicItemPrefab, Vector3.zero, Quaternion.identity);
+                itemGameObject.SetActive(true);
+                return itemGameObject;
+            case Rarity.LEGENDARY:
+                itemGameObject = Instantiate(legendaryItemPrefab, Vector3.zero, Quaternion.identity);
+                itemGameObject.SetActive(true);
+                return itemGameObject;
+            default:
+            // Idk what should we do in this case
+                itemGameObject = Instantiate(commonItemPrefab, Vector3.zero, Quaternion.identity);
+                itemGameObject.SetActive(true);
+                return itemGameObject;
+        }
     }
 
     public void GenerateItems(int numberOfRareItems, int numberOfEpicItems) {
@@ -29,8 +53,8 @@ public class ItemGeneration : MonoBehaviour {
     }
 
     private void GenerateCommon() {
-        GameObject attackGameObject = InstantiateItem();
-        Item attackItem = attackGameObject.GetComponent<Item>();
+        GameObject attackGameObject = InstantiateItem(Rarity.COMMON);
+        Item attackItem = attackGameObject.GetComponentInChildren<Item>();
 
         attackGameObject.name = "Common Item 1";
         attackItem.baseName = "Attack Item";
@@ -40,8 +64,8 @@ public class ItemGeneration : MonoBehaviour {
         baseItems.Add(attackItem);
         itemsGenerated.Add(attackGameObject);
 
-        GameObject healthIncreaseGameObject = InstantiateItem();
-        Item healthItem = healthIncreaseGameObject.GetComponent<Item>();
+        GameObject healthIncreaseGameObject = InstantiateItem(Rarity.COMMON);
+        Item healthItem = healthIncreaseGameObject.GetComponentInChildren<Item>();
 
         healthIncreaseGameObject.name = "Common Item 2";
         healthItem.baseName = "Health Item";
@@ -51,8 +75,8 @@ public class ItemGeneration : MonoBehaviour {
         baseItems.Add(healthItem);
         itemsGenerated.Add(healthIncreaseGameObject);
 
-        GameObject staminaGameObject = InstantiateItem();
-        Item staminaItem = staminaGameObject.GetComponent<Item>();
+        GameObject staminaGameObject = InstantiateItem(Rarity.COMMON);
+        Item staminaItem = staminaGameObject.GetComponentInChildren<Item>();
 
         staminaGameObject.name = "Common Item 3";
         staminaItem.baseName = "Stamina Item";
@@ -62,8 +86,8 @@ public class ItemGeneration : MonoBehaviour {
         baseItems.Add(staminaItem);
         itemsGenerated.Add(staminaGameObject);
 
-        GameObject staminaDelayGameObject = InstantiateItem();
-        Item staminaDelayItem = staminaDelayGameObject.GetComponent<Item>();
+        GameObject staminaDelayGameObject = InstantiateItem(Rarity.COMMON);
+        Item staminaDelayItem = staminaDelayGameObject.GetComponentInChildren<Item>();
 
         staminaDelayGameObject.name = "Common Item 4";
         staminaDelayItem.baseName = "Stamina Delay Item";
@@ -73,8 +97,8 @@ public class ItemGeneration : MonoBehaviour {
         baseItems.Add(staminaDelayItem); 
         itemsGenerated.Add(staminaDelayGameObject);
 
-        GameObject staminaRechargeGameObject = InstantiateItem();
-        Item staminaRechargeItem = staminaRechargeGameObject.GetComponent<Item>();
+        GameObject staminaRechargeGameObject = InstantiateItem(Rarity.COMMON);
+        Item staminaRechargeItem = staminaRechargeGameObject.GetComponentInChildren<Item>();
 
         staminaRechargeGameObject.name = "Common Item 5";
         staminaRechargeItem.baseName = "Stamina Recharge Item";
@@ -84,8 +108,8 @@ public class ItemGeneration : MonoBehaviour {
         baseItems.Add(staminaRechargeItem);
         itemsGenerated.Add(staminaRechargeGameObject);
 
-        GameObject flaskCapacityGameObject = InstantiateItem();
-        Item flaskCapacityItem = flaskCapacityGameObject.GetComponent<Item>();
+        GameObject flaskCapacityGameObject = InstantiateItem(Rarity.COMMON);
+        Item flaskCapacityItem = flaskCapacityGameObject.GetComponentInChildren<Item>();
 
         flaskCapacityGameObject.name = "Common Item 6";
         flaskCapacityItem.baseName = "Flask Capacity Item";
@@ -95,8 +119,8 @@ public class ItemGeneration : MonoBehaviour {
         baseItems.Add(flaskCapacityItem);
         itemsGenerated.Add(flaskCapacityGameObject);
 
-        GameObject flaskRegenerationGameObject = InstantiateItem();
-        Item flaskRegenerationItem = flaskRegenerationGameObject.GetComponent<Item>();
+        GameObject flaskRegenerationGameObject = InstantiateItem(Rarity.COMMON);
+        Item flaskRegenerationItem = flaskRegenerationGameObject.GetComponentInChildren<Item>();
 
         flaskRegenerationGameObject.name = "Common Item 7";
         flaskRegenerationItem.baseName = "Flask Regeneration Item";
@@ -121,7 +145,7 @@ public class ItemGeneration : MonoBehaviour {
     }
 
 
-    private void GenerateCombined(int numberOfItemsCombined, int numberOfItemsToGenerate) {
+    private void GenerateCombined(int numberOfItemsCombined, int numberOfItemsToGenerate, Rarity itemRarity) {
         int generateCounter = 1;
 
         GameObject itemGameObject;
@@ -130,8 +154,8 @@ public class ItemGeneration : MonoBehaviour {
         Item itemChosen;
 
         while(generateCounter <= numberOfItemsToGenerate) {
-            itemGameObject = InstantiateItem();
-            item = itemGameObject.GetComponent<Item>();
+            itemGameObject = InstantiateItem(itemRarity);
+            item = itemGameObject.GetComponentInChildren<Item>();
 
             if (numberOfItemsCombined == 2) {
                 item.rarity = Rarity.RARE;
@@ -163,16 +187,16 @@ public class ItemGeneration : MonoBehaviour {
     }
 
     private void GenerateRare(int numberOfRareItems) {
-        GenerateCombined(2, numberOfRareItems);
+        GenerateCombined(2, numberOfRareItems, Rarity.RARE);
     }   
 
     private void GenerateEpic(int numberOfEpicItems) {
-        GenerateCombined(3, numberOfEpicItems);
+        GenerateCombined(3, numberOfEpicItems, Rarity.EPIC);
     }
 
     private void GenerateLegendary() {
-        GameObject legendaryGameObject = InstantiateItem();
-        Item legendaryItem = legendaryGameObject.GetComponent<Item>();
+        GameObject legendaryGameObject = InstantiateItem(Rarity.LEGENDARY);
+        Item legendaryItem = legendaryGameObject.GetComponentInChildren<Item>();
 
         legendaryGameObject.name = "Legendary Item";
         legendaryItem.rarity = Rarity.LEGENDARY;
