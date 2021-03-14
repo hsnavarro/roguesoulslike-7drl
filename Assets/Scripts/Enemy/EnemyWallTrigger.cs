@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class EnemyAIBasic : MonoBehaviour {
+public class EnemyWallTrigger : MonoBehaviour {
+  //[HideInInspector]
+  public bool inAttackRange;
+
   private PlayerStats playerStats;
 
   [Header("Enemy References")]
@@ -12,8 +15,6 @@ public class EnemyAIBasic : MonoBehaviour {
   private EnemyAttack enemyAttack;
   [SerializeField]
   private CharacterController enemyCharacterController;
-
-  public bool inAttackRange = false;
 
   private Vector3 enemyDirection;
 
@@ -92,15 +93,22 @@ public class EnemyAIBasic : MonoBehaviour {
   */
 
   private void ApplyMovement() {
-    if (enemyAttack.isAttacking) return;
+    // Debug.Log("In attack range " + inAttackRange);
+    if (enemyAttack.isAttacking || inAttackRange) return;
     enemyAnimator.SetBool("Moving", true);
 
-    Vector3 direction = (playerStats.transform.position - transform.position);
-    direction.y = 0;
-    enemyDirection = direction.normalized;
+    if(playerStats) {
+      Vector3 direction = (playerStats.transform.position - transform.position);
+      direction.y = 0;
+      enemyDirection = direction.normalized;
 
-    enemyCharacterController.Move(enemyDirection * enemyStats.speed * Time.deltaTime);
-    enemyStats.transform.rotation = Quaternion.LookRotation(enemyDirection);
+      enemyCharacterController.Move(enemyDirection * enemyStats.speed * Time.deltaTime);
+      enemyStats.transform.rotation = Quaternion.LookRotation(enemyDirection);     
+    }
+  }
+
+  private void OnControllerColliderHit(Collider collider) {
+    Debug.Log(collider.name + " " + gameObject.name);
   }
 
   private void OnTriggerEnter(Collider collider) {
@@ -111,7 +119,7 @@ public class EnemyAIBasic : MonoBehaviour {
   }
 
   private void OnTriggerStay(Collider collider) {
-    if (gameObject.tag == "AggroTrigger") ApplyMovement();
+    ApplyMovement();
   }
 
   private void OnTriggerExit(Collider collider) {
@@ -123,6 +131,7 @@ public class EnemyAIBasic : MonoBehaviour {
   }
 
   void Update() {
+    Debug.Log("inAttackRange " + inAttackRange);
     if (inAttackRange)
       enemyAttack.TriggerAttack();
 

@@ -27,6 +27,7 @@ TagManager:
   - AggroTrigger
   - AttackTrigger
   - WallDetectTrigger
+  - HurtboxTrigger
   layers:
   - Default
   - TransparentFX
@@ -49,9 +50,9 @@ TagManager:
   - Wall Detect Trigger
   - Floor
   - Wall
-  - 
-  - 
-  - 
+  - Hurtbox Trigger Enemy
+  - Satyr
+  - Cyclops
   - 
   - 
   - 

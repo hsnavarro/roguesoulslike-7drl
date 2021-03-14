@@ -1,7 +1,12 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
+  public Collider hitbox;
+  [HideInInspector]
+  public bool isAttacking = false;
+  [HideInInspector]
+  public float lastAttackTime;
+
   [Header("Enemy References")]
   [SerializeField]
   private EnemyStats enemyStats;
@@ -12,21 +17,10 @@ public class EnemyAttack : MonoBehaviour {
 
   private PlayerSkillTree playerSkillTree;
 
-  // TEMPORARY until we have models
-  public Collider hitbox;
-  [SerializeField]
-  private Material attackingMaterial;
-  [SerializeField]
-  private MeshRenderer meshRenderer;
-  public bool isAttacking = false;
-  private Material enemyMaterial;
-  // ---
-
-  [HideInInspector]
-  public float lastAttackTime;
-
-  private void Start() {
-    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
+  public void TriggerAttack() {
+    if(!isAttacking && Time.time - lastAttackTime >= enemyStats.attackDelay) {
+      enemyAnimator.SetTrigger("Attack");
+    }
   }
 
   public void OnDeath() {
@@ -52,11 +46,8 @@ public class EnemyAttack : MonoBehaviour {
     Object.Destroy(transform.parent.gameObject);
   }
 
-  public void TriggerAttack() {
-    if(!isAttacking && Time.time - lastAttackTime >= enemyStats.attackDelay) {
-      isAttacking = true;
-      enemyAnimator.SetTrigger("Attack");
-    }
+  private void Start() {
+    playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
   }
 
   private void OnTriggerEnter(Collider collider) {

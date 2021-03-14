@@ -388,6 +388,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1268130525, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
+      propertyPath: deathSceneCanvas
+      value: 
+      objectReference: {fileID: 2094826152}
     - target: {fileID: 1160922317266523166, guid: 04ded56899e14d041bc391c7b1853c3a,
         type: 3}
       propertyPath: m_Name
@@ -450,6 +454,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
+--- !u!223 &2094826152 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8775237651702744413, guid: f7f0a02af0ecd9c4da10449356abac7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 78617028918625001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &78617028918625001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567,8 +577,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8775237651702744408, guid: f7f0a02af0ecd9c4da10449356abac7c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f0a02af0ecd9c4da10449356abac7c, type: 3}
 --- !u!1001 &3130118537922618457
 PrefabInstance:

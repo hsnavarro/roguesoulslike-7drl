@@ -10,7 +10,7 @@ public class ItemPlayerDetection : MonoBehaviour {
   }
 
   private void OnTriggerEnter(Collider collider) {
-    if(collider.isTrigger) return;
+    if(gameObject.tag != "EmptyItem") return;
 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
       Item item = gameObject.GetComponent<Item>();
@@ -19,7 +19,7 @@ public class ItemPlayerDetection : MonoBehaviour {
   }
 
   private void OnTriggerExit(Collider collider) {
-    if(collider.isTrigger) return;
+    if(gameObject.tag != "EmptyItem") return;
 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
       Item item = gameObject.GetComponent<Item>();

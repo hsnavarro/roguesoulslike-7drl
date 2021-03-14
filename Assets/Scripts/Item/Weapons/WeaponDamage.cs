@@ -33,7 +33,15 @@ public class WeaponDamage : MonoBehaviour {
     private void OnTriggerEnter(Collider collider) {
         if (attacking == AttackType.None) return;
 
-        Resilience resilience = collider.gameObject.GetComponent<Resilience>();
+        Resilience resilience = null;
+        if (collider.gameObject.layer == (int)Layers.SATYR) {
+            resilience = collider.gameObject.GetComponent<Resilience>();
+        }
+
+        if (collider.gameObject.layer == (int)Layers.CYCLOPS) {
+            resilience = collider.transform.parent.parent.parent.gameObject.GetComponent<Resilience>();
+        }  
+
         if (resilience) {
             resilience.TakeDamage(attacking == AttackType.Light ? lightDamage : heavyDamage);
         }
