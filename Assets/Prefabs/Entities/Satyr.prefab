@@ -626,7 +626,7 @@ MonoBehaviour:
   rewardAmount: 4
   reward: 1
   speed: 3
-  attackDamage: 10
+  attackDamage: 15
   attackDelay: 1
 --- !u!114 &6537164406827064781
 MonoBehaviour:

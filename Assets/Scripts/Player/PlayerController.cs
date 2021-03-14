@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 
   [Header("Death Scene Canvas")]
   [SerializeField]
-  private Canvas deathSceneCanvas;
+  private DeathCanvas deathSceneCanvas;
   [Header("Scene to load when Dead")]
   [SerializeField]
   private string sceneName = "Naum";
@@ -34,8 +35,8 @@ public class PlayerController : MonoBehaviour {
 
   //private bool isControlsUIActive = false;
 
-  private float deathTime;
   private float deathTimeInputDelay = 2f;
+  private bool canDeathTimeReceiveInput = false;
 
   // Attack variables. Maybe move to a better place
   private bool isLightAttacking = false;
@@ -156,7 +157,7 @@ public class PlayerController : MonoBehaviour {
   }
 
   public void DeathSceneOnInput(InputAction.CallbackContext context) {
-    if (context.started && Time.time - deathTime > deathTimeInputDelay) {
+    if (context.started && canDeathTimeReceiveInput) {
       SceneManager.LoadScene(sceneName);
     }
   }
@@ -168,9 +169,17 @@ public class PlayerController : MonoBehaviour {
 
   public void OnDeath() {
     playerSkillTree.SetPermanentInformation();
-    playerInput.SwitchCurrentActionMap("DeathUI");
+    StartCoroutine(OnDeathCoroutine());
+  }
 
-    deathSceneCanvas.gameObject.SetActive(true);
-    deathTime = Time.time;
+  IEnumerator OnDeathCoroutine() {
+    playerInput.SwitchCurrentActionMap("DeathUI");
+    canDeathTimeReceiveInput = false;
+    deathSceneCanvas.Show(deathTimeInputDelay);
+
+    yield return new WaitForSeconds(deathTimeInputDelay);
+
+    deathSceneCanvas.ShowContinue();
+    canDeathTimeReceiveInput = true;
   }
 }
