@@ -27,4 +27,8 @@ public class CameraFollow : MonoBehaviour {
     transform.position = cameraPosition;
     if (isRotationOn) transform.LookAt(cameraTarget.position);
   }
+
+  public void Teleport() {
+    transform.position = cameraTarget.position + offset;
+  }
 }

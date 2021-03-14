@@ -190,7 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6282dfa458a7c54bb8df5bbe5388024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlsCanvas: {fileID: 0}
   deathSceneCanvas: {fileID: 0}
   sceneName: Naum
   playerInput: {fileID: 1268130529}
@@ -281,7 +280,7 @@ MonoBehaviour:
   staminaRechargeRate: 40
   staminaRechargeDelay: 1
   maxStamina: 100
-  attackMultiplier: 100
+  attackMultiplier: 0
   lightAttackStaminaDecrease: 30
   heavyAttackStaminaDecrease: 50
   normalSpeed: 4

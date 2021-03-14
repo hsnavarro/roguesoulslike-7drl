@@ -30,6 +30,8 @@ TagManager:
   - HurtboxTrigger
   - Weapon
   - Reaper
+  - ReaperRoom
+  - MusicSource
   layers:
   - Default
   - TransparentFX

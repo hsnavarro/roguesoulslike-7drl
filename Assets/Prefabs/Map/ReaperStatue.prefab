@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25224e02b9a0674fb3e597e0edb697b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossMusic: {fileID: 8300000, guid: 7d6b67eb72f691a4ea9796795714facd, type: 3}
 --- !u!1001 &2737606671267420549
 PrefabInstance:
   m_ObjectHideFlags: 0

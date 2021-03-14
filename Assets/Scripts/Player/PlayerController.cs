@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
+  /*
   [Header("Control Canvas")]
   [SerializeField]
   private Canvas controlsCanvas;
+  */
 
   [Header("Death Scene Canvas")]
   [SerializeField]
@@ -30,7 +32,7 @@ public class PlayerController : MonoBehaviour {
   [SerializeField]
   private Animator playerAnimator;
 
-  private bool isControlsUIActive = false;
+  //private bool isControlsUIActive = false;
 
   private float deathTime;
   private float deathTimeInputDelay = 2f;
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour {
   }
 
   public void OnSeeProgress(InputAction.CallbackContext context) {
+    /*
     if(context.started) {
       isControlsUIActive ^= true;
 
@@ -98,6 +101,7 @@ public class PlayerController : MonoBehaviour {
 
       controlsCanvas.gameObject.SetActive(isControlsUIActive);
     }
+    */
   }
 
   public void OnInteractSlot1(InputAction.CallbackContext context) {
@@ -169,5 +173,4 @@ public class PlayerController : MonoBehaviour {
     deathSceneCanvas.gameObject.SetActive(true);
     deathTime = Time.time;
   }
-
 }
