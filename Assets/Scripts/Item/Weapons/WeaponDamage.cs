@@ -40,6 +40,14 @@ public class WeaponDamage : MonoBehaviour {
 
         if (collider.gameObject.layer == (int)Layers.CYCLOPS) {
             resilience = collider.transform.parent.parent.parent.gameObject.GetComponent<Resilience>();
+        } 
+
+        if (collider.gameObject.layer == (int)Layers.REAPER) {
+            resilience = collider.gameObject.GetComponent<Resilience>();
+        }  
+
+        if (collider.gameObject.layer == (int)Layers.WITCH) {
+            resilience = collider.gameObject.GetComponent<Resilience>();
         }  
 
         if (resilience) {

@@ -49,6 +49,15 @@ public class EnemyAttack : MonoBehaviour {
 
     }
 
+    GameObject reaperGameObject = GameObject.FindGameObjectWithTag("Reaper");
+    if (reaperGameObject) {
+      Reaper reaper = reaperGameObject.GetComponent<Reaper>();
+      reaper.enemysAlive--;
+
+      if (reaper.enemysAlive == 0) reaper.UpdateShouldInvoke();
+    }
+
+
     Object.Destroy(transform.parent.parent.parent.gameObject);
   }
 

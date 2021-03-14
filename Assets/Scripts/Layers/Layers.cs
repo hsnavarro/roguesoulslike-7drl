@@ -6,5 +6,7 @@ public enum Layers {
   NORMAL_ITEM = 12, 
   SATYR = 22,
   CYCLOPS = 23,
-  PLAYER_COLLISION_TRIGGER = 24
+  PLAYER_COLLISION_TRIGGER = 24,
+  REAPER = 26,
+  WITCH = 27
 };
