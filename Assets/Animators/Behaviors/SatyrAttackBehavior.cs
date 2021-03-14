@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-public class SatyrAttackBehavior : StateMachineBehaviour
-{
+public class SatyrAttackBehavior : StateMachineBehaviour {
     private EnemyAttack enemyAttack;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

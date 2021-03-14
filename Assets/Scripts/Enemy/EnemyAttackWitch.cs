@@ -6,6 +6,7 @@ public class EnemyAttackWitch : EnemyAttack {
   private GameObject projectilePrefab;
 
   public override void Attack() {
+    Debug.Log("attack");
     // Spawn Item
     Instantiate(projectilePrefab, transform.position, Quaternion.identity);
   }

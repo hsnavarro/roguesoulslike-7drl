@@ -236,13 +236,13 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         }
     }
 
-    public List<Tuple<int, int, int>> GenerateMonsterSpawnPositions() {
+    public List<Tuple<int, int, int>> GenerateMonsterSpawnPositions(int totalEnemyTypes) {
         List<Tuple<int, int, int>> ans = new List<Tuple<int, int, int>>();
 
         // Prioritize spawn near items
         int itemSpawners = Math.Min(numberOfItemSpawns, numberOfMonsterSpawns);
         for (int i = 0; i < itemSpawners; i++) {
-            int monsterType = Random.Range(0, 2);
+            int monsterType = Random.Range(0, totalEnemyTypes);
             int monstersPerSpawn = GetEnemiesPerSpawn(monsterType);
             int randomWalkMaxSteps = GetEnemiesRandomWalkMaxSteps(monsterType);
 
@@ -258,7 +258,7 @@ public class MapGenerationAlgorithm : MonoBehaviour {
         }
 
         for (int i = 0; i < numberOfMonsterSpawns - itemSpawners; i++) {
-            int monsterType = Random.Range(0, 2);
+            int monsterType = Random.Range(0, totalEnemyTypes);
             int monstersPerSpawn = GetEnemiesPerSpawn(monsterType);
             int randomWalkMaxSteps = GetEnemiesRandomWalkMaxSteps(monsterType);
 
