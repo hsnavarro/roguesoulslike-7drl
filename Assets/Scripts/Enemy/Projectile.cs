@@ -11,20 +11,24 @@ public class Projectile : MonoBehaviour {
   [SerializeField]
   private float projectileSpeed;
   [SerializeField]
-  private float rotateSmooth = 1f;
+  private float smoothTime = 0.5f;
   [SerializeField]
   private float projectileDuration = 10f;
 
   private Vector2 projectileCurrentDirection;
   private Vector2 projectileDesiredDirection;
 
+  private Vector2 currentVelocity;
+
   private float timeProjectileWasSpawned;
+
+  private Vector3 playerHeadOffset = new Vector3(0f, 1.5f, 0f);
 
   private void Start() {
     playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     timeProjectileWasSpawned = Time.time;
 
-    Vector3 direction = (playerStats.transform.position - transform.position);
+    Vector3 direction = (playerStats.transform.position + playerHeadOffset - transform.position);
     projectileCurrentDirection = new Vector2(direction.x, direction.z).normalized;
   }
 
@@ -35,13 +39,14 @@ public class Projectile : MonoBehaviour {
 
   private void Update() {
     if(playerStats) {
-      Vector3 direction = (playerStats.transform.position - transform.position);
+      Vector3 direction = (playerStats.transform.position + playerHeadOffset - transform.position);
+      float directionY = direction.y;
       direction.y = 0;
       projectileDesiredDirection = new Vector2(direction.x, direction.z).normalized;
 
-      projectileCurrentDirection = Vector2.Lerp(projectileCurrentDirection, projectileDesiredDirection, rotateSmooth).normalized;
+      projectileCurrentDirection = Vector2.SmoothDamp(projectileCurrentDirection, projectileDesiredDirection, ref currentVelocity, smoothTime);
 
-      Vector3 projectileMovement = new Vector3(projectileCurrentDirection.x, 0, projectileCurrentDirection.y).normalized;
+      Vector3 projectileMovement = new Vector3(projectileCurrentDirection.x, directionY, projectileCurrentDirection.y).normalized;
       projectileCharacterController.Move(projectileMovement * projectileSpeed * Time.deltaTime);
     }
 

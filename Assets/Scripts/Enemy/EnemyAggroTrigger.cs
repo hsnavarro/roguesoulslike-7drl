@@ -14,8 +14,13 @@ public class EnemyAggroTrigger : MonoBehaviour {
   private EnemyAttack enemyAttack;
   [SerializeField]
   private CharacterController enemyCharacterController;
+  [SerializeField]
+  private float smoothTime = 0.5f;
 
-  private Vector3 enemyDirection;
+  private Vector2 enemyCurrentDirection;
+  private Vector2 enemyDesiredDirection;
+
+  private Vector2 currentVelocity;
 
   private bool isMoving = false;
 
@@ -34,14 +39,17 @@ public class EnemyAggroTrigger : MonoBehaviour {
     if(playerStats) {
       Vector3 direction = (playerStats.transform.position - transform.position);
       direction.y = 0;
-      enemyDirection = direction.normalized;
+      enemyDesiredDirection = new Vector2(direction.x, direction.z).normalized;
 
-      enemyCharacterController.Move(enemyDirection * enemyStats.speed * Time.deltaTime);
-      enemyStats.transform.rotation = Quaternion.LookRotation(enemyDirection);     
+      enemyCurrentDirection = Vector2.SmoothDamp(enemyCurrentDirection, enemyDesiredDirection, ref currentVelocity, smoothTime);
+
+      Vector3 enemyMovement = new Vector3(enemyCurrentDirection.x, 0, enemyCurrentDirection.y).normalized;
+      enemyCharacterController.Move(enemyMovement * enemyStats.speed * Time.deltaTime); 
+      enemyStats.transform.rotation = Quaternion.LookRotation(enemyMovement); 
     }
   }
 
-  private void OnTriggerStay(Collider collider) {
+  private void OnTriggerEnter(Collider collider) {
     if (collider.gameObject.tag == "Player")
       isMoving = true;
   }

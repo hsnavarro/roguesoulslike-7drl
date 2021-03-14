@@ -228,6 +228,7 @@ MonoBehaviour:
   enemyStats: {fileID: 2481120369144729033}
   enemyAttack: {fileID: 130509744067095085}
   enemyCharacterController: {fileID: 8864429155479431924}
+  smoothTime: 0.2
 --- !u!1 &1224122566668991578
 GameObject:
   m_ObjectHideFlags: 0
