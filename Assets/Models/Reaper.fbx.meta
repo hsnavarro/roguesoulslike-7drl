@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: 2e64c8ed945c0534cb4a3408543db457
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: -197481445520998111
+    second: Reaper.Rig|Attack
+  - first:
+      74: -5602352522758292211
+    second: Reaper.Rig|Idle
+  - first:
+      74: -8350448173842092373
+    second: Reaper.Rig|Invoke
+  - first:
+      74: -7512936641343335391
+    second: Reaper.Rig|PreAction
+  - first:
+      74: -927815319147706591
+    second: Reaper.Rig|Run
+  - first:
+      74: -3851050296621024864
+    second: Reaper|Idle
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    motionNodeName: <Root Transform>
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Reaper.Rig|Attack
+      takeName: Reaper.Rig|Attack
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Reaper.Rig|PreAction
+      takeName: Reaper.Rig|PreAction
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Reaper.Rig|Run
+      takeName: Reaper.Rig|Run
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Reaper.Rig|Invoke
+      takeName: Reaper.Rig|Invoke
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Reaper(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Reaper
+      parentName: Reaper(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Reaper.Rig
+      parentName: Reaper(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: root
+      parentName: Reaper.Rig
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: ORG-Bone
+      parentName: root
+      position: {x: 0.001772474, y: -0.018083667, z: 0.019608684}
+      rotation: {x: 0.7071068, y: 0.0000000018007076, z: 2.5724403e-10, w: 0.7071068}
+      scale: {x: 1.0000005, y: 0.9999998, z: 1.0000001}
+    - name: DEF-Bone
+      parentName: ORG-Bone
+      position: {x: -1.6763806e-10, y: 3.352761e-10, z: -9.80217e-10}
+      rotation: {x: -0, y: 3.330669e-16, z: 0.0000000021827873, w: 1}
+      scale: {x: 1.0000005, y: 1, z: 1.0000002}
+    - name: DEF-spine
+      parentName: root
+      position: {x: 0.000070350034, y: 0.00087391934, z: 0.009667828}
+      rotation: {x: 0.7237927, y: -0.000000082941355, z: -0.00000008434857, w: 0.6900176}
+      scale: {x: 1, y: 1.0000005, z: 1.0000001}
+    - name: DEF-spine.001
+      parentName: DEF-spine
+      position: {x: -2.9103829e-12, y: 0.0024783264, z: -4.9039955e-10}
+      rotation: {x: -0.018722773, y: -0.000000004326786, z: 0.0000000013995418, w: 0.99982476}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+    - name: DEF-spine.002
+      parentName: DEF-spine.001
+      position: {x: 2.4447217e-11, y: 0.0020945673, z: 4.3543877e-10}
+      rotation: {x: -0.1834713, y: 0.0000000023399163, z: 0.00000004547712, w: 0.98302513}
+      scale: {x: 0.99998534, y: 0.99999964, z: 0.9999555}
+    - name: DEF-spine.003
+      parentName: DEF-spine.002
+      position: {x: -8.58563e-12, y: 0.00186358, z: 2.4638666e-10}
+      rotation: {x: 0.17925043, y: 0.0000002356322, z: 1.8227193e-10, w: 0.98380345}
+      scale: {x: 1.0000143, y: 1.0000056, z: 1.0000389}
+    - name: DEF-shoulder.L
+      parentName: DEF-spine.003
+      position: {x: -0.00021805332, y: 0.0006260125, z: 0.0013332409}
+      rotation: {x: -0.56304884, y: 0.4205108, z: 0.43563986, w: 0.56246305}
+      scale: {x: 0.9999998, y: 0.9999997, z: 1.0000004}
+    - name: DEF-upper_arm.L
+      parentName: DEF-shoulder.L
+      position: {x: 0.00009073697, y: 0.0019637116, z: 0.00011293485}
+      rotation: {x: 0.12003018, y: -0.6843357, z: 0.122056216, w: 0.70878756}
+      scale: {x: 1.0070016, y: 0.9861408, z: 1.0070044}
+    - name: DEF-forearm.L
+      parentName: DEF-upper_arm.L
+      position: {x: 5.1688404e-10, y: 0.0037377488, z: -1.4901161e-10}
+      rotation: {x: -0.00095557363, y: 0.00050747365, z: -0.0058917142, w: 0.9999821}
+      scale: {x: 1.0028623, y: 0.9938893, z: 1.0035946}
+    - name: DEF-hand.L
+      parentName: DEF-forearm.L
+      position: {x: 7.4505804e-11, y: 0.0026442907, z: 0}
+      rotation: {x: -0.057772376, y: -0.00029045567, z: -0.0050420193, w: 0.998317}
+      scale: {x: 0.9902536, y: 1.0203518, z: 0.9898769}
+    - name: DEF-shoulder.R
+      parentName: DEF-spine.003
+      position: {x: 0.00021805275, y: 0.0006260125, z: 0.0013332407}
+      rotation: {x: -0.56304854, y: -0.42051086, z: -0.4356403, w: 0.56246287}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1.0000004}
+    - name: DEF-upper_arm.R
+      parentName: DEF-shoulder.R
+      position: {x: -0.000090737936, y: 0.0019637109, z: 0.000112937305}
+      rotation: {x: 0.120030016, y: 0.68433553, z: -0.12205569, w: 0.70878774}
+      scale: {x: 1.0056487, y: 0.9887961, z: 1.0056509}
+    - name: DEF-forearm.R
+      parentName: DEF-upper_arm.R
+      position: {x: 8.9406965e-10, y: 0.0037377493, z: 0.0000000011920929}
+      rotation: {x: -0.0006062462, y: -0.00050303334, z: 0.005882962, w: 0.9999825}
+      scale: {x: 1.002257, y: 0.99516886, z: 1.0028021}
+    - name: DEF-hand.R
+      parentName: DEF-forearm.R
+      position: {x: -7.45058e-10, y: 0.00264429, z: 0.0000000011920929}
+      rotation: {x: -0.05777237, y: 0.0002904873, z: 0.005042108, w: 0.998317}
+      scale: {x: 0.99223477, y: 1.0162944, z: 0.9918647}
+    - name: DEF-thigh.L
+      parentName: DEF-spine
+      position: {x: -0.0009092706, y: 0.00020153317, z: 0.0004202041}
+      rotation: {x: 0.9978439, y: -0.008396657, z: 0.047689416, w: 0.04430318}
+      scale: {x: 1.0093604, y: 0.9815385, z: 1.0093602}
+    - name: DEF-shin.L
+      parentName: DEF-thigh.L
+      position: {x: -3.7252902e-11, y: 0.0050531686, z: 2.3981556e-10}
+      rotation: {x: 0.09302309, y: -0.00000050416566, z: -0.000000027939677, w: 0.995664}
+      scale: {x: 1.0023279, y: 0.99466693, z: 1.0035535}
+    - name: DEF-foot.L
+      parentName: DEF-shin.L
+      position: {x: -2.9802322e-10, y: 0.004093162, z: -3.72529e-10}
+      rotation: {x: -0.5670659, y: -0.038702678, z: -0.028944757, w: 0.82225335}
+      scale: {x: 0.9884633, y: 0.9963721, z: 1.0158502}
+    - name: DEF-toe.L
+      parentName: DEF-foot.L
+      position: {x: 1.5541445e-10, y: 0.0014311919, z: -1.0099029e-10}
+      rotation: {x: 0.0004408341, y: 0.97376984, z: -0.22753146, w: -0.0012822114}
+      scale: {x: 1.0000033, y: 0.98792773, z: 1.0123855}
+    - name: DEF-thigh.R
+      parentName: DEF-spine
+      position: {x: 0.0009092707, y: 0.00020153326, z: 0.00042020302}
+      rotation: {x: 0.9978439, y: 0.00839667, z: -0.047689814, w: 0.04430306}
+      scale: {x: 1.0059328, y: 0.9882392, z: 1.0059325}
+    - name: DEF-shin.R
+      parentName: DEF-thigh.R
+      position: {x: -2.0489097e-10, y: 0.0050531677, z: -5.5879353e-11}
+      rotation: {x: 0.09302297, y: 0.000000529486, z: 0.00000003259629, w: 0.99566406}
+      scale: {x: 1.001436, y: 0.99662423, z: 1.0021443}
+    - name: DEF-foot.R
+      parentName: DEF-shin.R
+      position: {x: 7.4505804e-11, y: 0.0040931613, z: 7.4505804e-11}
+      rotation: {x: -0.5670836, y: 0.039214455, z: 0.028591853, w: 0.8222293}
+      scale: {x: 0.99267924, y: 0.99763006, z: 1.009888}
+    - name: DEF-toe.R
+      parentName: DEF-foot.R
+      position: {x: -1.9645086e-11, y: 0.0014311917, z: 3.071909e-10}
+      rotation: {x: 0.0004410351, y: 0.9737697, z: -0.22753166, w: -0.0012798845}
+      scale: {x: 0.9999989, y: 0.9923341, z: 1.0078149}
+    - name: MCH-torso.parent
+      parentName: Reaper.Rig
+      position: {x: 4.9969997e-20, y: 0.000013149921, z: 0.011161413}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: torso
+      parentName: MCH-torso.parent
+      position: {x: -1.2685456e-19, y: -0.00011147359, z: -0.0007261264}
+      rotation: {x: -0, y: 5.456969e-10, z: -1.8189893e-10, w: 1}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: MCH-spine.002
+      parentName: torso
+      position: {x: -3.783498e-12, y: -0.00008079131, z: 0.0033322072}
+      rotation: {x: 1.3234892e-19, y: -7.275958e-10, z: -4.1633363e-17, w: 1}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+    - name: spine_fk.002
+      parentName: MCH-spine.002
+      position: {x: -9.6042636e-12, y: -4.705498e-11, z: -8.0653706e-10}
+      rotation: {x: 0.5696193, y: -0.00000009790086, z: -0.00000006781513, w: 0.82190865}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: MCH-spine.003
+      parentName: spine_fk.002
+      position: {x: -5.5297277e-12, y: 0.0018635793, z: 3.9705014e-10}
+      rotation: {x: -0.5696193, y: 0.00000009840709, z: 0.00000006790691, w: 0.82190865}
+      scale: {x: 0.9999998, y: 1.0000001, z: 1.0000002}
+    - name: spine_fk.003
+      parentName: MCH-spine.003
+      position: {x: -1.0186341e-12, y: -5.617153e-11, z: -9.2082075e-10}
+      rotation: {x: 0.707721, y: 0.000000083934815, z: 0.00000008430312, w: 0.70649207}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1.0000002}
+    - name: tweak_spine.003
+      parentName: spine_fk.003
+      position: {x: 5.5297277e-12, y: -4.1256954e-12, z: -3.9405448e-10}
+      rotation: {x: -0, y: -1.8222576e-10, z: -1.8158627e-10, w: 1}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: ORG-spine.003
+      parentName: tweak_spine.003
+      position: {x: 5.5297277e-12, y: -4.1256954e-12, z: -3.9405448e-10}
+      rotation: {x: -9.926582e-20, y: 5.457181e-10, z: -9.379163e-13, w: 1}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: DEF-neck
+      parentName: ORG-spine.003
+      position: {x: 4.3655743e-12, y: 0.0017653637, z: 0.000006940275}
+      rotation: {x: 0.010801523, y: 0.00037095696, z: 0.00000401001, w: 0.9999416}
+      scale: {x: 1.0000019, y: 0.99999756, z: 1.0000013}
+    - name: DEF-neck.001
+      parentName: DEF-neck
+      position: {x: -4.6566128e-12, y: 0.0002764655, z: -2.1501818e-10}
+      rotation: {x: 0.080245815, y: -0.000180376, z: 0.00004503689, w: 0.9967751}
+      scale: {x: 0.99999785, y: 1.000005, z: 0.99999774}
+    - name: DEF-head
+      parentName: DEF-neck.001
+      position: {x: 2.910383e-13, y: 0.00033196172, z: -0.0000000010786732}
+      rotation: {x: -0.09085324, y: -0.00018947096, z: -0.000017263956, w: 0.9958643}
+      scale: {x: 1.0000007, y: 0.9999982, z: 1.0000012}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
