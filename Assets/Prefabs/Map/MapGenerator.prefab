@@ -318,6 +318,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
         type: 3}
+      propertyPath: epicItemPrefab
+      value: 
+      objectReference: {fileID: 7253269370859569375, guid: e7798220dc1a70244ad5e972a40af736,
+        type: 3}
+    - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
+        type: 3}
+      propertyPath: rareItemPrefab
+      value: 
+      objectReference: {fileID: 5207895075447814446, guid: b5a9af0f622399f46b70152196c0eeb6,
+        type: 3}
+    - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
+        type: 3}
+      propertyPath: commonItemPrefab
+      value: 
+      objectReference: {fileID: 6500226798468155614, guid: 14257354911f5f144b46112a74e14b69,
+        type: 3}
+    - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
+        type: 3}
       propertyPath: numberOfEpicItems
       value: 0
       objectReference: {fileID: 0}
@@ -326,6 +344,12 @@ PrefabInstance:
       propertyPath: numberOfRareItems
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
+        type: 3}
+      propertyPath: legendaryItemPrefab
+      value: 
+      objectReference: {fileID: 1442572396210759868, guid: c9fbac7dab7da6643be58379ad837544,
+        type: 3}
     - target: {fileID: 7624614271704369135, guid: ca2f8bdbbc69e0a47a5d786966625346,
         type: 3}
       propertyPath: itemGameObjectPrefab

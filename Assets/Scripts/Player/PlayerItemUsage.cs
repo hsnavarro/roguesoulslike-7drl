@@ -12,7 +12,6 @@ public class PlayerItemUsage : MonoBehaviour {
   [Header("Item Drop Distance")]
   public float itemDropDistance = 3f;
 
-  private Material lastClosestItemMaterial = null;
   private Item lastClosestItem = null;
 
   public void Start() {
@@ -83,24 +82,22 @@ public class PlayerItemUsage : MonoBehaviour {
 
     if(closestItemToPlayer != lastClosestItem) {
       if (lastClosestItem != null) {
-        Material material = lastClosestItem.gameObject.GetComponent<MeshRenderer>().material;
         ItemDescriptionManager itemUI = lastClosestItem.gameObject.GetComponent<ItemDescriptionManager>();
         itemUI.Hide();
 
-        material.DisableKeyword("_EMISSION");
+        Light light = lastClosestItem.transform.parent.GetChild(0).GetComponent<Light>();
+        light.intensity = 2.5f;
       }
 
       lastClosestItem = closestItemToPlayer;
-      lastClosestItemMaterial = closestItemToPlayerMaterial;
 
       if(closestItemToPlayer != null) {
 
-        Material material = closestItemToPlayer.gameObject.GetComponent<MeshRenderer>().material;
         ItemDescriptionManager itemUI = lastClosestItem.gameObject.GetComponent<ItemDescriptionManager>();
         itemUI.Show();
 
-        material.EnableKeyword("_EMISSION");
-        material.SetColor("_EmissionColor", material.color);
+        Light light = lastClosestItem.transform.parent.GetChild(0).GetComponent<Light>();
+        light.intensity = 10f;
       }
     }
   }

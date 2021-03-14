@@ -58,10 +58,10 @@ TagManager:
   - Projectile
   - Reaper
   - Witch
-  - ReaperStatue
-  - 
-  - 
-  - 
+  - Common Item
+  - Rare Item
+  - Epic Item
+  - Legendary Item
   m_SortingLayers:
   - name: Default
     uniqueID: 0

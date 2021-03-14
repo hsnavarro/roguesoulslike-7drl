@@ -144,6 +144,7 @@ public class MapGenerator : MonoBehaviour {
     private void Start() {
         if (generateMap) {
             generator.Start();
+            itemGenerator.Start();
             SpawnMap();
         } else {
             Instantiate(testFloor, new Vector3(), Quaternion.identity);

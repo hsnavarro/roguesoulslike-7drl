@@ -188,45 +188,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapGenerator
       objectReference: {fileID: 0}
-    - target: {fileID: 2570772515265668776, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7624614270740634048, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7624614270740634111, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7624614270740634111, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
-        type: 3}
-      propertyPath: epicItemPrefab
-      value: 
-      objectReference: {fileID: 4258686713843432773, guid: 139d6ba2d7f90e34aa61136c865d5cfd,
-        type: 3}
-    - target: {fileID: 7624614270740634111, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
-        type: 3}
-      propertyPath: rareItemPrefab
-      value: 
-      objectReference: {fileID: 4258686713843432773, guid: 139d6ba2d7f90e34aa61136c865d5cfd,
-        type: 3}
-    - target: {fileID: 7624614270740634111, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
-        type: 3}
-      propertyPath: commonItemPrefab
-      value: 
-      objectReference: {fileID: 4258686713843432773, guid: 139d6ba2d7f90e34aa61136c865d5cfd,
-        type: 3}
-    - target: {fileID: 7624614270740634111, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
-        type: 3}
-      propertyPath: legendaryItemPrefab
-      value: 
-      objectReference: {fileID: 4258686713843432773, guid: 139d6ba2d7f90e34aa61136c865d5cfd,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd091a2868b9f4e4ba8cd13e75ecad59, type: 3}
 --- !u!108 &705507994 stripped
@@ -530,6 +491,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1160922317266523166, guid: 04ded56899e14d041bc391c7b1853c3a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1970250202368364196, guid: 04ded56899e14d041bc391c7b1853c3a,
         type: 3}
       propertyPath: m_RootOrder
@@ -734,12 +700,12 @@ PrefabInstance:
     - target: {fileID: 1022770683245643653, guid: ea9beab3709ac9e4b89a6db8a207bc11,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1022770683245643653, guid: ea9beab3709ac9e4b89a6db8a207bc11,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2360993894857106827, guid: ea9beab3709ac9e4b89a6db8a207bc11,
         type: 3}
@@ -799,17 +765,22 @@ PrefabInstance:
     - target: {fileID: 7147065401604809158, guid: ea9beab3709ac9e4b89a6db8a207bc11,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7147065401604809158, guid: ea9beab3709ac9e4b89a6db8a207bc11,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8845545911470131367, guid: ea9beab3709ac9e4b89a6db8a207bc11,
         type: 3}
       propertyPath: m_Name
       value: Reaper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845545911470131367, guid: ea9beab3709ac9e4b89a6db8a207bc11,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea9beab3709ac9e4b89a6db8a207bc11, type: 3}

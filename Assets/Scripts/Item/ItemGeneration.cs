@@ -14,6 +14,10 @@ public class ItemGeneration : MonoBehaviour {
     public GameObject rareItemPrefab;
     public GameObject commonItemPrefab;
 
+    public void Start() {
+        baseItems = new List<Item>();
+    }
+
     public GameObject InstantiateItem(Rarity itemRarity) {
         GameObject itemGameObject;
         switch (itemRarity) {
@@ -46,10 +50,6 @@ public class ItemGeneration : MonoBehaviour {
         GenerateRare(numberOfRareItems);
         GenerateEpic(numberOfEpicItems);
         GenerateLegendary();
-    }
-
-    private void Start() {
-        baseItems = new List<Item>();
     }
 
     private void GenerateCommon() {
