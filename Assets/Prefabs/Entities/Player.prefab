@@ -276,7 +276,7 @@ MonoBehaviour:
   flasksCapacity: 3
   flasksCarried: 0
   flaskShieldIncrease: 0
-  flaskHealthIncrease: 10
+  flaskHealthIncrease: 50
   staminaRunDecreaseRate: 20
   staminaRechargeRate: 40
   staminaRechargeDelay: 1

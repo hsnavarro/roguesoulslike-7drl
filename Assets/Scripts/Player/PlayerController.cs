@@ -164,9 +164,10 @@ public class PlayerController : MonoBehaviour {
 
   public void OnDeath() {
     playerSkillTree.SetPermanentInformation();
+    playerInput.SwitchCurrentActionMap("DeathUI");
+
     deathSceneCanvas.gameObject.SetActive(true);
     deathTime = Time.time;
-    playerInput.SwitchCurrentActionMap("DeathUI");
   }
 
 }

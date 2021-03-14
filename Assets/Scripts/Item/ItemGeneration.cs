@@ -57,9 +57,9 @@ public class ItemGeneration : MonoBehaviour {
         Item attackItem = attackGameObject.GetComponentInChildren<Item>();
 
         attackGameObject.name = "Common Item 1";
-        attackItem.baseName = "Attack Item";
+        attackItem.baseName = "Ruby";
         attackItem.modifierName = "Furious";
-        attackItem.attackDamageMultiplierIncrease = 10f;
+        attackItem.attackDamageMultiplierIncrease = 30f;
 
         baseItems.Add(attackItem);
         itemsGenerated.Add(attackGameObject);
@@ -68,7 +68,7 @@ public class ItemGeneration : MonoBehaviour {
         Item healthItem = healthIncreaseGameObject.GetComponentInChildren<Item>();
 
         healthIncreaseGameObject.name = "Common Item 2";
-        healthItem.baseName = "Health Item";
+        healthItem.baseName = "Beryl";
         healthItem.modifierName = "Strong";
         healthItem.healthIncrease = 10f;
 
@@ -79,9 +79,9 @@ public class ItemGeneration : MonoBehaviour {
         Item staminaItem = staminaGameObject.GetComponentInChildren<Item>();
 
         staminaGameObject.name = "Common Item 3";
-        staminaItem.baseName = "Stamina Item";
+        staminaItem.baseName = "Amethyst";
         staminaItem.modifierName = "Fitness";
-        staminaItem.staminaIncrease = 10f;
+        staminaItem.staminaIncrease = 8f;
 
         baseItems.Add(staminaItem);
         itemsGenerated.Add(staminaGameObject);
@@ -90,9 +90,9 @@ public class ItemGeneration : MonoBehaviour {
         Item staminaDelayItem = staminaDelayGameObject.GetComponentInChildren<Item>();
 
         staminaDelayGameObject.name = "Common Item 4";
-        staminaDelayItem.baseName = "Stamina Delay Item";
+        staminaDelayItem.baseName = "Emerald";
         staminaDelayItem.modifierName = "Impatient";
-        staminaDelayItem.staminaRechargeDelayDecrease = 0.5f;
+        staminaDelayItem.staminaRechargeDelayDecrease = 0.1f;
 
         baseItems.Add(staminaDelayItem); 
         itemsGenerated.Add(staminaDelayGameObject);
@@ -101,9 +101,9 @@ public class ItemGeneration : MonoBehaviour {
         Item staminaRechargeItem = staminaRechargeGameObject.GetComponentInChildren<Item>();
 
         staminaRechargeGameObject.name = "Common Item 5";
-        staminaRechargeItem.baseName = "Stamina Recharge Item";
+        staminaRechargeItem.baseName = "Topaz";
         staminaRechargeItem.modifierName = "Fast";
-        staminaRechargeItem.staminaRechargeRateIncrease = 10f;
+        staminaRechargeItem.staminaRechargeRateIncrease = 5f;
 
         baseItems.Add(staminaRechargeItem);
         itemsGenerated.Add(staminaRechargeGameObject);
@@ -112,7 +112,7 @@ public class ItemGeneration : MonoBehaviour {
         Item flaskCapacityItem = flaskCapacityGameObject.GetComponentInChildren<Item>();
 
         flaskCapacityGameObject.name = "Common Item 6";
-        flaskCapacityItem.baseName = "Flask Capacity Item";
+        flaskCapacityItem.baseName = "Diamond";
         flaskCapacityItem.modifierName = "Scavenger";
         flaskCapacityItem.flasksCapacityIncrease = 1;
 
@@ -123,9 +123,9 @@ public class ItemGeneration : MonoBehaviour {
         Item flaskRegenerationItem = flaskRegenerationGameObject.GetComponentInChildren<Item>();
 
         flaskRegenerationGameObject.name = "Common Item 7";
-        flaskRegenerationItem.baseName = "Flask Regeneration Item";
+        flaskRegenerationItem.baseName = "Jade";
         flaskRegenerationItem.modifierName = "Specialist";
-        flaskRegenerationItem.flaskHealthRegenerationIncrease = 10f;
+        flaskRegenerationItem.flaskHealthRegenerationIncrease = 15f;
 
         baseItems.Add(flaskRegenerationItem);
         itemsGenerated.Add(flaskRegenerationGameObject);

@@ -127,7 +127,7 @@ MonoBehaviour:
   height: 200
   numberOfRareItems: 5
   numberOfEpicItems: 3
-  numberOfFlasks: 5
+  numberOfFlasks: 10
 --- !u!114 &7673829972370452774
 MonoBehaviour:
   m_ObjectHideFlags: 0

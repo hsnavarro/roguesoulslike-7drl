@@ -623,9 +623,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyResilience: {fileID: 6537164406827064781}
-  rewardAmount: 1
+  rewardAmount: 4
   reward: 0
-  speed: 1.5
+  speed: 1.2
   attackDamage: 50
   attackDelay: 2
 --- !u!114 &6537164406827064781

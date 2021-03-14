@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Luciano.unity
     guid: a4eeee8e7a97c7841bf44aa3f0dee135
+  - enabled: 1
+    path: Assets/Scenes/Naum.unity
+    guid: 84448af4a31d70c4abcbe5fbf292a02b
   m_configObjects: {}
