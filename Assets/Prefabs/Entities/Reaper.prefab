@@ -117,8 +117,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 1}
+  m_Size: {x: 1.2799754, y: 1.5, z: 0.98807895}
+  m_Center: {x: 0.06891178, y: 0, z: 1.2440385}
 --- !u!114 &2890486536224885286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reaperAnimator: {fileID: 8752613492679499006}
+  reaper: {fileID: 8845545911470131366}
 --- !u!1 &2890486536620189524
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,9 +909,10 @@ GameObject:
   - component: {fileID: 753130161503884211}
   - component: {fileID: 8261218360650941367}
   - component: {fileID: 8845545911470131366}
+  - component: {fileID: 1222341602}
   m_Layer: 26
   m_Name: Reaper
-  m_TagString: Untagged
+  m_TagString: Reaper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -965,8 +967,8 @@ MonoBehaviour:
   enemyResilience: {fileID: 8261218360650941367}
   rewardAmount: 1
   reward: 1
-  speed: 3
-  attackDamage: 10
+  speed: 8
+  attackDamage: 30
   attackDelay: 1
 --- !u!114 &8261218360650941367
 MonoBehaviour:
@@ -980,8 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4202f55ea52f243930dc15a2c7a290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
-  currentHealth: 30
+  maxHealth: 150
+  currentHealth: 150
   maxShield: 0
   currentShield: 0
   deathCallback:
@@ -1014,10 +1016,44 @@ MonoBehaviour:
   isInvoking: 0
   isTeleporting: 0
   enemysAlive: 0
-  numberOfEnemysInvoked: 0
+  teleportLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fadeDuration: 1
+  mesh: {fileID: 2461887755473751090}
+  anim: {fileID: 8752613492679499006}
+  spawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   reaperAnimator: {fileID: 8752613492679499006}
   reaperStats: {fileID: 753130161503884211}
   reaperCharacterController: {fileID: 5988051827071808654}
+--- !u!114 &1222341602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845545911470131367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5967d1d500c20d4cb94765967642d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 5970826515709941469, guid: 15ef399b49e591d46bc838d575823963, type: 3}
+  - {fileID: 5970826515709941469, guid: 56ada3850eb9f9948b700dcc94f1e2c4, type: 3}
+  - {fileID: 2221110915995445945, guid: 5ee535d74e3b9c549b6ca71d3504086d, type: 3}
 --- !u!1001 &2890486536912200047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1092,9 +1128,15 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: edbca66c08104454cb68d9bdec087560, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e64c8ed945c0534cb4a3408543db457, type: 3}
---- !u!95 &8752613492679499006 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 2e64c8ed945c0534cb4a3408543db457,
+--- !u!4 &3429397991185581700 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e64c8ed945c0534cb4a3408543db457,
+    type: 3}
+  m_PrefabInstance: {fileID: 2890486536912200047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2461887755473751090 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8487187504949695139, guid: 2e64c8ed945c0534cb4a3408543db457,
     type: 3}
   m_PrefabInstance: {fileID: 2890486536912200047}
   m_PrefabAsset: {fileID: 0}
@@ -1104,9 +1146,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2890486536912200047}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3429397991185581700 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e64c8ed945c0534cb4a3408543db457,
+--- !u!95 &8752613492679499006 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 2e64c8ed945c0534cb4a3408543db457,
     type: 3}
   m_PrefabInstance: {fileID: 2890486536912200047}
   m_PrefabAsset: {fileID: 0}

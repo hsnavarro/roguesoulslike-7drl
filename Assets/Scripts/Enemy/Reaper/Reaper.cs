@@ -1,19 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Reaper : MonoBehaviour {
 
-  [HideInInspector]
   public bool isAttacking;
-  [HideInInspector]
   public bool isInvoking;
-  [HideInInspector]
   public bool isTeleporting;
-  [HideInInspector]
   public int enemysAlive;
-  [HideInInspector]
-  public int numberOfEnemysInvoked;
 
   private PlayerStats playerStats;
+
+  public Transform[] teleportLocations;
+  public float fadeDuration = 1.0f;
+  public Renderer mesh;
+  public Animator anim;
+
+  public Transform[] spawnLocations;
+  private EnemyGeneration enemyGenerator;
 
   [Header("Enemy References")]
   [SerializeField]
@@ -25,6 +29,11 @@ public class Reaper : MonoBehaviour {
 
   private Vector3 reaperDirection;
 
+  private void Start() {
+    playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+    enemyGenerator = GetComponent<EnemyGeneration>();
+  }
+
   public void UpdateShouldInvoke() {
     if(enemysAlive == 0) {
       reaperAnimator.SetBool("ShouldInvoke", true);
@@ -33,12 +42,6 @@ public class Reaper : MonoBehaviour {
 
   public void OnDeath() { 
     Object.Destroy(gameObject);
-  }
-
-  private void Start() {
-    playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-    reaperDirection = new Vector3(0f, 0f, 0f);
-    reaperAnimator.SetBool("ShouldInvoke", false);
   }
 
   private void ApplyMovement() {
@@ -58,5 +61,85 @@ public class Reaper : MonoBehaviour {
 
   private void Update() {
     ApplyMovement();
+  }
+
+  public void Teleport() {
+    isTeleporting = true;
+    Vector3 position = teleportLocations[Random.Range(0, teleportLocations.Length - 1)].position;
+    StartCoroutine(TeleportCoroutine(position));
+  }
+
+  private IEnumerator TeleportCoroutine(Vector3 position) {
+    Color color;
+
+    // fade out
+    float startTime = Time.time;
+    while (true) {
+      yield return new WaitForEndOfFrame();
+      float currentTime = Time.time;
+      if (currentTime - startTime >= fadeDuration) {
+        color = mesh.material.color;
+        color.a = 0f;
+        mesh.material.color = color;
+        break;
+      }
+
+      float alpha = (currentTime - startTime) / fadeDuration;
+      color = mesh.material.color;
+      color.a = 1f - alpha;
+      mesh.material.color = color;
+    }
+
+    // teleport
+    transform.position = position;
+    yield return new WaitForSeconds(0.5f);
+
+    // fade in
+    startTime = Time.time;
+    while (true) {
+      yield return new WaitForEndOfFrame();
+      float currentTime = Time.time;
+      if (currentTime - startTime >= fadeDuration) {
+        color = mesh.material.color;
+        color.a = 1f;
+        mesh.material.color = color;
+        break;
+      }
+
+      float alpha = (currentTime - startTime) / fadeDuration;
+      color = mesh.material.color;
+      color.a = alpha;
+      mesh.material.color = color;
+    }
+
+    isTeleporting = false;
+    anim.SetTrigger("Teleported");
+  }
+
+  public void SpawnMonsters() {
+    // shuffle array
+    int p = spawnLocations.Length;
+    for (int n = p-1; n > 0 ; n--)
+    {
+        int r = Random.Range(0, n-1);
+        Transform t = spawnLocations[r];
+        spawnLocations[r] = spawnLocations[n];
+        spawnLocations[n] = t;
+    }
+
+    p = 0;
+    /*
+    foreach (var prefab in spawnSequence[currentSpawn]) {
+      GameObject enemy = Instantiate(prefab, spawnLocations[p].position, Quaternion.identity);
+      p++;
+    }
+    */
+    int spawnCount = Random.Range(2, 3);
+    for (int i = 0; i < spawnCount; i++) {
+      GameObject enemy = enemyGenerator.InstantiateEnemy(Random.Range(0, enemyGenerator.enemyPrefabs.Length));
+      enemy.transform.position = spawnLocations[p].position;
+      p++;
+      enemysAlive++;
+    }
   }
 }

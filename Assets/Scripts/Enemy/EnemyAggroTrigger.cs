@@ -17,9 +17,10 @@ public class EnemyAggroTrigger : MonoBehaviour {
 
   private Vector3 enemyDirection;
 
+  private bool isMoving = false;
+
   private void Start() {
     playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-    enemyDirection = new Vector3(0f, 0f, 0f);
   }
 
   private void ApplyMovement() {
@@ -40,10 +41,17 @@ public class EnemyAggroTrigger : MonoBehaviour {
   }
 
   private void OnTriggerStay(Collider collider) {
-    if (gameObject.tag == "AggroTrigger") ApplyMovement();
+    if (collider.gameObject.tag == "Player")
+      isMoving = true;
   }
 
   private void OnTriggerExit(Collider collider) {
-    if (gameObject.tag == "AggroTrigger") enemyAnimator.SetBool("Moving", false);
+    if (collider.gameObject.tag == "Player")
+      isMoving = false;
+  }
+
+  void FixedUpdate() {
+    if (isMoving)
+      ApplyMovement();
   }
 }

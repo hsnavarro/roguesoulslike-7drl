@@ -24,7 +24,12 @@ ModelImporter:
   - first:
       74: -3954876412618683841
     second: Reaper.Rig|Statue
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ReaperMaterial
+    second: {fileID: 2100000, guid: db68e9a99dd71674c8ac49fe976eda8c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
