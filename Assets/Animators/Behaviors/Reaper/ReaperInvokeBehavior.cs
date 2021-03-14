@@ -8,6 +8,7 @@ public class ReaperInvokeBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         reaper = animator.transform.parent.GetComponent<Reaper>();
         reaper.isInvoking = true;
+        reaper.StartedInvoking();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

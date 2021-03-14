@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 public class Reaper : MonoBehaviour {
 
@@ -8,6 +10,10 @@ public class Reaper : MonoBehaviour {
   public bool isInvoking;
   public bool isTeleporting;
   public int enemysAlive;
+
+  public Action StartedAttacking = delegate {  };
+  public Action StartedTeleporting = delegate {  };
+  public Action StartedInvoking = delegate {  };
 
   private PlayerStats playerStats;
 
