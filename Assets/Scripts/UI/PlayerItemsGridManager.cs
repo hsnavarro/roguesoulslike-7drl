@@ -31,13 +31,15 @@ public class PlayerItemsGridManager : MonoBehaviour {
     }
 
     if(!isAdding) {
+      slotImages[slot].sprite = null;
       slotImages[slot].color = new Color(0f, 0f, 0f, 0f);
       return;
     }
 
     Image imageToAdd = playerStats.itemsEquipped[slot].GetComponent<Image>();
     if(isAdding) {
-      slotImages[slot].color = imageToAdd.color;
+      slotImages[slot].sprite = imageToAdd.sprite;
+      slotImages[slot].color = new Color(1f, 1f, 1f, 1f);
     }
   }
 

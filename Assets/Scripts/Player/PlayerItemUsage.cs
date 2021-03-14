@@ -52,11 +52,10 @@ public class PlayerItemUsage : MonoBehaviour {
 
     item.RemoveEffects();
 
-    Vector3 randomUpwardsVector = new Vector3(Random.Range(-1f, 1f), Random.value, Random.Range(-1f, 1f));
-    //randomUpwardsVector = randomUpwardsVector.normalized;
+    Vector3 randomVector = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
 
-    item.gameObject.transform.position = playerStats.gameObject.transform.position + randomUpwardsVector * itemDropDistance;
-    item.gameObject.SetActive(true);
+    item.gameObject.transform.parent.position = playerStats.gameObject.transform.position + randomVector * itemDropDistance;
+    item.transform.parent.gameObject.SetActive(true);
 
     playerItemsGridManager.removeSlotImage(slot);
     playerStats.isSlotEquipped[slot] = false;
@@ -108,7 +107,7 @@ public class PlayerItemUsage : MonoBehaviour {
     playerItemsGridManager.addSlotImage(slot);
     
     lastClosestItem.AddEffects();
-    lastClosestItem.gameObject.SetActive(false);
+    lastClosestItem.transform.parent.gameObject.SetActive(false);
     itemsInRange.Remove(lastClosestItem);
   }
 
