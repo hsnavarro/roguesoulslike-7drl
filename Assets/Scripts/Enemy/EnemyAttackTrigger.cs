@@ -20,7 +20,8 @@ public class EnemyAttackTrigger : MonoBehaviour {
   }
 
   private void OnTriggerStay(Collider collider) {
-    enemyAttack.TriggerAttack();
+    if (collider.gameObject.tag == "Player")
+      enemyAttack.TriggerAttack();
   }
 
   private void OnTriggerExit(Collider collider) {
