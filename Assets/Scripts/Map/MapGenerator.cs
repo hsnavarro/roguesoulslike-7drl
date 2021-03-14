@@ -92,7 +92,7 @@ public class MapGenerator : MonoBehaviour {
         for (int i = 0; i < totalItems; i++) {
             GameObject item = itemGenerator.itemsGenerated[i];
             item.transform.SetParent(itemGenerator.transform);
-            item.transform.localPosition = new Vector3(positions[i].Item1, 0.5f, positions[i].Item2);
+            item.transform.localPosition = new Vector3(positions[i].Item1, 0, positions[i].Item2);
         }
 
         // flasks
