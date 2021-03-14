@@ -198,6 +198,7 @@ MonoBehaviour:
   enemyStats: {fileID: 2481120369144729033}
   enemyAttack: {fileID: 8116029125516918292}
   enemyCharacterController: {fileID: 8864429155479431924}
+  smoothTime: 0.5
 --- !u!1 &1224122566668991578
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,19 +556,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 1}
---- !u!65 &8060464624337783657
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947009938198220565}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.01, y: 0.03, z: 0.01}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5970826515709941469
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +568,6 @@ GameObject:
   - component: {fileID: 8864429155479431924}
   - component: {fileID: 2481120369144729033}
   - component: {fileID: 6537164406827064781}
-  - component: {fileID: 442520445496528117}
   m_Layer: 23
   m_Name: Cyclops
   m_TagString: Untagged
@@ -671,19 +658,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!65 &442520445496528117
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5970826515709941469}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.9541938, y: 1.6125593, z: 1}
-  m_Center: {x: 0, y: 0.30627966, z: 0}
 --- !u!1 &6699499015171039163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,12 +1259,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 372ba2cc373099a40af7de925cec2ba3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 564bf3ddb09e7db4bae3bca339d11779, type: 3}
---- !u!1 &5947009938198220565 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -4633468144118494559, guid: 564bf3ddb09e7db4bae3bca339d11779,
-    type: 3}
-  m_PrefabInstance: {fileID: 7870774007052584372}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3491241993144939240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2501193951073274020, guid: 564bf3ddb09e7db4bae3bca339d11779,
