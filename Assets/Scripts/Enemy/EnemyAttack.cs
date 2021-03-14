@@ -17,6 +17,11 @@ public class EnemyAttack : MonoBehaviour {
 
   private PlayerSkillTree playerSkillTree;
 
+  // hsnavarro: do not remove this!
+  public virtual void Attack() {
+
+  }
+
   public void TriggerAttack() {
     if(!isAttacking && Time.time - lastAttackTime >= enemyStats.attackDelay) {
       enemyAnimator.SetTrigger("Attack");
@@ -41,9 +46,10 @@ public class EnemyAttack : MonoBehaviour {
 
       default:
         break;
+
     }
 
-    Object.Destroy(transform.parent.gameObject);
+    Object.Destroy(transform.parent.parent.parent.gameObject);
   }
 
   private void Start() {

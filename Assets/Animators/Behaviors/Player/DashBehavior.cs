@@ -19,6 +19,5 @@ public class DashBehavior : StateMachineBehaviour {
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         playerMovement.gameObject.layer = (int)Layers.PLAYER;
         playerMovement.isDashing = false;
-
     }
 }

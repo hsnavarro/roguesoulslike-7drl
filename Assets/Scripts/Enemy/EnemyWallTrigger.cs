@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 public class EnemyWallTrigger : MonoBehaviour {
+/*
+
   //[HideInInspector]
   public bool inAttackRange;
 
@@ -18,19 +20,16 @@ public class EnemyWallTrigger : MonoBehaviour {
 
   private Vector3 enemyDirection;
 
-  /*
   private bool isChasing = true;
 
   private int randomMovementCounter = 300;
   const int maxNumberOfSameMovement = 300;
-  */
 
   private void Start() {
     playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     enemyDirection = new Vector3(0f, 0f, 0f);
   }
 
-  /*
   private void ApplyMovement() {
     if (enemyAttack.isAttacking) return;
     enemyAnimator.SetBool("Moving", true);
@@ -90,7 +89,6 @@ public class EnemyWallTrigger : MonoBehaviour {
     ApplyMovement();
   }
 
-  */
 
   private void ApplyMovement() {
     // Debug.Log("In attack range " + inAttackRange);
@@ -136,4 +134,5 @@ public class EnemyWallTrigger : MonoBehaviour {
       enemyAttack.TriggerAttack();
 
   }
+  */
 }

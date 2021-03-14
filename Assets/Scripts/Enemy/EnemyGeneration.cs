@@ -7,7 +7,7 @@ public class EnemyGeneration : MonoBehaviour
     public GameObject[] enemyPrefabs;
 
     public GameObject InstantiateEnemy(int type) {
-        GameObject enemy =  Instantiate(enemyPrefabs[type], Vector3.zero, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefabs[type], Vector3.zero, Quaternion.identity);
         enemy.SetActive(true);
         return enemy;
     }

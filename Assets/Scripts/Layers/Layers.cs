@@ -5,5 +5,6 @@ public enum Layers {
   FLASK = 11, 
   NORMAL_ITEM = 12, 
   SATYR = 22,
-  CYCLOPS = 23
+  CYCLOPS = 23,
+  PLAYER_COLLISION_TRIGGER = 24
 };

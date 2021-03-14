@@ -9,6 +9,7 @@ public class SatyrAttackBehavior : StateMachineBehaviour
         enemyAttack = animator.transform.GetChild(0).GetComponentInChildren<EnemyAttack>();
         enemyAttack.isAttacking = true;
         enemyAttack.hitbox.enabled = true;
+        enemyAttack.Attack();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

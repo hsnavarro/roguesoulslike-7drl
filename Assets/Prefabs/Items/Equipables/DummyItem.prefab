@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4258686713843432772}
   - component: {fileID: 1788138963}
   m_Layer: 12
-  m_Name: DummyItem Navarro
+  m_Name: DummyItem
   m_TagString: EmptyItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

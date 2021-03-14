@@ -14,7 +14,8 @@ public class ItemPlayerDetection : MonoBehaviour {
 
     if (collider.gameObject.layer == (int)Layers.PLAYER) {
       Item item = gameObject.GetComponent<Item>();
-      playerItemUsage.itemsInRange.Add(item);
+      if (item != null && playerItemUsage != null && playerItemUsage.itemsInRange != null) 
+        playerItemUsage.itemsInRange.Add(item);
     }
   }
 
