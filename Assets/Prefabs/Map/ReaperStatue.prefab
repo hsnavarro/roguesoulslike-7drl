@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 2737606670502254550}
   - component: {fileID: 2737606670502254551}
   - component: {fileID: 2737606670502254549}
-  - component: {fileID: 1489774604}
-  m_Layer: 28
+  m_Layer: 8
   m_Name: ReaperStatue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,20 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25224e02b9a0674fb3e597e0edb697b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &1489774604
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737606670502254544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &2737606671267420549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,12 +124,12 @@ PrefabInstance:
     - target: {fileID: -6100642578870966288, guid: 2e64c8ed945c0534cb4a3408543db457,
         type: 3}
       propertyPath: m_Layer
-      value: 28
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4820155947543293710, guid: 2e64c8ed945c0534cb4a3408543db457,
         type: 3}
       propertyPath: m_Layer
-      value: 28
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2e64c8ed945c0534cb4a3408543db457,
         type: 3}
@@ -154,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2e64c8ed945c0534cb4a3408543db457,
         type: 3}
       propertyPath: m_Layer
-      value: 28
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 2e64c8ed945c0534cb4a3408543db457,
         type: 3}

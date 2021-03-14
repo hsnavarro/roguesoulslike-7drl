@@ -18,16 +18,23 @@ public class WeaponDamage : MonoBehaviour {
 
     private AttackType attacking;
 
+    public void Start() {
+        hitbox.enabled = false;
+    }
+
     public void StartLightAttack() {
         attacking = AttackType.Light;
+        hitbox.enabled = true;
     }
 
     public void StartHeavyAttack() {
         attacking = AttackType.Heavy;
+        hitbox.enabled = true;
     }
 
     public void EndAttack() {
         attacking = AttackType.None;
+        hitbox.enabled = false;
     }
 
     private void OnTriggerEnter(Collider collider) {
