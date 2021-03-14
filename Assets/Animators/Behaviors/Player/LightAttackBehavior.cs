@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HeavyAttackBehavior : StateMachineBehaviour {
+public class LightAttackBehavior : StateMachineBehaviour {
     private PlayerController playerController;
     private PlayerMovement playerMovement;
     private PlayerStats playerStats;
