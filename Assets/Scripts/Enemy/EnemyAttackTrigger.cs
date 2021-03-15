@@ -15,17 +15,17 @@ public class EnemyAttackTrigger : MonoBehaviour {
   }
 
   private void OnTriggerEnter(Collider collider) {
-    if (collider.gameObject.tag == "Player")
+    if (collider.gameObject.layer == (int)Layers.PLAYER)
       inAttackRange = true;
   }
 
   private void OnTriggerStay(Collider collider) {
-    if (collider.gameObject.tag == "Player")
+    if (collider.gameObject.layer == (int)Layers.PLAYER)
       enemyAttack.TriggerAttack();
   }
 
   private void OnTriggerExit(Collider collider) {
-    if (collider.gameObject.tag == "Player")
+    if (collider.gameObject.layer == (int)Layers.PLAYER)
       inAttackRange = false;
   }
 }

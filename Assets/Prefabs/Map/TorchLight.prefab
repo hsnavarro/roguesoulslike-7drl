@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2803224263751936733}
   - component: {fileID: 1468124917704150233}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: TorchLight
-  m_TagString: Untagged
+  m_TagString: Torch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 355807430822390412}
   - component: {fileID: 1145335389205369810}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5866451886595588840}
   - component: {fileID: 6027819680280538144}
   - component: {fileID: 6025849692583241416}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 5866454076535835652}
   - component: {fileID: 6027155637878214040}
   - component: {fileID: 6025849043141389384}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9657,7 +9657,7 @@ GameObject:
   - component: {fileID: 5870143516370988774}
   - component: {fileID: 6027893526247559704}
   - component: {fileID: 6025823009222411238}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: FireDark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14410,7 +14410,7 @@ GameObject:
   - component: {fileID: 5866394145103559112}
   - component: {fileID: 6042109438910529902}
   - component: {fileID: 6026410671479423750}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Magic fire pro yellow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19167,7 +19167,7 @@ GameObject:
   - component: {fileID: 5866352298812887452}
   - component: {fileID: 6042017924247317888}
   - component: {fileID: 6026548090443014566}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23985,6 +23985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 595fda1e96ef5d44ba572219754b97c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 595fda1e96ef5d44ba572219754b97c8, type: 3}

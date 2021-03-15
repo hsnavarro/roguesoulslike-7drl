@@ -1305,6 +1305,156 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395801, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395801, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395801, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395801, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395804, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395804, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395804, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395804, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395804, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768749082576395807, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327680, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327680, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327680, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327680, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327686, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327687, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327687, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327687, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327687, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353507792180327687, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211157, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211158, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211158, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211158, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211158, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211158, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211179, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211179, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211179, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196288839585211179, guid: f7f0a02af0ecd9c4da10449356abac7c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8775237651702744409, guid: f7f0a02af0ecd9c4da10449356abac7c,
         type: 3}
       propertyPath: m_IsActive
