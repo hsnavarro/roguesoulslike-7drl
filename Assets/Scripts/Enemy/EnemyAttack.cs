@@ -8,23 +8,22 @@ public class EnemyAttack : MonoBehaviour {
   public float lastAttackTime;
 
   [Header("Enemy References")]
-  [SerializeField]
-  private EnemyStats enemyStats;
+  public EnemyStats enemyStats;
   [SerializeField]
   private CharacterController enemyController;
   [SerializeField]
-  private Animator enemyAnimator;
+  public Animator enemyAnimator;
 
   private PlayerSkillTree playerSkillTree;
 
   // hsnavarro: do not remove this!
   public virtual void Attack() {
-
+    enemyAnimator.SetTrigger("Attack");
   }
 
   public void TriggerAttack() {
     if(!isAttacking && Time.time - lastAttackTime >= enemyStats.attackDelay) {
-      enemyAnimator.SetTrigger("Attack");
+      Attack();
     }
   }
 

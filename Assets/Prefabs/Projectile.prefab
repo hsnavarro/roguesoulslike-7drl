@@ -111,7 +111,7 @@ MonoBehaviour:
   projectileCharacterController: {fileID: 862075270}
   projectileDamage: 10
   projectileSpeed: 3
-  rotateSmooth: 0.1
+  smoothTime: 0.2
   projectileDuration: 3
 --- !u!143 &862075270
 CharacterController:

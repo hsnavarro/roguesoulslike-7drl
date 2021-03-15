@@ -63,6 +63,11 @@ MonoBehaviour:
   enemyStats: {fileID: 7953619022873031085}
   enemyController: {fileID: 3966154843752421008}
   enemyAnimator: {fileID: 942276125826139198}
+  percentageToHeal: 50
+  delayTime: 10
+  healthRecover: 10
+  isHealing: 0
+  lastTimeUsedHeal: -Infinity
   projectilePrefab: {fileID: 610294807525530749, guid: 5fe17ad026dc24d48a992d64cb9be318,
     type: 3}
 --- !u!1 &144352574765489209
@@ -272,13 +277,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1.95
   m_Radius: 0.4
   m_SlopeLimit: 0
   m_StepOffset: 0
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!114 &7953619022873031085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,7 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010800757776921514}
   - component: {fileID: 2455492601087824668}
-  - component: {fileID: 4345597835771518216}
+  - component: {fileID: 314726634}
   m_Layer: 15
   m_Name: Aggro Trigger
   m_TagString: AggroTrigger
@@ -654,7 +659,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4345597835771518216
+--- !u!114 &314726634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -663,15 +668,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5166485982628019861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5096969145711a14cb5c6b3d351404e4, type: 3}
+  m_Script: {fileID: 11500000, guid: be7054aa2f45e1a4e9ec6b83c9f507da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCurrentDirection: {x: 0, y: 0}
+  enemyDesiredDirection: {x: 0, y: 0}
+  currentVelocity: {x: 0, y: 0}
+  isMoving: 0
+  playerStats: {fileID: 0}
   enemyAttackTrigger: {fileID: 5052436069903742141}
   enemyAnimator: {fileID: 942276125826139198}
   enemyStats: {fileID: 7953619022873031085}
   enemyAttack: {fileID: 614520196}
   enemyCharacterController: {fileID: 3966154843752421008}
   smoothTime: 0.5
+  enemyAttackWitch: {fileID: 614520196}
 --- !u!1 &5480418438520989753
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,34 +1,33 @@
 ﻿using UnityEngine;
 
 public class EnemyAggroTrigger : MonoBehaviour {
-  private PlayerStats playerStats;
+  [HideInInspector]
+  public Vector2 enemyCurrentDirection;
+  [HideInInspector]
+  public Vector2 enemyDesiredDirection;
+
+  [HideInInspector]
+  public Vector2 currentVelocity;
+
+  [HideInInspector]
+  public bool isMoving = false;
+
+  [HideInInspector]
+  public PlayerStats playerStats;
 
   [Header("Enemy References")]
-  [SerializeField]
-  private EnemyAttackTrigger enemyAttackTrigger;
-  [SerializeField]
-  private Animator enemyAnimator;
-  [SerializeField]
-  private EnemyStats enemyStats;
-  [SerializeField]
-  private EnemyAttack enemyAttack;
-  [SerializeField]
-  private CharacterController enemyCharacterController;
-  [SerializeField]
-  private float smoothTime = 0.5f;
-
-  private Vector2 enemyCurrentDirection;
-  private Vector2 enemyDesiredDirection;
-
-  private Vector2 currentVelocity;
-
-  private bool isMoving = false;
+  public EnemyAttackTrigger enemyAttackTrigger;
+  public Animator enemyAnimator;
+  public EnemyStats enemyStats;
+  public EnemyAttack enemyAttack;
+  public CharacterController enemyCharacterController;
+  public float smoothTime = 0.5f;
 
   private void Start() {
     playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
   }
 
-  private void ApplyMovement() {
+  public virtual void ApplyMovement() {
     if (enemyAttack.isAttacking || enemyAttackTrigger.inAttackRange) {
       enemyAnimator.SetBool("Moving", false);
       return;

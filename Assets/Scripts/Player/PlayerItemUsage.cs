@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerItemUsage : MonoBehaviour {
-  [HideInInspector]
+  // [HideInInspector]
   public List<Item> itemsInRange;
 
   [SerializeField]

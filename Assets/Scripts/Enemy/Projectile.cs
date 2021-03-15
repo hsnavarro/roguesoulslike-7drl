@@ -32,12 +32,12 @@ public class Projectile : MonoBehaviour {
     projectileCurrentDirection = new Vector2(direction.x, direction.z).normalized;
   }
 
-  private void OnTriggerStay(Collider collider) {
+  private void OnTriggerEnter(Collider collider) {
     if (collider.gameObject.layer == (int)Layers.PLAYER_COLLISION_TRIGGER) playerStats.playerResilience.TakeDamage(projectileDamage);
     Object.Destroy(gameObject);
   }
 
-  private void Update() {
+  private void FixedUpdate() {
     if(playerStats) {
       Vector3 direction = (playerStats.transform.position + playerHeadOffset - transform.position);
       float directionY = direction.y;
