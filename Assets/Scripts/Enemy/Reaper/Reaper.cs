@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -48,6 +49,7 @@ public class Reaper : MonoBehaviour {
 
   public void OnDeath() { 
     Object.Destroy(gameObject);
+    SceneManager.LoadScene("EndUI");
   }
 
   private void ApplyMovement() {

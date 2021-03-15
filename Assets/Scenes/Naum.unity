@@ -829,6 +829,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1395142246}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1631232882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6069124184165106040, guid: f7f0a02af0ecd9c4da10449356abac7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 78617028918625001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe82997b42487b4dafa625ee3c7ffd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1756924570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -836,8 +848,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1268130525, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
-      propertyPath: deathSceneCanvas
+    - target: {fileID: 1268130527, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
+      propertyPath: playerHitCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1268130526, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
