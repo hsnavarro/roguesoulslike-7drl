@@ -12,6 +12,8 @@ public class Resilience : MonoBehaviour {
 
   [SerializeField]
   private UnityEvent deathCallback;
+  [SerializeField]
+  private UnityEvent playerHitCallback;
 
   private float lastDamageTime = 0f;
   private float afterDamageInvulDuration = 0.5f;
@@ -46,6 +48,10 @@ public class Resilience : MonoBehaviour {
     } else {
       value -= currentShield;
       currentShield = 0f;
+    }
+
+    if (gameObject.tag == "Player") {
+      playerHitCallback.Invoke();
     }
 
     currentHealth = Mathf.Max(0f, currentHealth - value);
