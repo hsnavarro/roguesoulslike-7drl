@@ -10,7 +10,6 @@ public class PlayerSoundController : MonoBehaviour {
 
     [SerializeField] private AudioClip dashClip;
     [SerializeField] private AudioClip attackClip;
-    [SerializeField] private AudioClip walkingClip;
 
     private void Awake() {
         playerMovement.StartedDash += OnDashStart;

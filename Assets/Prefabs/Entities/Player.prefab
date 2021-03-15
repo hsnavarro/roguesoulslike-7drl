@@ -224,6 +224,7 @@ MonoBehaviour:
   flasksHealIncreasePerBarCompleted: 0
   flasksHealBarSize: 0
   playerStats: {fileID: 1268130528}
+  hudManager: {fileID: 0}
 --- !u!114 &1268130527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,8 +287,8 @@ MonoBehaviour:
   currentSpeed: 0
   currentDamage: 0
   playerResilience: {fileID: 1268130527}
-  flasksCapacity: 3
-  flasksCarried: 0
+  flasksCapacity: 5
+  flasksCarried: 1
   flaskShieldIncrease: 0
   flaskHeal: 30
   staminaRunDecreaseRate: 20
@@ -597,7 +598,6 @@ MonoBehaviour:
   audioSource: {fileID: 2203447461522175932}
   dashClip: {fileID: 8300000, guid: 5e3be7dd5b3d16f4289c04655d276a86, type: 3}
   attackClip: {fileID: 8300000, guid: fd09b20a2e29e55428dce9eabb5c793a, type: 3}
-  walkingClip: {fileID: 0}
 --- !u!82 &2203447461522175932
 AudioSource:
   m_ObjectHideFlags: 0

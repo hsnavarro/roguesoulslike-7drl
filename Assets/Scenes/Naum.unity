@@ -851,19 +851,15 @@ PrefabInstance:
     - target: {fileID: 1268130527, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
       propertyPath: playerHitCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1809463467}
     - target: {fileID: 1268130526, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 1617939808}
-    - target: {fileID: 1268130528, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
-      propertyPath: flasksCarried
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1268130528, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
-      propertyPath: flasksCapacity
-      value: 5
-      objectReference: {fileID: 0}
+    - target: {fileID: 1268130527, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
+      propertyPath: playerHitCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1810215534}
     - target: {fileID: 1160922317266523166, guid: 04ded56899e14d041bc391c7b1853c3a,
         type: 3}
       propertyPath: m_Name
@@ -942,7 +938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1757274590
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1054,6 +1050,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1809463467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1809463467, guid: f7f0a02af0ecd9c4da10449356abac7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 78617028918625001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22c6341084a2f849878f417a69b4764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1810215534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6069124184165106040, guid: f7f0a02af0ecd9c4da10449356abac7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 78617028918625001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe82997b42487b4dafa625ee3c7ffd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1915434717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7128885635479847504, guid: 7832aa1202abc6846bfd9480f6de3418,

@@ -5,24 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Reaper.unity
-    guid: 4f465f31f9df45e44954fcf2417d64a5
   - enabled: 1
     path: Assets/Scenes/MenuUI.unity
     guid: 9c959395831701746b3821c41b0ae9c4
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Luciano.unity
-    guid: a4eeee8e7a97c7841bf44aa3f0dee135
   - enabled: 1
     path: Assets/Scenes/Naum.unity
     guid: 84448af4a31d70c4abcbe5fbf292a02b
+<<<<<<< HEAD
   - enabled: 0
     path: Assets/Scenes/Navarro.unity
     guid: e08b43638a6d02e4482f73a42a137a4f
@@ -30,3 +19,8 @@ EditorBuildSettings:
     path: Assets/Scenes/EndUI.unity
     guid: 5e0df48eaa2e2ef438bf8e76c075b68c
   m_configObjects: {}
+=======
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 6e0325df4ee51554d9da60cb9c6653f9,
+      type: 2}
+>>>>>>> Fixes pre build
