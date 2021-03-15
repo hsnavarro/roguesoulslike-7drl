@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10205eb2017f27643a89c2350728b3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightDamage: 10
+  lightDamage: 20
   heavyDamage: 25
   hitbox: {fileID: 3388790913362485876}

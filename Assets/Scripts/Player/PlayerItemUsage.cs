@@ -22,7 +22,7 @@ public class PlayerItemUsage : MonoBehaviour {
   public void UseFlask() {
     if(playerStats.flasksCarried == 0) return;
 
-    playerStats.playerResilience.RecoverCurrentHealth(playerStats.flaskHealthIncrease);
+    playerStats.playerResilience.RecoverCurrentHealth(playerStats.flaskHeal);
     playerStats.playerResilience.RecoverCurrentShield(playerStats.flaskShieldIncrease);
     playerStats.flasksCarried--;
   }

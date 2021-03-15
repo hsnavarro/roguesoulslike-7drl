@@ -59,6 +59,6 @@ public class Item : MonoBehaviour {
         playerStats.staminaRechargeRate += multiplier * staminaRechargeRateIncrease;
 
         playerStats.flasksCapacity += multiplier * flasksCapacityIncrease;
-        playerStats.flaskHealthIncrease += multiplier * flaskHealthRegenerationIncrease;
+        playerStats.flaskHeal += multiplier * flaskHealthRegenerationIncrease;
     }
 }

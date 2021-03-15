@@ -14,13 +14,16 @@ public class PlayerSkillTree : MonoBehaviour {
   public float healthBarSize;
 
   [Header("Flask Progress Stats")]
-  public int flasksCapacityIncrease;
-  public float flasksCapacityBarProgression;
-  public int flasksCapacityIncreasePerBarCompleted;
-  public float flasksCapacityBarSize;
+  public int flasksHealIncrease;
+  public float flasksHealBarProgression;
+  public int flasksHealIncreasePerBarCompleted;
+  public float flasksHealBarSize;
 
   [SerializeField]
   private PlayerStats playerStats;
+
+  [SerializeField]
+  private PlayerSkillTreeManager hudManager;
 
   public void GetPermanentInformation() {
     staminaIncrease = PermanentPlayerInformation.staminaIncrease;
@@ -33,10 +36,10 @@ public class PlayerSkillTree : MonoBehaviour {
     healthIncreasePerBarCompleted = PermanentPlayerInformation.healthIncreasePerBarCompleted;
     healthBarSize = PermanentPlayerInformation.healthBarSize;
 
-    flasksCapacityIncrease = PermanentPlayerInformation.flasksCapacityIncrease;
-    flasksCapacityBarProgression = PermanentPlayerInformation.flasksCapacityBarProgression;
-    flasksCapacityIncreasePerBarCompleted = PermanentPlayerInformation.flasksCapacityIncreasePerBarCompleted;
-    flasksCapacityBarSize = PermanentPlayerInformation.flasksCapacityBarSize;
+    flasksHealIncrease = PermanentPlayerInformation.flasksHealIncrease;
+    flasksHealBarProgression = PermanentPlayerInformation.flasksHealBarProgression;
+    flasksHealIncreasePerBarCompleted = PermanentPlayerInformation.flasksHealIncreasePerBarCompleted;
+    flasksHealBarSize = PermanentPlayerInformation.flasksHealBarSize;
   }
 
   public void SetPermanentInformation() {
@@ -50,18 +53,21 @@ public class PlayerSkillTree : MonoBehaviour {
     PermanentPlayerInformation.healthIncreasePerBarCompleted = healthIncreasePerBarCompleted;
     PermanentPlayerInformation.healthBarSize = healthBarSize;
 
-    PermanentPlayerInformation.flasksCapacityIncrease = flasksCapacityIncrease;
-    PermanentPlayerInformation.flasksCapacityBarProgression = flasksCapacityBarProgression;
-    PermanentPlayerInformation.flasksCapacityIncreasePerBarCompleted = flasksCapacityIncreasePerBarCompleted;
-    PermanentPlayerInformation.flasksCapacityBarSize = flasksCapacityBarSize;
+    PermanentPlayerInformation.flasksHealIncrease = flasksHealIncrease;
+    PermanentPlayerInformation.flasksHealBarProgression = flasksHealBarProgression;
+    PermanentPlayerInformation.flasksHealIncreasePerBarCompleted = flasksHealIncreasePerBarCompleted;
+    PermanentPlayerInformation.flasksHealBarSize = flasksHealBarSize;
   }
 
   public void IncreaseHealthProgress(float increase) {
     if (healthBarProgression + increase >= healthBarSize) {
       healthIncrease += healthIncreasePerBarCompleted;
-      playerStats.playerResilience.maxShield += healthIncreasePerBarCompleted;
+      playerStats.playerResilience.maxHealth += healthIncreasePerBarCompleted;
       float valueLeft = healthBarProgression + increase - healthBarSize;
       healthBarProgression = valueLeft;
+
+      playerStats.GetFlask();
+      hudManager.HealthLevelUp();
     } else {
       healthBarProgression += increase;
     }
@@ -73,26 +79,32 @@ public class PlayerSkillTree : MonoBehaviour {
       playerStats.maxStamina += staminaIncreasePerBarCompleted;
       float valueLeft = staminaBarProgression + increase - staminaBarSize;
       staminaBarProgression = valueLeft;
+
+      playerStats.GetFlask();
+      hudManager.StaminaLevelUp();
     } else {
       staminaBarProgression += increase;
     }
   }
 
-  public void IncreaseFlasksCapacityProgress(float increase) {
-    if (flasksCapacityBarProgression + increase >= flasksCapacityBarSize) {
-      flasksCapacityIncrease += flasksCapacityIncreasePerBarCompleted;
-      playerStats.flasksCapacity += flasksCapacityIncreasePerBarCompleted;
-      float valueLeft = flasksCapacityBarProgression + increase - flasksCapacityBarSize;
-      flasksCapacityBarProgression = valueLeft;
+  public void IncreaseFlasksHealProgress(float increase) {
+    if (flasksHealBarProgression + increase >= flasksHealBarSize) {
+      flasksHealIncrease += flasksHealIncreasePerBarCompleted;
+      playerStats.flaskHeal += flasksHealIncreasePerBarCompleted;
+      float valueLeft = flasksHealBarProgression + increase - flasksHealBarSize;
+      flasksHealBarProgression = valueLeft;
+
+      playerStats.GetFlask();
+      hudManager.FlaskLevelUp();
     } else {
-      flasksCapacityBarProgression += increase;
+      flasksHealBarProgression += increase;
     }
   }
 
   private void Awake() {
     GetPermanentInformation();
     playerStats.playerResilience.maxHealth += PermanentPlayerInformation.healthIncrease;
-    playerStats.flasksCapacity += PermanentPlayerInformation.flasksCapacityIncrease;
+    playerStats.flaskHeal += PermanentPlayerInformation.flasksHealIncrease;
     playerStats.maxStamina += PermanentPlayerInformation.staminaIncrease;
   }
 

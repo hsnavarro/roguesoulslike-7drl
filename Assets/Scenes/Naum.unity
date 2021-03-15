@@ -221,6 +221,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2146205485, guid: dd091a2868b9f4e4ba8cd13e75ecad59, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146205485, guid: dd091a2868b9f4e4ba8cd13e75ecad59, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5970826515709941469, guid: 15ef399b49e591d46bc838d575823963,
+        type: 3}
+    - target: {fileID: 2146205485, guid: dd091a2868b9f4e4ba8cd13e75ecad59, type: 3}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2221110915995445945, guid: 5ee535d74e3b9c549b6ca71d3504086d,
+        type: 3}
     - target: {fileID: 2570772515265667415, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
         type: 3}
       propertyPath: m_RootOrder
@@ -280,6 +294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MapGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844274243191091934, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
+        type: 3}
+      propertyPath: numberOfFlasks
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7673829972370452774, guid: dd091a2868b9f4e4ba8cd13e75ecad59,
         type: 3}
@@ -426,12 +445,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7128885637221423663, guid: 7832aa1202abc6846bfd9480f6de3418,
     type: 3}
   m_PrefabInstance: {fileID: 1343050761}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &1022127647 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 8775237651702744413, guid: f7f0a02af0ecd9c4da10449356abac7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 78617028918625001}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1074983660 stripped
 Transform:
@@ -798,6 +811,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1343050761}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1617939808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8657921334595740532, guid: f7f0a02af0ecd9c4da10449356abac7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 78617028918625001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a59300003d0a341b725430e4f907ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1622794916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 646915843277087925, guid: 86e433fabc0fae24bb306ab38ff63391,
@@ -814,7 +839,19 @@ PrefabInstance:
     - target: {fileID: 1268130525, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
       propertyPath: deathSceneCanvas
       value: 
-      objectReference: {fileID: 1022127647}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268130526, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
+      propertyPath: hudManager
+      value: 
+      objectReference: {fileID: 1617939808}
+    - target: {fileID: 1268130528, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
+      propertyPath: flasksCarried
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268130528, guid: 04ded56899e14d041bc391c7b1853c3a, type: 3}
+      propertyPath: flasksCapacity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1160922317266523166, guid: 04ded56899e14d041bc391c7b1853c3a,
         type: 3}
       propertyPath: m_Name
@@ -893,7 +930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1757274590
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1005,24 +1042,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1762373664 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8775237651702744409, guid: f7f0a02af0ecd9c4da10449356abac7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 78617028918625001}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1762373668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762373664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22c6341084a2f849878f417a69b4764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1915434717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7128885635479847504, guid: 7832aa1202abc6846bfd9480f6de3418,
@@ -1158,49 +1177,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 78617028573833671, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775237651702744409, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775237651702744412, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775237651702744412, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775237651702744412, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775237651702744412, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775237652391886053, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.2901961
-      objectReference: {fileID: 0}
-    - target: {fileID: 8775237653120797036, guid: f7f0a02af0ecd9c4da10449356abac7c,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 882993a079846b542aa8754a2ded080f,
-        type: 3}
-    m_RemovedComponents:
-    - {fileID: 8775237651702744408, guid: f7f0a02af0ecd9c4da10449356abac7c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f0a02af0ecd9c4da10449356abac7c, type: 3}
 --- !u!1001 &3130118537922618457
 PrefabInstance:

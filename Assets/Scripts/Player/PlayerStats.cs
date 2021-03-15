@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour {
   public int flasksCapacity = 3;
   public int flasksCarried = 0;
   public float flaskShieldIncrease = 0f;
-  public float flaskHealthIncrease = 10f;
+  public float flaskHeal = 30f;
 
   [Header("Stamina Stats")]
   public float staminaRunDecreaseRate = 15f;
@@ -48,6 +48,11 @@ public class PlayerStats : MonoBehaviour {
     isSlotEquipped = new bool[maxNumberOfItems];
     currentStamina = maxStamina;
     currentSpeed = normalSpeed;
+  }
+
+  public void GetFlask() {
+      if (flasksCarried == flasksCapacity) return;
+      flasksCarried++;
   }
 
   private void Update() {

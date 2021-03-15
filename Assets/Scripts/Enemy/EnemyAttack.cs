@@ -36,7 +36,7 @@ public class EnemyAttack : MonoBehaviour {
         break;
 
       case EnemyStats.RewardType.Flask:
-        playerSkillTree.IncreaseFlasksCapacityProgress(valueToIncrease);
+        playerSkillTree.IncreaseFlasksHealProgress(valueToIncrease);
         break;
 
       case EnemyStats.RewardType.Stamina:

@@ -10,10 +10,13 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField]
     private Vector3 weaponPosition;
 
+    private PlayerStats playerStats;
+
     private GameObject currentWeapon;
 
     private void Start() {
         Equip(initialWeapon);
+        playerStats = GetComponent<PlayerStats>();
     }
 
     public void Equip(GameObject weapon) {
@@ -32,11 +35,11 @@ public class PlayerWeapon : MonoBehaviour {
     }
 
     public void StartLightAttack() {
-        currentWeapon.GetComponent<WeaponDamage>().StartLightAttack();
+        currentWeapon.GetComponent<WeaponDamage>().StartLightAttack(playerStats.attackMultiplier / 100f);
     }
 
     public void StartHeavyAttack() {
-        currentWeapon.GetComponent<WeaponDamage>().StartHeavyAttack();
+        currentWeapon.GetComponent<WeaponDamage>().StartHeavyAttack(playerStats.attackMultiplier / 100f);
     }
 
     public void EndAttack() {

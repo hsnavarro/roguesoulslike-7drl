@@ -11,10 +11,27 @@ public class PlayerSkillTreeManager : MonoBehaviour {
   [SerializeField]
   private Slider staminaProgressBarSlider;
 
+  [SerializeField]
+  private LevelUpMessage healthLevelUp;
+  [SerializeField]
+  private LevelUpMessage staminaLevelUp;
+  [SerializeField]
+  private LevelUpMessage flaskLevelUp;
+
   private PlayerSkillTree playerSkillTree;
 
   void Start() {
     playerSkillTree = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillTree>();
+
+    healthProgressBarSlider = GameObject.FindGameObjectWithTag("SkillTreeHealthProgressBar").GetComponent<Slider>();
+    staminaProgressBarSlider = GameObject.FindGameObjectWithTag("SkillTreeStaminaProgressBar").GetComponent<Slider>();
+    flaskCapacityProgressBarSlider = GameObject.FindGameObjectWithTag("SkillTreeFlaskCapacityProgressBar").GetComponent<Slider>();
+  }
+
+  void Update() {
+    healthProgressBarSlider.value = GetHealthBarFillRatio();
+    flaskCapacityProgressBarSlider.value = GetFlaskCapacityBarFillRatio();
+    staminaProgressBarSlider.value = GetStaminaBarFillRatio();
   }
 
   private float GetHealthBarFillRatio() {
@@ -22,20 +39,22 @@ public class PlayerSkillTreeManager : MonoBehaviour {
   }
 
   private float GetFlaskCapacityBarFillRatio() {
-    return playerSkillTree.flasksCapacityBarProgression / playerSkillTree.flasksCapacityBarSize;
+    return playerSkillTree.flasksHealBarProgression / playerSkillTree.flasksHealBarSize;
   }
 
   private float GetStaminaBarFillRatio() {
     return playerSkillTree.staminaBarProgression / playerSkillTree.staminaBarSize;
   }
 
-  private void Update() {
-    healthProgressBarSlider = GameObject.FindGameObjectWithTag("SkillTreeHealthProgressBar").GetComponent<Slider>();
-    staminaProgressBarSlider = GameObject.FindGameObjectWithTag("SkillTreeStaminaProgressBar").GetComponent<Slider>();
-    flaskCapacityProgressBarSlider = GameObject.FindGameObjectWithTag("SkillTreeFlaskCapacityProgressBar").GetComponent<Slider>();
+  public void HealthLevelUp() {
+    healthLevelUp.Show();
+  }
 
-    healthProgressBarSlider.value = GetHealthBarFillRatio();
-    flaskCapacityProgressBarSlider.value = GetFlaskCapacityBarFillRatio();
-    staminaProgressBarSlider.value = GetStaminaBarFillRatio();
+  public void StaminaLevelUp() {
+    staminaLevelUp.Show();
+  }
+
+  public void FlaskLevelUp() {
+    flaskLevelUp.Show();
   }
 }

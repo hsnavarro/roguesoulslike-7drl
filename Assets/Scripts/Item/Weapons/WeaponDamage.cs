@@ -7,6 +7,8 @@ public class WeaponDamage : MonoBehaviour {
     [SerializeField]
     private float heavyDamage = 25f;
 
+    private float damageMultiplier = 1f;
+
     [SerializeField]
     private Collider hitbox;
 
@@ -22,14 +24,16 @@ public class WeaponDamage : MonoBehaviour {
         hitbox.enabled = false;
     }
 
-    public void StartLightAttack() {
+    public void StartLightAttack(float multiplier = 1f) {
         attacking = AttackType.Light;
         hitbox.enabled = true;
+        damageMultiplier = multiplier;
     }
 
-    public void StartHeavyAttack() {
+    public void StartHeavyAttack(float multiplier = 1f) {
         attacking = AttackType.Heavy;
         hitbox.enabled = true;
+        damageMultiplier = multiplier;
     }
 
     public void EndAttack() {
@@ -58,7 +62,9 @@ public class WeaponDamage : MonoBehaviour {
         }  
 
         if (resilience) {
-            resilience.TakeDamage(attacking == AttackType.Light ? lightDamage : heavyDamage);
+            float damage = ((attacking == AttackType.Light) ? lightDamage : heavyDamage);
+            damage *= damageMultiplier;
+            resilience.TakeDamage(damage);
         }
     }
 }

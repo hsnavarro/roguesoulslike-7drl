@@ -9,8 +9,8 @@
     public static float healthIncreasePerBarCompleted = 10f;
     public static float healthBarSize = 10f;
 
-    public static int flasksCapacityIncrease = 0;
-    public static float flasksCapacityBarProgression = 0f;
-    public static int flasksCapacityIncreasePerBarCompleted = 1;
-    public static float flasksCapacityBarSize = 10f;
+    public static int flasksHealIncrease = 0;
+    public static float flasksHealBarProgression = 0f;
+    public static int flasksHealIncreasePerBarCompleted = 5;
+    public static float flasksHealBarSize = 10f;
 }
