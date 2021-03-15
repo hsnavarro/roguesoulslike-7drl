@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreditsUI : MonoBehaviour
-{
+public class CreditsUI : MonoBehaviour {
 
-    private float delayTime = 1f;
+    [SerializeField]
+    private float inputBlockTime;
+    [SerializeField]
+    private float delayTime;
     [SerializeField]
     private float speed = 100f;
 
     public void OnInput() {
-        Application.Quit();
+        if (Time.time > inputBlockTime) Application.Quit();
     }
 
     // Update is called once per frame
