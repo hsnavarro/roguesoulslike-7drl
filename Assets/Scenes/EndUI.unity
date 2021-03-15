@@ -701,9 +701,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e15008062444d648a6a7dd4cdff8ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputBlockTime: 30
+  inputBlockTime: 25
   delayTime: 3
-  speed: 50
+  speed: 70
 --- !u!95 &1764796353
 Animator:
   serializedVersion: 3
