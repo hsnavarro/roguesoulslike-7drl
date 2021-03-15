@@ -301,7 +301,7 @@ MonoBehaviour:
   reward: 2
   speed: 2
   attackDamage: 15
-  attackDelay: 3
+  attackDelay: 0.5
 --- !u!114 &1636768109689332137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +332,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerHitCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2309733350946768521
 GameObject:
   m_ObjectHideFlags: 0

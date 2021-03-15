@@ -193,6 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5096969145711a14cb5c6b3d351404e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCurrentDirection: {x: 0, y: 0}
+  enemyDesiredDirection: {x: 0, y: 0}
+  currentVelocity: {x: 0, y: 0}
+  isMoving: 0
+  playerStats: {fileID: 0}
   enemyAttackTrigger: {fileID: 6949649077982412169}
   enemyAnimator: {fileID: 4345990046759778341}
   enemyStats: {fileID: 2481120369144729033}
@@ -568,6 +573,7 @@ GameObject:
   - component: {fileID: 8864429155479431924}
   - component: {fileID: 2481120369144729033}
   - component: {fileID: 6537164406827064781}
+  - component: {fileID: 474644983}
   m_Layer: 8
   m_Name: Cyclops
   m_TagString: Untagged
@@ -658,6 +664,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerHitCallback:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &474644983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970826515709941469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 4.5, z: 2}
+  m_Center: {x: 0, y: 2.25, z: 0}
 --- !u!1 &6699499015171039163
 GameObject:
   m_ObjectHideFlags: 0

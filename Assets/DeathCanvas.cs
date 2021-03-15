@@ -1,21 +1,26 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeathCanvas : MonoBehaviour {
-    public GameObject continueText;
+    [SerializeField]
+    private GameObject continueText;
+    [SerializeField]
+    private GameObject normalText;
 
     public void Show(float duration) {
         gameObject.SetActive(true);
-        StartCoroutine(ShowCoroutine(GetComponent<CanvasGroup>(), 1f));
+        //normalText.SetActive(true);
+        StartCoroutine(ShowCoroutine(normalText.GetComponent<Text>(), 1f));
     }
 
     public void ShowContinue() {
-        continueText.SetActive(true);
-        StartCoroutine(ShowCoroutine(continueText.GetComponent<CanvasGroup>(), 0.5f));
+        //continueText.SetActive(true);
+        StartCoroutine(ShowCoroutine(continueText.GetComponent<Text>(), 0.5f));
     }
 
-    IEnumerator ShowCoroutine(CanvasGroup group, float duration) {
-        group.alpha = 0f;
+    IEnumerator ShowCoroutine(Text text, float duration) {
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 0f);
 
         // fade out
         float startTime = Time.time;
@@ -25,9 +30,9 @@ public class DeathCanvas : MonoBehaviour {
             if (currentTime - startTime >= duration) break;
 
             float alpha = (currentTime - startTime) / duration;
-            group.alpha = alpha;
+            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
         }
 
-        group.alpha = 1f;
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
     }
 }

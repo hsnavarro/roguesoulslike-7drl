@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 
   //private bool isControlsUIActive = false;
 
-  private float deathTimeInputDelay = 2f;
+  private float deathTimeInputDelay = 1f;
   private bool canDeathTimeReceiveInput = false;
 
   // Attack variables. Maybe move to a better place

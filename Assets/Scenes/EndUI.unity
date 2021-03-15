@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputBlockTime: 25
-  delayTime: 3
+  delayTime: 1
   speed: 70
 --- !u!95 &1764796353
 Animator:
