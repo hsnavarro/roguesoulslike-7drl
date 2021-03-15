@@ -449,17 +449,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ae097e53-d547-4268-9fdb-cff38562e351",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact Slot 1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "dce026a0-429e-4bd0-8c5f-0fb455d417b4",
                     "path": "<Keyboard>/2",
                     "interactions": "",
@@ -670,7 +659,7 @@
                 {
                     "name": "",
                     "id": "4c3e7710-8cae-4b48-804e-098cd8d80162",
-                    "path": "<XInputController>/leftShoulder",
+                    "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
