@@ -7,8 +7,10 @@ public class PlayerColliderManager : MonoBehaviour {
   private void OnControllerColliderHit(ControllerColliderHit hit) {
     // Flask
     if (hit.gameObject.layer == (int)Layers.FLASK) {
-      playerStats.GetFlask();
-      hit.gameObject.SetActive(false);
+      if (playerStats.flasksCarried != playerStats.flasksCapacity) {
+        playerStats.GetFlask();
+        hit.gameObject.SetActive(false);
+      }
     }
   }
 }
